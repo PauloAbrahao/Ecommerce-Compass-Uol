@@ -15,10 +15,12 @@ const Form = () => {
   const [emailBorderColor, setEmailBorderColor] = React.useState("#656262");
   const [passwordBorderColor, setPasswordBorderColor] =
     React.useState("#656262");
-  
+
   // DEFINE WARNING MESSAGE IF VALIDATION FAILS
   const [isEmailValid, setIsEmailValid] = React.useState<boolean>(true);
   const [isPasswordValid, setIsPasswordValid] = React.useState<boolean>(true);
+
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const navigation = useNavigation<any>();
 
@@ -42,7 +44,13 @@ const Form = () => {
 
   const handleNavigation = () => {
     if (email.trim().length > 0 && password.trim().length > 0) {
-      navigation.navigate("SignUp_Screen");
+      setIsLoading(true);
+
+      setTimeout(() => {
+        setIsLoading(false);
+        navigation.navigate("SignUp_Screen");
+      }, 500);
+
     } else {
       handleError();
     }
@@ -53,7 +61,7 @@ const Form = () => {
       {/* EMAIL INPUT */}
       <Input
         placeholder="Your email"
-        imagePath="../../../assets/icons/email.png"
+        imagePath="email"
         keyboardType="email-address"
         value={email}
         onChangeText={setEmail}
@@ -68,7 +76,7 @@ const Form = () => {
       {/* PASSWORD INPUT */}
       <Input
         placeholder="Your password"
-        imagePath="../../../assets/icons/password.png"
+        imagePath="password"
         secureTextEntry={true}
         value={password}
         onChangeText={setPassword}
@@ -81,7 +89,11 @@ const Form = () => {
       )}
 
       {/* LOGIN BUTTON */}
-      <Button title="LOGIN" onPress={handleNavigation} />
+      <Button
+        title="LOGIN"
+        onPress={handleNavigation}
+        isLoading={isLoading}
+      />
     </>
   );
 };

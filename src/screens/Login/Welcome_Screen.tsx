@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, Text, View } from "react-native";
+import { KeyboardAvoidingView, Text, View, Image } from "react-native";
 import React from "react";
 
 import styles from "./style";
