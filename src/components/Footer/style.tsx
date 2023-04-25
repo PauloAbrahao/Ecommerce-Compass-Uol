@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingLeft: 4,
     fontWeight: "bold",
-  }
+  },
 });
 
 export default styles;

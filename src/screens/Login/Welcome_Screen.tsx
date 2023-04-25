@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, Text, View, Image } from "react-native";
+import { KeyboardAvoidingView, Text, View, ScrollView } from "react-native";
 import React from "react";
 
 import styles from "./style";
@@ -13,23 +13,28 @@ const Welcome_Screen: React.FC<Welcome_ScreenProps> = () => {
   return (
     <>
       <KeyboardAvoidingView
-        style={[styles.keyboard, styles.container]}
+        style={styles.container}
         behavior="padding"
+        keyboardVerticalOffset={-200}
       >
-        {/* WELCOME TITLE */}
-        <View>
-          <Text style={styles.title}>WELCOME</Text>
-        </View>
+        <ScrollView
+          contentOffset={{x: 0, y: 200}}
+          style={styles.content}
+        >
+          <View style={styles.content}>
+            {/* WELCOME TITLE */}
+            <Text style={styles.title}>WELCOME</Text>
 
-        <View style={[styles.inputs]}>
-          <Form />
-        </View>
-
-        <Footer
-          first_footer_text="Don't have an account?"
-          second_footer_text="Sign Up"
-        />
+            <View style={[styles.inputs]}>
+              <Form />
+            </View>
+          </View>
+        </ScrollView>
       </KeyboardAvoidingView>
+      <Footer
+        first_footer_text="Don't have an account?"
+        second_footer_text="Sign Up"
+      />
     </>
   );
 };
