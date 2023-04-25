@@ -2,9 +2,6 @@ import { StyleSheet } from "react-native";
 import { GlobalStyles } from "../../constants/colors";
 
 const styles = StyleSheet.create({
-  keyboard: {
-    backgroundColor: GlobalStyles.Colors.background,
-  },
   container: {
     flex: 1,
     alignItems: "center",
@@ -22,9 +19,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 165,
-  },
-  warning: {
-    color: GlobalStyles.Colors.warning,
   }
 });
 
