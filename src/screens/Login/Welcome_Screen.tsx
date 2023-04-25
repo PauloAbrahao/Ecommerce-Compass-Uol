@@ -17,21 +17,19 @@ const Welcome_Screen: React.FC<Welcome_ScreenProps> = () => {
         behavior="padding"
         keyboardVerticalOffset={-200}
       >
-        <ScrollView
-          contentOffset={{x: 0, y: 200}}
-          style={styles.content}
-        >
+        <ScrollView contentOffset={{ x: 0, y: 200 }} style={styles.content}>
           <View style={styles.content}>
             {/* WELCOME TITLE */}
             <Text style={styles.title}>WELCOME</Text>
 
             <View style={[styles.inputs]}>
-              <Form />
+              <Form toSignUpPage={false} text_button="LOGIN" />
             </View>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>
       <Footer
+        signUp={false}
         first_footer_text="Don't have an account?"
         second_footer_text="Sign Up"
       />
