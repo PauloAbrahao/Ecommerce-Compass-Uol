@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 165,
+    marginTop: 150,
   },
   warning: {
     color: GlobalStyles.Colors.warning,
