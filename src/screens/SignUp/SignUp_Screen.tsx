@@ -4,11 +4,7 @@ import styles from "./style";
 import Footer from "../../components/Footer/Footer";
 import Form from "../../components/Form/Form";
 
-interface SignIn_ScreenProps {
-  navigation: any;
-}
-
-const SignUp_Screen: React.FC<SignIn_ScreenProps> = ({ navigation }) => {
+const SignUp_Screen = () => {
   return (
     <>
       <KeyboardAvoidingView
@@ -22,7 +18,7 @@ const SignUp_Screen: React.FC<SignIn_ScreenProps> = ({ navigation }) => {
             <Text style={styles.title}>SIGN UP</Text>
 
             <View style={[styles.forms]}>
-              <Form toSignUpPage={true} text_button="CREATE ACCOUNT" />
+              <Form isSignUpPage={true} text_button="CREATE ACCOUNT" />
             </View>
           </View>
         </ScrollView>

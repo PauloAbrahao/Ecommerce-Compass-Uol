@@ -1,16 +1,24 @@
-import { Image, TextInput, View } from "react-native";
+import {
+  Image,
+  KeyboardTypeOptions,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import React from "react";
 
 import styles from "./style";
+import { link_images } from "./LinkImages";
 
+// INTERFACE FOR INPUT PROPS
 interface InputProps {
   placeholder: string;
   imagePath: string;
-  keyboardType?: string;
-  secureTextEntry?: boolean;
   value?: string;
   onChangeText: (value: string) => void;
   color?: string;
+  keyboardType?: KeyboardTypeOptions;
+  secureTextEntry?: boolean;
 }
 
 const Input: React.FC<InputProps> = ({
@@ -20,32 +28,21 @@ const Input: React.FC<InputProps> = ({
   color,
   ...props
 }) => {
-  const images = {
-    email: require("../../../assets/icons/email.png"),
-    password: require("../../../assets/icons/password.png"),
-    username: require("../../../assets/icons/username.png"),
-  };
 
-  let path: string = "";
-
-  if (imagePath === "email") {
-    path = images.email;
-  } else if (imagePath === "password") {
-    path = images.password;
-  } else if (imagePath === "username") {
-    path = images.username;
-  }
+  // CALL THE FUNCTION TO SET THE PATH TO THE CORRECT IMAGE
+  const path = link_images(imagePath);
 
   return (
-    <View style={[styles.container, { borderColor: color }]}>
-      <Image source={path} resizeMode="contain" style={styles.icon} />
-
-      <TextInput
-        style={[styles.input]}
-        placeholder={placeholder}
-        placeholderTextColor="#A8A8A8"
-        {...props}
-      />
+    <View>
+      <View style={[styles.container, { borderColor: color }]}>
+        <Image source={path} resizeMode="contain" style={styles.icon} />
+        <TextInput
+          style={[styles.input]}
+          placeholder={placeholder}
+          placeholderTextColor="#A8A8A8"
+          {...props}
+        />
+      </View>
     </View>
   );
 };

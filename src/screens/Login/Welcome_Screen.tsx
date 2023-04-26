@@ -5,11 +5,8 @@ import styles from "./style";
 import Footer from "../../components/Footer/Footer";
 import Form from "../../components/Form/Form";
 
-interface Welcome_ScreenProps {
-  navigation: any;
-}
 
-const Welcome_Screen: React.FC<Welcome_ScreenProps> = () => {
+const Welcome_Screen = () => {
   return (
     <>
       <KeyboardAvoidingView
@@ -23,7 +20,7 @@ const Welcome_Screen: React.FC<Welcome_ScreenProps> = () => {
             <Text style={styles.title}>WELCOME</Text>
 
             <View style={[styles.inputs]}>
-              <Form toSignUpPage={false} text_button="LOGIN" />
+              <Form isSignUpPage={false} text_button="LOGIN" />
             </View>
           </View>
         </ScrollView>

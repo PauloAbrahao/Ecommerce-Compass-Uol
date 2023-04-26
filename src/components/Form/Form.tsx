@@ -8,19 +8,27 @@ import { useNavigation } from "@react-navigation/native";
 import Checkbox from "expo-checkbox";
 
 import styles from "./style";
+import { show_error } from "./ValidateInputs";
 
 // DEFINE PROPS INTERFACE FOR FORM COMPONENT
 interface FormProps {
-  toSignUpPage?: boolean;
+  isSignUpPage?: boolean;
   text_button: string;
 }
 
-const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
+const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
   // DEFINE STATES FOR INPUT FIELDS
   const [email, setEmail] = React.useState("");
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [isChecked, setChecked] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+
+  // VERIFY IF THE INPUT FIELDS ARE VALID (EMPTY OR NOT)
+  const [isEmailValid, setIsEmailValid] = React.useState<boolean>(true);
+  const [isUsernameValid, setIsUsernameValid] = React.useState<boolean>(true);
+  const [isPasswordValid, setIsPasswordValid] = React.useState<boolean>(true);
+  const [isTermsValid, setIsTermsValid] = React.useState<boolean>(true);
 
   // DEFINE BORDER COLORS FOR INPUT FIELDS IF VALIDATION FAILS
   const [emailBorderColor, setEmailBorderColor] = React.useState("#656262");
@@ -30,13 +38,6 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
     React.useState("#656262");
   const [termsBorderColor, setTermsBorderColor] = React.useState("#656262");
 
-  // DEFINE WARNING MESSAGE IF VALIDATION FAILS
-  const [isEmailValid, setIsEmailValid] = React.useState<boolean>(true);
-  const [isUsernameValid, setIsUsernameValid] = React.useState<boolean>(true);
-  const [isPasswordValid, setIsPasswordValid] = React.useState<boolean>(true);
-  const [isTermsValid, setIsTermsValid] = React.useState<boolean>(true);
-  const [isLoading, setIsLoading] = React.useState(false);
-
   const navigation = useNavigation<any>();
 
   // HANDLE ERRORS IF THE USERS DOES NOT FILL IN ANY FIELDS
@@ -44,7 +45,7 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
     if (email === "") {
       setEmailBorderColor("#FF4B4B");
       setIsEmailValid(false);
-    } else if (email.trim().length > 0) {
+    } else {
       setEmailBorderColor("#656262");
       setIsEmailValid(true);
     }
@@ -52,21 +53,20 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
     if (password === "") {
       setPasswordBorderColor("#FF4B4B");
       setIsPasswordValid(false);
-    } else if (password.trim().length > 0) {
+    } else {
       setPasswordBorderColor("#656262");
       setIsPasswordValid(true);
     }
 
     //  IF THE USER IS ON THE SIGN UP PAGE, CHECK IF THE USERNAME AND TERMS ARE FILLED IN
-    if (toSignUpPage) {
+    if (isSignUpPage) {
       if (username === "") {
         setUsernameBorderColor("#FF4B4B");
         setIsUsernameValid(false);
-      } else if (username.trim().length > 0) {
+      } else {
         setUsernameBorderColor("#656262");
         setIsUsernameValid(true);
       }
-
       if (!isChecked) {
         setTermsBorderColor("#FF4B4B");
         setIsTermsValid(false);
@@ -83,8 +83,8 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
     if (
       email.trim().length > 0 &&
       password.trim().length > 0 &&
-      (toSignUpPage ? username.trim().length > 0 : true) &&
-      (toSignUpPage ? isChecked : true)
+      (isSignUpPage ? username.trim().length > 0 : true) &&
+      (isSignUpPage ? isChecked : true)
     ) {
       setIsLoading(true);
 
@@ -93,10 +93,10 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
         setIsLoading(false);
 
         // NAVIGATE TO THE NEXT SCREEN BASED ON THE PROPS
-        if (toSignUpPage) {
-          navigation.navigate("Welcome_Screen");
+        if (isSignUpPage) {
+          navigation.navigate("Welcome_Screen" as never);
         } else {
-          navigation.navigate("SignUp_Screen");
+          navigation.navigate("SignUp_Screen" as never);
         }
       }, 500);
     } else {
@@ -110,20 +110,16 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
       <Input
         placeholder="Your email"
         imagePath="email"
-        keyboardType="email-address"
         value={email}
         onChangeText={setEmail}
         color={emailBorderColor}
+        keyboardType="email-address"
       />
-      {!isEmailValid && (
-        <Text style={styles.validationText}>
-          Please enter a valid email address.
-        </Text>
-      )}
+      {show_error(isEmailValid, "Please enter a valid email address.", false)}
 
       {/* USERNAME INPUT */}
       {/* IF THE USER IS ON THE SIGN UP PAGE, SHOW THE USERNAME INPUT */}
-      {toSignUpPage ? (
+      {isSignUpPage ? (
         <Input
           placeholder="username"
           imagePath="username"
@@ -132,30 +128,22 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
           color={usernameBorderColor}
         />
       ) : null}
-      {!isUsernameValid && (
-        <Text style={styles.validationText}>
-          Please enter a valid username.
-        </Text>
-      )}
+      {show_error(isUsernameValid, "Please enter a valid username.", false)}
 
       {/* PASSWORD INPUT */}
       <Input
         placeholder="Your password"
         imagePath="password"
-        secureTextEntry={true}
         value={password}
         onChangeText={setPassword}
         color={passwordBorderColor}
+        secureTextEntry={true}
       />
-      {!isPasswordValid && (
-        <Text style={styles.validationText}>
-          Please enter a valid password.
-        </Text>
-      )}
+      {show_error(isPasswordValid, "Please enter a valid password.", false)}
 
       {/* CHECKBOX INPUT */}
       {/* IF THE USER IS ON THE SIGN UP PAGE, SHOW THE CHECKBOX INPUT */}
-      {toSignUpPage ? (
+      {isSignUpPage ? (
         <View style={styles.checkbox_container}>
           <Checkbox
             style={styles.checkbox}
@@ -168,9 +156,7 @@ const Form: React.FC<FormProps> = ({ toSignUpPage, text_button }) => {
           </Text>
         </View>
       ) : null}
-      {!isTermsValid && (
-        <Text style={styles.validationTerms}>Please accept the terms.</Text>
-      )}
+      {show_error(isTermsValid, "Please accept the terms.", true)}
 
       {/* BUTTON */}
       <Button
