@@ -3,16 +3,17 @@ import { GlobalStyles } from "../../constants/colors";
 
 const styles = StyleSheet.create({
   footer: {
-    position: "absolute",
+    flex: 1,
+    // position: "absolute",
     flexDirection: "row",
     justifyContent: "center",
     width: "100%",
-    bottom: 5,
+    bottom: 0,
     borderTopColor: "rgba(215, 143, 60, 0.5)",
     backgroundColor: GlobalStyles.Colors.background,
     borderTopWidth: 1,
     paddingTop: 15,
-    paddingBottom: 20,
+    paddingBottom: 10,
   },
   text: {
     color: "#F5F5F5",

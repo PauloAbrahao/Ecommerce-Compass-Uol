@@ -10,24 +10,25 @@ const SignUp_Screen = () => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior="padding"
-        keyboardVerticalOffset={-200}
+        keyboardVerticalOffset={-300}
       >
-        <ScrollView contentOffset={{ x: 0, y: 200 }} style={styles.content}>
-          <View style={styles.content}>
+        <ScrollView contentOffset={{ x: 0, y: 200 }} style={styles.content} scrollEnabled={false}>
+          <View style={styles.main_content}>
             {/* SIGN UP TITLE */}
             <Text style={styles.title}>SIGN UP</Text>
 
-            <View style={[styles.forms]}>
+            <View style={styles.forms}>
               <Form isSignUpPage={true} text_button="CREATE ACCOUNT" />
             </View>
           </View>
+
+          <Footer
+            signUp={true}
+            first_footer_text="Already have an account?"
+            second_footer_text="Sign In"
+          />
         </ScrollView>
       </KeyboardAvoidingView>
-      <Footer
-        signUp={true}
-        first_footer_text="Already have an account?"
-        second_footer_text="Sign In"
-      />
     </>
   );
 };

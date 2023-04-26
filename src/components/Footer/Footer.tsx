@@ -16,6 +16,7 @@ const Footer: React.FC<FooterProps> = ({
 }) => {
   const navigation = useNavigation<any>();
 
+  // Navigate to the SignUp_Screen or Welcome_Screen
   const handleNavigation = () => {
     if (signUp) {
       navigation.navigate("Welcome_Screen");

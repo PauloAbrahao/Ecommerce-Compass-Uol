@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     height: "100%",
+    width: "100%",
+  },
+  main_content: {
+    marginBottom: 85,
   },
   title: {
     color: GlobalStyles.Colors.primary,
@@ -23,7 +27,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 100,
+    marginTop: 90,
   },
 });
 

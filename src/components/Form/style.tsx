@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start",
     borderRadius: 5,
     marginBottom: 25,
+    marginLeft: 20,
   },
   checkbox: {
     alignSelf: "flex-start",

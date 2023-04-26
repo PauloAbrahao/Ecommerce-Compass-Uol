@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
   validationText: {
     color: GlobalStyles.Colors.warning,
     fontSize: 12,
-    marginLeft: 25,
-    marginTop: -30,
+    marginLeft: 40,
+    marginTop: -27,
     marginBottom: 12,
     alignSelf: "flex-start",
     textAlign: "center",
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
   validationTerms: {
     color: GlobalStyles.Colors.warning,
     fontSize: 12,
-    marginLeft: 20,
-    marginTop: -21,
+    marginLeft: 40,
+    marginTop: -25,
     marginBottom: 15,
     alignSelf: "flex-start",
     textAlign: "center",

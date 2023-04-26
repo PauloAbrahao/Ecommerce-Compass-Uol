@@ -94,9 +94,9 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
 
         // NAVIGATE TO THE NEXT SCREEN BASED ON THE PROPS
         if (isSignUpPage) {
-          navigation.navigate("Welcome_Screen" as never);
+          navigation.navigate("Home" as never);
         } else {
-          navigation.navigate("SignUp_Screen" as never);
+          navigation.navigate("Home" as never);
         }
       }, 500);
     } else {

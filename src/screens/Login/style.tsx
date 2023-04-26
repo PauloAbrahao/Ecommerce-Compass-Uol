@@ -9,8 +9,11 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.Colors.background,
   },
   content: {
-    flex: 1,
     height: "100%",
+    width: "100%",
+  },
+  main_content: {
+    marginBottom: 170,
   },
   title: {
     color: GlobalStyles.Colors.primary,
