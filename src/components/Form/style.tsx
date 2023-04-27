@@ -1,16 +1,27 @@
 import { StyleSheet } from "react-native";
-import { GlobalStyles } from "../../constants/colors";
 
 const styles = StyleSheet.create({
-  validationText: {
-    color: GlobalStyles.Colors.warning,
-    fontSize: 12,
-    marginLeft: 40,
-    marginTop: -25,
-    marginBottom: 10,
-    alignSelf: "flex-start",
+  checkbox_container: {
+    alignItems: "center",
+    flexDirection: "row",
     textAlign: "center",
+    alignSelf: "flex-start",
+    borderRadius: 5,
+    marginBottom: 25,
   },
+  checkbox: {
+    alignSelf: "flex-start",
+    borderRadius: 5,
+  },
+  terms: {
+    color: "#ffffff",
+    marginLeft: 10,
+    fontSize: 13,
+    fontWeight: "bold",
+  },
+  underline: {
+    textDecorationLine: "underline",
+  }
 });
 
 export default styles;

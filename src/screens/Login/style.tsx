@@ -25,9 +25,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 150,
   },
-  warning: {
-    color: GlobalStyles.Colors.warning,
-  },
 });
 
 export default styles;

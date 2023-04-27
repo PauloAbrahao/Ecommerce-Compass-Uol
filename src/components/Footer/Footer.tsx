@@ -6,16 +6,22 @@ import styles from "./style";
 interface FooterProps {
   first_footer_text: string;
   second_footer_text: string;
+  signUp?: boolean;
 }
 
 const Footer: React.FC<FooterProps> = ({
   first_footer_text,
   second_footer_text,
+  signUp,
 }) => {
   const navigation = useNavigation<any>();
 
   const handleNavigation = () => {
-    navigation.navigate("SignUp_Screen");
+    if (signUp) {
+      navigation.navigate("Welcome_Screen");
+    } else {
+      navigation.navigate("SignUp_Screen");
+    }
   };
 
   return (
