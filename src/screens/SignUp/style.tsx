@@ -8,26 +8,18 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     backgroundColor: GlobalStyles.Colors.background,
   },
-  content: {
-    flex: 1,
-    height: "100%",
-  },
   title: {
     color: GlobalStyles.Colors.primary,
     fontSize: 36,
     fontWeight: "700",
     marginTop: 171,
-    textAlign: "center",
   },
   inputs: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 150,
-  },
-  warning: {
-    color: GlobalStyles.Colors.warning,
-  },
+    marginTop: 165,
+  }
 });
 
 export default styles;
