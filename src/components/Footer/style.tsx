@@ -4,16 +4,15 @@ import { GlobalStyles } from "../../constants/colors";
 const styles = StyleSheet.create({
   footer: {
     flex: 1,
-    // position: "absolute",
+    position: "absolute",
     flexDirection: "row",
     justifyContent: "center",
     width: "100%",
     bottom: 0,
     borderTopColor: "rgba(215, 143, 60, 0.5)",
-    backgroundColor: GlobalStyles.Colors.background,
     borderTopWidth: 1,
     paddingTop: 15,
-    paddingBottom: 10,
+    paddingBottom: 15,
   },
   text: {
     color: "#F5F5F5",

@@ -9,12 +9,12 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.Colors.background,
   },
   content: {
-    flex: 1,
     height: "100%",
     width: "100%",
   },
   main_content: {
-    marginBottom: 85,
+    // minHeight: 780,
+    // marginBottom: -20,
   },
   title: {
     color: GlobalStyles.Colors.primary,
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 90,
   },
+
 });
 
 export default styles;

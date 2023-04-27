@@ -1,10 +1,18 @@
 import React from "react";
-import { KeyboardAvoidingView, ScrollView, Text, View } from "react-native";
+import {
+  KeyboardAvoidingView,
+  ScrollView,
+  Text,
+  View,
+  Dimensions,
+} from "react-native";
 import styles from "./style";
 import Footer from "../../components/Footer/Footer";
 import Form from "../../components/Form/Form";
 
 const SignUp_Screen = () => {
+  const windowHeight = Dimensions.get("window").height;
+
   return (
     <>
       <KeyboardAvoidingView
@@ -12,8 +20,12 @@ const SignUp_Screen = () => {
         behavior="padding"
         keyboardVerticalOffset={-300}
       >
-        <ScrollView contentOffset={{ x: 0, y: 200 }} style={styles.content} scrollEnabled={false}>
-          <View style={styles.main_content}>
+        <ScrollView
+          contentOffset={{ x: 0, y: 200 }}
+          scrollEnabled={false}
+          style={styles.content}
+        >
+          <View style={[styles.main_content, { height: windowHeight }]}>
             {/* SIGN UP TITLE */}
             <Text style={styles.title}>SIGN UP</Text>
 

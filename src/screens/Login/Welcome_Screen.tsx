@@ -1,4 +1,10 @@
-import { KeyboardAvoidingView, Text, View, ScrollView } from "react-native";
+import {
+  KeyboardAvoidingView,
+  Text,
+  View,
+  ScrollView,
+  Dimensions,
+} from "react-native";
 import React from "react";
 
 import styles from "./style";
@@ -6,20 +12,21 @@ import Footer from "../../components/Footer/Footer";
 import Form from "../../components/Form/Form";
 
 const Welcome_Screen = () => {
+  const windowHeight = Dimensions.get("window").height;
+
   return (
     <>
       <KeyboardAvoidingView
         style={styles.container}
         behavior="padding"
-        keyboardVerticalOffset={-300}
+        keyboardVerticalOffset={-400}
       >
         <ScrollView
           contentOffset={{ x: 0, y: 200 }}
-          contentContainerStyle={{ paddingBottom: 20 }}
           scrollEnabled={false}
-          style={styles.content}
+          style={[styles.content]}
         >
-          <View style={styles.main_content}>
+          <View style={[styles.main_content, { height: windowHeight }]}>
             {/* WELCOME TITLE */}
             <Text style={styles.title}>WELCOME</Text>
 
@@ -28,6 +35,7 @@ const Welcome_Screen = () => {
               <Form isSignUpPage={false} text_button="LOGIN" />
             </View>
           </View>
+
           <Footer
             signUp={false}
             first_footer_text="Don't have an account?"
