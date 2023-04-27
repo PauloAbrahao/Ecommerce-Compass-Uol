@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
   validationText: {
     color: GlobalStyles.Colors.warning,
     fontSize: 12,
+    fontFamily: "Inter-Medium",
     marginLeft: 40,
     marginTop: -27,
     marginBottom: 12,
@@ -34,6 +35,7 @@ const styles = StyleSheet.create({
   validationTerms: {
     color: GlobalStyles.Colors.warning,
     fontSize: 12,
+    fontFamily: "Inter-Medium",
     marginLeft: 40,
     marginTop: -25,
     marginBottom: 15,

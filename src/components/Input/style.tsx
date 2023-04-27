@@ -24,7 +24,8 @@ const styles = StyleSheet.create({
     flex: 1,
     color: GlobalStyles.Colors.input_placeholder,
     fontSize: 20,
-    fontWeight: "500",
+    fontFamily: "Inter-Medium",
+
   },
 });
 

@@ -14,17 +14,17 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     paddingTop: 15,
     paddingBottom: 15,
-    // backgroundColor: "red",
   },
   text: {
     color: "#F5F5F5",
+    fontFamily: "Inter-Medium",
     fontSize: 16,
   },
-  signUp: {
+  signUpOrSignIn: {
     color: GlobalStyles.Colors.primary,
     fontSize: 16,
+    fontFamily: "Inter-Medium",
     paddingLeft: 4,
-    fontWeight: "bold",
   },
 });
 

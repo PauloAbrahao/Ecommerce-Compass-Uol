@@ -1,12 +1,31 @@
-import { StatusBar, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import {
+  StatusBar,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import Welcome_Screen from "./src/screens/Login/Welcome_Screen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import SignUp_Screen from "./src/screens/SignUp/SignUp_Screen";
 import Home from "./src/screens/Home/Home";
 
+import fetchFonts from "./assets/fonts/fonts";
+
 export default function App() {
+  const [loaded, setLoaded] = React.useState(false);
+
   const Stack = createStackNavigator();
+
+  React.useEffect(() => {
+    fetchFonts().then(() => setLoaded(true));
+  }, []);
+
+  if (!loaded) {
+    return <ActivityIndicator color="#fff" />;
+  }
 
   return (
     <>
@@ -56,7 +75,7 @@ export default function App() {
                 marginLeft: 5,
                 marginTop: 10,
                 fontSize: 20,
-                fontWeight: "500",
+                fontFamily: "Inter-Medium",
               },
               headerBackTitleVisible: false,
               headerStyle: {

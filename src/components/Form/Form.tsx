@@ -118,7 +118,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {/* EMAIL INPUT */}
       <Input
         placeholder="Your email"
-        imagePath="email"
+        icon="email"
         value={email}
         onChangeText={setEmail}
         color={emailBorderColor}
@@ -131,7 +131,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {isSignUpPage ? (
         <Input
           placeholder="username"
-          imagePath="username"
+          icon="username"
           value={username}
           onChangeText={setUsername}
           color={usernameBorderColor}
@@ -142,7 +142,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {/* PASSWORD INPUT */}
       <Input
         placeholder="Your password"
-        imagePath="password"
+        icon="password"
         value={password}
         onChangeText={setPassword}
         color={passwordBorderColor}

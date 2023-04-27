@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   title: {
     color: GlobalStyles.Colors.primary,
     fontSize: 36,
-    fontWeight: "700",
+    fontFamily: "Khula-Bold", 
     marginTop: 120,
     textAlign: "center",
   },

@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     marginLeft: 10,
     fontSize: 13,
-    fontWeight: "bold",
+    fontFamily: "Inter-Bold",
   },
   underline: {
     textDecorationLine: "underline",
