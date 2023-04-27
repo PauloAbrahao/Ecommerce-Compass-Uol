@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   signUpOrSignIn: {
     color: GlobalStyles.Colors.primary,
     fontSize: 16,
-    fontFamily: "Inter-Medium",
+    fontFamily: "Inter-Bold",
     paddingLeft: 4,
   },
 });
