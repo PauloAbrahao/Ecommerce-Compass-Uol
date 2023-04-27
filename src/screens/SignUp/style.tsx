@@ -15,14 +15,14 @@ const styles = StyleSheet.create({
     color: GlobalStyles.Colors.primary,
     fontSize: 36,
     fontFamily: "Khula-Bold", 
-    marginTop: 120,
+    marginTop: 140,
     textAlign: "center",
   },
   forms: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 90,
+    marginTop: 110,
   },
 
 });

@@ -32,11 +32,15 @@ export default function App() {
       <StatusBar barStyle="light-content" />
       <NavigationContainer>
         <Stack.Navigator>
+          
+          {/* WELCOME SCREEN */}
           <Stack.Screen
             options={{ headerShown: false }}
             name="Welcome_Screen"
             component={Welcome_Screen}
           />
+
+          {/* SIGN UP SCREEN */}
           <Stack.Screen
             options={({ navigation }) => ({
               headerTitle: "",
@@ -67,9 +71,10 @@ export default function App() {
             name="SignUp_Screen"
             component={SignUp_Screen}
           />
+
+          {/* HOME SCREEN */}
           <Stack.Screen
             options={{
-              // headerShown: false,
               headerTitle: "HOME",
               headerTitleStyle: {
                 marginLeft: 5,
