@@ -1,11 +1,31 @@
-import { StatusBar, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React from "react";
+import {
+  StatusBar,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import Welcome_Screen from "./src/screens/Login/Welcome_Screen";
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import SignUp_Screen from "./src/screens/SignUp/SignUp_Screen";
+import Home from "./src/screens/Home/Home";
+
+import fetchFonts from "./assets/fonts/fonts";
 
 export default function App() {
+  const [loaded, setLoaded] = React.useState(false);
+
   const Stack = createStackNavigator();
+
+  React.useEffect(() => {
+    fetchFonts().then(() => setLoaded(true));
+  }, []);
+
+  if (!loaded) {
+    return <ActivityIndicator color="#fff" />;
+  }
 
   return (
     <>
@@ -20,7 +40,6 @@ export default function App() {
           <Stack.Screen
             options={({ navigation }) => ({
               headerTitle: "",
-              // headerShown: false,
               headerStyle: {
                 backgroundColor: "#2D2D2D",
                 shadowColor: "transparent",
@@ -47,6 +66,27 @@ export default function App() {
             })}
             name="SignUp_Screen"
             component={SignUp_Screen}
+          />
+          <Stack.Screen
+            options={{
+              // headerShown: false,
+              headerTitle: "HOME",
+              headerTitleStyle: {
+                marginLeft: 5,
+                marginTop: 10,
+                fontSize: 20,
+                fontFamily: "Inter-Medium",
+              },
+              headerBackTitleVisible: false,
+              headerStyle: {
+                backgroundColor: "#2D2D2D",
+                shadowColor: "transparent",
+              },
+              headerTintColor: "#D78F3C",
+              headerLeft: () => null,
+            }}
+            name="Home"
+            component={Home}
           />
         </Stack.Navigator>
       </NavigationContainer>

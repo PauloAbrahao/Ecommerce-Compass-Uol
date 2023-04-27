@@ -13,7 +13,7 @@ import { link_images } from "./LinkImages";
 // INTERFACE FOR INPUT PROPS
 interface InputProps {
   placeholder: string;
-  imagePath: string;
+  icon: string;
   value?: string;
   onChangeText: (value: string) => void;
   color?: string;
@@ -23,14 +23,13 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = ({
   placeholder,
-  imagePath,
+  icon,
   value,
   color,
   ...props
 }) => {
-
   // CALL THE FUNCTION TO SET THE PATH TO THE CORRECT IMAGE
-  const path = link_images(imagePath);
+  const path = link_images(icon);
 
   return (
     <View>

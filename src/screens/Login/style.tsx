@@ -9,21 +9,20 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.Colors.background,
   },
   content: {
-    flex: 1,
-    height: "100%",
+    width: "100%",
   },
   title: {
     color: GlobalStyles.Colors.primary,
     fontSize: 36,
-    fontWeight: "700",
-    marginTop: 171,
+    fontFamily: "Khula-Bold",
+    marginTop: 130,
     textAlign: "center",
   },
   inputs: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 150,
+    marginTop: 170,
   },
 });
 

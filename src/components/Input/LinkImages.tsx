@@ -20,5 +20,3 @@ export function link_images(imagePath: string) {
 
   return path;
 }
-
-

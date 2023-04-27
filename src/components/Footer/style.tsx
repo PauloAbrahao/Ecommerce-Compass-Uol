@@ -3,26 +3,28 @@ import { GlobalStyles } from "../../constants/colors";
 
 const styles = StyleSheet.create({
   footer: {
+    flex: 1,
     position: "absolute",
     flexDirection: "row",
     justifyContent: "center",
     width: "100%",
-    bottom: 5,
+    height: 60,
+    bottom: 0,
     borderTopColor: "rgba(215, 143, 60, 0.5)",
-    backgroundColor: GlobalStyles.Colors.background,
     borderTopWidth: 1,
     paddingTop: 15,
-    paddingBottom: 20,
+    paddingBottom: 15,
   },
   text: {
     color: "#F5F5F5",
+    fontFamily: "Inter-Medium",
     fontSize: 16,
   },
-  signUp: {
+  signUpOrSignIn: {
     color: GlobalStyles.Colors.primary,
     fontSize: 16,
+    fontFamily: "Inter-Bold",
     paddingLeft: 4,
-    fontWeight: "bold",
   },
 });
 

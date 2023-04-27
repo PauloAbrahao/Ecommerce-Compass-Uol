@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   text: {
     color: "#DBDBDB",
     fontSize: 16,
-    fontWeight: "600",
+    fontFamily: "Inter-SemiBold",
     textAlign: "center",
   },
 });

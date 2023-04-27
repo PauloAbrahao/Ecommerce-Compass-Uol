@@ -86,6 +86,15 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       (isSignUpPage ? username.trim().length > 0 : true) &&
       (isSignUpPage ? isChecked : true)
     ) {
+      setIsEmailValid(true);
+      setEmailBorderColor("#656262");
+      setIsPasswordValid(true);
+      setPasswordBorderColor("#656262");
+      setIsUsernameValid(true);
+      setUsernameBorderColor("#656262");
+      setIsTermsValid(true);
+      setTermsBorderColor("#656262");
+
       setIsLoading(true);
 
       // SET A TIMEOUT TO SIMULATE A LOADING SCREEN
@@ -94,9 +103,9 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
 
         // NAVIGATE TO THE NEXT SCREEN BASED ON THE PROPS
         if (isSignUpPage) {
-          navigation.navigate("Welcome_Screen" as never);
+          navigation.navigate("Home" as never);
         } else {
-          navigation.navigate("SignUp_Screen" as never);
+          navigation.navigate("Home" as never);
         }
       }, 500);
     } else {
@@ -109,7 +118,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {/* EMAIL INPUT */}
       <Input
         placeholder="Your email"
-        imagePath="email"
+        icon="email"
         value={email}
         onChangeText={setEmail}
         color={emailBorderColor}
@@ -122,7 +131,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {isSignUpPage ? (
         <Input
           placeholder="username"
-          imagePath="username"
+          icon="username"
           value={username}
           onChangeText={setUsername}
           color={usernameBorderColor}
@@ -133,7 +142,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {/* PASSWORD INPUT */}
       <Input
         placeholder="Your password"
-        imagePath="password"
+        icon="password"
         value={password}
         onChangeText={setPassword}
         color={passwordBorderColor}
