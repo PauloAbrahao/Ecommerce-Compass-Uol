@@ -24,13 +24,13 @@ const Welcome_Screen = () => {
         <ScrollView
           contentOffset={{ x: 0, y: 200 }}
           scrollEnabled={false}
-          style={[styles.content]}
+          style={styles.content}
         >
-          <View style={[styles.main_content, { height: windowHeight }]}>
+          <View style={{ height: windowHeight }}>
             {/* WELCOME TITLE */}
             <Text style={styles.title}>WELCOME</Text>
 
-            <View style={styles.inputs}>
+            <View style={[styles.inputs]}>
               {/* LOGIN FORM */}
               <Form isSignUpPage={false} text_button="LOGIN" />
             </View>

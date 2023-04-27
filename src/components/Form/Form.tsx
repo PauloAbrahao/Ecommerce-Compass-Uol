@@ -86,6 +86,15 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       (isSignUpPage ? username.trim().length > 0 : true) &&
       (isSignUpPage ? isChecked : true)
     ) {
+      setIsEmailValid(true);
+      setEmailBorderColor("#656262");
+      setIsPasswordValid(true);
+      setPasswordBorderColor("#656262");
+      setIsUsernameValid(true);
+      setUsernameBorderColor("#656262");
+      setIsTermsValid(true);
+      setTermsBorderColor("#656262");
+
       setIsLoading(true);
 
       // SET A TIMEOUT TO SIMULATE A LOADING SCREEN

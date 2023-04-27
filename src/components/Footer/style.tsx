@@ -8,11 +8,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     width: "100%",
+    height: 60,
     bottom: 0,
     borderTopColor: "rgba(215, 143, 60, 0.5)",
     borderTopWidth: 1,
     paddingTop: 15,
     paddingBottom: 15,
+    // backgroundColor: "red",
   },
   text: {
     color: "#F5F5F5",

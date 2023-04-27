@@ -28,7 +28,6 @@ const Footer: React.FC<FooterProps> = ({
   return (
     <View style={styles.footer}>
       <Text style={styles.text}>{first_footer_text}</Text>
-
       <TouchableOpacity onPress={handleNavigation}>
         <Text style={styles.signUp}>{second_footer_text}</Text>
       </TouchableOpacity>

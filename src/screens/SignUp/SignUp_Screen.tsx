@@ -6,6 +6,7 @@ import {
   View,
   Dimensions,
 } from "react-native";
+
 import styles from "./style";
 import Footer from "../../components/Footer/Footer";
 import Form from "../../components/Form/Form";
@@ -25,11 +26,12 @@ const SignUp_Screen = () => {
           scrollEnabled={false}
           style={styles.content}
         >
-          <View style={[styles.main_content, { height: windowHeight }]}>
+          <View style={{ height: windowHeight }}>
             {/* SIGN UP TITLE */}
             <Text style={styles.title}>SIGN UP</Text>
 
             <View style={styles.forms}>
+              {/* LOGIN FORM */}
               <Form isSignUpPage={true} text_button="CREATE ACCOUNT" />
             </View>
           </View>
