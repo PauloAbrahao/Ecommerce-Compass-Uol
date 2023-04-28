@@ -3,12 +3,13 @@ import React from "react";
 import { View, Text } from "react-native";
 import Input from "../Input/Input";
 import Button from "../Button/Button";
-import { useNavigation } from "@react-navigation/native";
+import { ParamListBase, useNavigation } from "@react-navigation/native";
 
 import Checkbox from "expo-checkbox";
 
 import styles from "./style";
 import { show_error } from "./ValidateInputs";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 // DEFINE PROPS INTERFACE FOR FORM COMPONENT
 interface FormProps {
@@ -38,7 +39,10 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
     React.useState("#656262");
   const [termsBorderColor, setTermsBorderColor] = React.useState("#656262");
 
-  const navigation = useNavigation<any>();
+  // DEFINE NAVIGATION TYPE
+  type HomeScreenNavigationProp = StackNavigationProp<ParamListBase, "Home">;
+
+  const navigation: HomeScreenNavigationProp = useNavigation();
 
   // HANDLE ERRORS IF THE USERS DOES NOT FILL IN ANY FIELDS
   const handleError = () => {
@@ -103,9 +107,9 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
 
         // NAVIGATE TO THE NEXT SCREEN BASED ON THE PROPS
         if (isSignUpPage) {
-          navigation.navigate("Home" as never);
+          navigation.navigate("Home");
         } else {
-          navigation.navigate("Home" as never);
+          navigation.navigate("Home");
         }
       }, 500);
     } else {

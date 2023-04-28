@@ -1,7 +1,8 @@
 import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { ParamListBase, useNavigation } from "@react-navigation/native";
 import styles from "./style";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 interface FooterProps {
   first_footer_text: string;
@@ -14,7 +15,22 @@ const Footer: React.FC<FooterProps> = ({
   second_footer_text,
   signUp,
 }) => {
-  const navigation = useNavigation<any>();
+  
+  // DEFINE NAVIGATION TYPE
+  type WelcomeScreenNavigationProp = StackNavigationProp<
+    ParamListBase,
+    "Welcome_Screen"
+  >;
+  type SignUpScreenNavigationProp = StackNavigationProp<
+    ParamListBase,
+    "SignUp_Screen"
+  >;
+
+  type NavigationProp =
+    | WelcomeScreenNavigationProp
+    | SignUpScreenNavigationProp;
+
+  const navigation: NavigationProp = useNavigation();
 
   // Navigate to the SignUp_Screen or Welcome_Screen
   const handleNavigation = () => {
