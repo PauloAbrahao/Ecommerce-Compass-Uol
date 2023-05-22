@@ -32,7 +32,6 @@ export default function App() {
       <StatusBar barStyle="light-content" />
       <NavigationContainer>
         <Stack.Navigator>
-          
           {/* WELCOME SCREEN */}
           <Stack.Screen
             options={{ headerShown: false }}
@@ -45,7 +44,7 @@ export default function App() {
             options={({ navigation }) => ({
               headerTitle: "",
               headerStyle: {
-                backgroundColor: "#2D2D2D",
+                backgroundColor: "#282729",
                 shadowColor: "transparent",
               },
               headerLeft: () => (
@@ -74,22 +73,7 @@ export default function App() {
 
           {/* HOME SCREEN */}
           <Stack.Screen
-            options={{
-              headerTitle: "HOME",
-              headerTitleStyle: {
-                marginLeft: 5,
-                marginTop: 10,
-                fontSize: 20,
-                fontFamily: "Inter-Medium",
-              },
-              headerBackTitleVisible: false,
-              headerStyle: {
-                backgroundColor: "#2D2D2D",
-                shadowColor: "transparent",
-              },
-              headerTintColor: "#D78F3C",
-              headerLeft: () => null,
-            }}
+            options={{ headerShown: false }}
             name="Home"
             component={Home}
           />

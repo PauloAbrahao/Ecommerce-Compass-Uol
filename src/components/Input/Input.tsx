@@ -35,7 +35,7 @@ const Input: React.FC<InputProps> = ({
       <View style={[styles.container, { borderColor: color }]}>
         <Image source={path} resizeMode="contain" style={styles.icon} />
         <TextInput
-          style={[styles.input]}
+          style={styles.input}
           placeholder={placeholder}
           placeholderTextColor="#A8A8A8"
           {...props}
