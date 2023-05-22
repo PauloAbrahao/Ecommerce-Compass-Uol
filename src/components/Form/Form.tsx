@@ -19,25 +19,17 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
   // DEFINE STATES FOR INPUT FIELDS
-  const [email, setEmail] = React.useState("");
-  const [username, setUsername] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [isChecked, setChecked] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [email, setEmail] = React.useState<string>("");
+  const [username, setUsername] = React.useState<string>("");
+  const [password, setPassword] = React.useState<string>("");
+  const [isChecked, setChecked] = React.useState<boolean>(false);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   // VERIFY IF THE INPUT FIELDS ARE VALID (EMPTY OR NOT)
   const [isEmailValid, setIsEmailValid] = React.useState<boolean>(true);
   const [isUsernameValid, setIsUsernameValid] = React.useState<boolean>(true);
   const [isPasswordValid, setIsPasswordValid] = React.useState<boolean>(true);
   const [isTermsValid, setIsTermsValid] = React.useState<boolean>(true);
-
-  // DEFINE BORDER COLORS FOR INPUT FIELDS IF VALIDATION FAILS
-  const [emailBorderColor, setEmailBorderColor] = React.useState("#656262");
-  const [usernameBorderColor, setUsernameBorderColor] =
-    React.useState("#656262");
-  const [passwordBorderColor, setPasswordBorderColor] =
-    React.useState("#656262");
-  const [termsBorderColor, setTermsBorderColor] = React.useState("#656262");
 
   // DEFINE NAVIGATION TYPE
   type HomeScreenNavigationProp = StackNavigationProp<ParamListBase, "Home">;
@@ -47,35 +39,27 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
   // HANDLE ERRORS IF THE USERS DOES NOT FILL IN ANY FIELDS
   const handleError = () => {
     if (email === "") {
-      setEmailBorderColor("#FF4B4B");
       setIsEmailValid(false);
     } else {
-      setEmailBorderColor("#656262");
       setIsEmailValid(true);
     }
 
     if (password === "") {
-      setPasswordBorderColor("#FF4B4B");
       setIsPasswordValid(false);
     } else {
-      setPasswordBorderColor("#656262");
       setIsPasswordValid(true);
     }
 
     //  IF THE USER IS ON THE SIGN UP PAGE, CHECK IF THE USERNAME AND TERMS ARE FILLED IN
     if (isSignUpPage) {
       if (username === "") {
-        setUsernameBorderColor("#FF4B4B");
         setIsUsernameValid(false);
       } else {
-        setUsernameBorderColor("#656262");
         setIsUsernameValid(true);
       }
       if (!isChecked) {
-        setTermsBorderColor("#FF4B4B");
         setIsTermsValid(false);
       } else {
-        setTermsBorderColor("#656262");
         setIsTermsValid(true);
       }
     }
@@ -91,13 +75,9 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       (isSignUpPage ? isChecked : true)
     ) {
       setIsEmailValid(true);
-      setEmailBorderColor("#656262");
       setIsPasswordValid(true);
-      setPasswordBorderColor("#656262");
       setIsUsernameValid(true);
-      setUsernameBorderColor("#656262");
       setIsTermsValid(true);
-      setTermsBorderColor("#656262");
 
       setIsLoading(true);
 
@@ -125,7 +105,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
         icon="email"
         value={email}
         onChangeText={setEmail}
-        color={emailBorderColor}
+        color={isEmailValid ? "#656262" : "#FF4B4B"}
         keyboardType="email-address"
       />
       {show_error(isEmailValid, "Please enter a valid email address.", false)}
@@ -138,7 +118,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
           icon="username"
           value={username}
           onChangeText={setUsername}
-          color={usernameBorderColor}
+          color={isUsernameValid ? "#656262" : "#FF4B4B"}
         />
       ) : null}
       {show_error(isUsernameValid, "Please enter a valid username.", false)}
@@ -149,7 +129,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
         icon="password"
         value={password}
         onChangeText={setPassword}
-        color={passwordBorderColor}
+        color={isPasswordValid ? "#656262" : "#FF4B4B"}
         secureTextEntry={true}
       />
       {show_error(isPasswordValid, "Please enter a valid password.", false)}
@@ -160,7 +140,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
         <View style={styles.checkbox_container}>
           <Checkbox
             style={styles.checkbox}
-            color={isChecked ? "#D78F3C" : passwordBorderColor}
+            color={isChecked ? "#D78F3C" : "#ffffff"}
             value={isChecked}
             onValueChange={setChecked}
           />
