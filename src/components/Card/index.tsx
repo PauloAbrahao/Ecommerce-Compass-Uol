@@ -13,7 +13,8 @@ interface CardProps {
   image: ImageSourcePropType;
   title: string;
   price: string;
-  onPress: () => void;
+  onPress?: () => void;
+  description?: string;
 }
 
 function Card({ image, title, price, onPress }: CardProps): JSX.Element {
