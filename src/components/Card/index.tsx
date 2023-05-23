@@ -13,11 +13,12 @@ interface CardProps {
   image: ImageSourcePropType;
   title: string;
   price: string;
+  onPress: () => void;
 }
 
-function Card({ image, title, price }: CardProps): JSX.Element {
+function Card({ image, title, price, onPress }: CardProps): JSX.Element {
   return (
-    <Pressable style={styles.card}>
+    <Pressable style={styles.card} onPress={onPress}>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{title}</Text>
       </View>
