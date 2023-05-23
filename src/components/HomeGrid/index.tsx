@@ -20,22 +20,21 @@ interface store {
 const index = () => {
   const [data, setData] = useState<store[]>([]);
 
-  const fetchData = async (): Promise<store[]> => {
-    try {
-      const response: AxiosResponse<store[]> = await axios.get<store[]>(
-        "https://fakestoreapi.com/products/"
-      );
-      setData(response.data);
-      return response.data;
-    } catch (error) {
-      console.error("Something went wrong", error);
-      throw error;
-    }
-  };
-
-  if (data.length === 0) {
+  useEffect(() => {
+    const fetchData = async (): Promise<store[]> => {
+      try {
+        const response: AxiosResponse<store[]> = await axios.get<store[]>(
+          "https://fakestoreapi.com/products/"
+        );
+        setData(response.data);
+        return response.data;
+      } catch (error) {
+        console.error("Something went wrong", error);
+        throw error;
+      }
+    };
     fetchData();
-  }
+  }, []);
 
   console.log("data", data);
 
