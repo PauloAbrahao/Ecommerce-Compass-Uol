@@ -1,100 +1,57 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
-import axios from 'axios';
-import { NavigationContainer, RouteProp } from '@react-navigation/native';
-import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
+import React, { useEffect, useState } from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { styles } from './styles';
 
 interface Product {
-  id: number;
   title: string;
   price: number;
   description: string;
+  image: string;
+  rating: {
+    rate: number;
+  };
 }
 
-type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
-type ProductDetailsScreenNavigationProp = StackNavigationProp<
-  RootStackParamList,
-  'ProductDetails'
->;
-
-type ProductDetailsScreenRouteProp = RouteProp<RootStackParamList, 'ProductDetails'>;
-
-type RootStackParamList = {
-  Home: undefined;
-  ProductDetails: { product: Product };
-};
-
-const HomeScreen: React.FC<{ navigation: HomeScreenNavigationProp }> = ({ navigation }) => {
-  const [products, setProducts] = useState<Product[]>([]);
+const ProductScreen = () => {
+  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState<number>(0);
 
   useEffect(() => {
-    fetchProducts();
+    fetch('https://fakestoreapi.com/products/1')
+      .then(response => response.json())
+      .then((data: Product) => setProduct(data));
   }, []);
 
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get('https://fakestoreapi.com/products');
-      setProducts(response.data);
-    } catch (error) {
-      console.error(error);
+  const handleAdd = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleSubtract = () => {
+    if (quantity > 0) {
+      setQuantity(quantity - 1);
     }
   };
 
-  const handleProductPress = (product: Product) => {
-    navigation.navigate('ProductDetails', { product });
-  };
+  if (!product) {
+    return <Text>Loading...</Text>;
+  }
 
   return (
     <View style={styles.container}>
-      {products.map((product) => (
-        <TouchableOpacity
-          key={product.id}
-          style={styles.productCard}
-          onPress={() => handleProductPress(product)}
-        >
-          <Text style={styles.productTitle}>{product.title}</Text>
-          <Text style={styles.productPrice}>Price: ${product.price}</Text>
+      <Text style={styles.title}>{product.title}</Text>
+      <Image style={styles.image} source={{ uri: product.image }} />
+      <Text style={styles.rating}>Rating: {product.rating.rate}</Text>
+      <View style={styles.quantityContainer}>
+        <TouchableOpacity onPress={handleSubtract}>
+          <Text style={styles.icon}>-</Text>
         </TouchableOpacity>
-      ))}
+        <Text style={styles.quantity}>{quantity}</Text>
+        <TouchableOpacity onPress={handleAdd}>
+          <Text style={styles.icon}>+</Text>
+        </TouchableOpacity>
+      </View>
     </View>
-  );
-};
-
-const ProductDetailsScreen: React.FC<{
-  route: ProductDetailsScreenRouteProp;
-  navigation: ProductDetailsScreenNavigationProp;
-}> = ({ route, navigation }) => {
-  const { product } = route.params;
-
-  const handleBuyButtonPress = () => {
-    console.log('Buy product:', product);
-  };
-
-  return (
-    <View style={styles.container}>
-      <Text style={styles.productTitle}>{product.title}</Text>
-      <Text style={styles.productDescription}>{product.description}</Text>
-      <Text style={styles.productPrice}>Price: ${product.price}</Text>
-      <TouchableOpacity
-        onPress={handleBuyButtonPress}
-        style={styles.buyButton}
-      >
-        <Text style={styles.buyButtonText}>Buy</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const Stack = createStackNavigator<RootStackParamList>();
-
-export default function appitem() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} />
-      </Stack.Navigator>
-    </NavigationContainer>
   );
 }
+
+export default ProductScreen;
