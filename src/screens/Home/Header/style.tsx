@@ -4,7 +4,7 @@ import { GlobalStyles } from "../../../constants/colors";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
+    marginTop: 40,
   },
   header: {
     flexDirection: "row",
