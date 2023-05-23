@@ -10,7 +10,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="ItemScreen" component={ProductScreen} />
+        <Stack.Screen name="ItemScreen" component={ProductScreen} options={{ headerTintColor: '#D78F3C', headerStyle: { backgroundColor: '#2D2D2D' } }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
