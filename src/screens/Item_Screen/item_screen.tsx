@@ -41,17 +41,23 @@ const ProductScreen = () => {
       <Text style={styles.title}>{product.title}</Text>
       <Image style={styles.image} source={{ uri: product.image }} />
       <Text style={styles.rating}>Rating: {product.rating.rate}</Text>
+      <Text style={styles.description}>{product.description}</Text>
       <View style={styles.quantityContainer}>
-        <TouchableOpacity onPress={handleSubtract}>
-          <Text style={styles.icon}>-</Text>
-        </TouchableOpacity>
-        <Text style={styles.quantity}>{quantity}</Text>
-        <TouchableOpacity onPress={handleAdd}>
-          <Text style={styles.icon}>+</Text>
-        </TouchableOpacity>
+
+            
+      <TouchableOpacity onPress={handleSubtract}>
+      <Text style={styles.icon}>-</Text>
+      </TouchableOpacity>
+
+      <Text style={styles.quantity}>{quantity}</Text>
+
+      <TouchableOpacity onPress={handleAdd}>
+      <Text style={styles.icon}>+</Text>
+      </TouchableOpacity>
+      
       </View>
     </View>
   );
-}
+};
 
 export default ProductScreen;

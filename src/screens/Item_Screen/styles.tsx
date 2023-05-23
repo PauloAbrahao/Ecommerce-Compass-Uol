@@ -31,4 +31,12 @@ export const styles = StyleSheet.create({
   quantity: {
     fontSize: 18,
   },
+
+  description: {
+    fontSize: 16,
+    marginBottom: 10,
+    textAlign: 'center',
+    paddingHorizontal: 20,
+  },
+  
 });
