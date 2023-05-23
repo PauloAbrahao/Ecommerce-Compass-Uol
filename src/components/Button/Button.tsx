@@ -10,7 +10,6 @@ interface ButtonProps {
 }
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, isLoading }) => {
-
   return (
     <TouchableOpacity
       style={styles.button}
