@@ -14,33 +14,34 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    // backgroundColor: "red"
   },
   tab_container: {
+    gap: 10,
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 45,
-    marginHorizontal: 10,
-    paddingTop: 10,    
+    paddingHorizontal: 40,
+
+    paddingTop: 12,
   },
   tab_content: {
     justifyContent: "center",
     alignItems: "center",
     padding: 4,
+    marginBottom: 5,
   },
   text: {
     color: "#fff",
     fontFamily: "Inter-SemiBold",
     fontSize: 12,
     textAlign: "center",
-    marginTop: 6,
+    marginTop: 3,
   },
   focused: {
     color: GlobalStyles.Colors.primary,
     fontFamily: "Inter-SemiBold",
     fontSize: 12,
     textAlign: "center",
-    marginTop: 6,
+    marginTop: 3,
   },
 });
 

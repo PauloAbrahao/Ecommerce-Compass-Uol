@@ -1,22 +1,19 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ImageSourcePropType,
+} from "react-native";
+import React, { ReactElement, ReactNode } from "react";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs/src/types";
-import { useRoute } from "@react-navigation/native";
 
 import styles from "./style";
 
-interface CustomTabBarProps extends BottomTabBarProps {
-  focused: boolean;
-  color: string;
-  size: number;
-}
-
-const index: React.FC<CustomTabBarProps> = ({
+const index: React.FC<BottomTabBarProps> = ({
   state,
   descriptors,
   navigation,
-  focused,
-  color,
-  size,
 }) => {
   return (
     <>
@@ -24,10 +21,20 @@ const index: React.FC<CustomTabBarProps> = ({
         <View style={styles.content}>
           {state.routes.map((route, index) => {
             const { options } = descriptors[route.key];
+            let tabBarIconImage: ImageSourcePropType = require("../../../../assets/icons/home.png");
 
-            const ActualPage = useRoute();
+            const tabBarIconComponent: ReactNode =
+              options.tabBarIcon &&
+              options.tabBarIcon({ focused: true, color: "", size: 0 });
 
-            const isFocused = state.index === index;
+            if (React.Children.count(tabBarIconComponent) === 1) {
+              const iconElement = React.Children.only(
+                tabBarIconComponent
+              ) as ReactElement;
+              tabBarIconImage = iconElement.props.source;
+            }
+
+            const isFocused: boolean = state.index === index;
 
             const onPress = () => {
               const event = navigation.emit({
@@ -49,10 +56,17 @@ const index: React.FC<CustomTabBarProps> = ({
               >
                 <View style={styles.tab_content}>
                   <Image
-                    source={require("../../../../assets/icons/home.png")}
+                    source={tabBarIconImage}
+                    resizeMode="contain"
+                    style={{
+                      width: 30,
+                      height: 30,
+                      tintColor: isFocused ? "#D78F3C" : "#fff",
+                    }}
                   />
+
                   <Text style={isFocused ? styles.focused : styles.text}>
-                    {isFocused && ActualPage.name === "Home" ? "HOME" : "CART"}
+                    {route.name}
                   </Text>
                 </View>
               </TouchableOpacity>

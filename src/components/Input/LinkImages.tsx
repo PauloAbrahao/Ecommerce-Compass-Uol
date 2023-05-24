@@ -1,10 +1,15 @@
 // CREATE AN OBJECT OF IMAGES TO BE USED IN THE FORMS
-const images = {
+
+interface Images {
+  email: NodeRequire;
+  password: NodeRequire;
+  username: NodeRequire;
+}
+
+const images: Images = {
   email: require("../../../assets/icons/email.png"),
   password: require("../../../assets/icons/password.png"),
   username: require("../../../assets/icons/username.png"),
-  home: require("../../../assets/icons/home.png"),
-  cart: require("../../../assets/icons/cart.png"),
 };
 
 let path: {} = "";
@@ -18,10 +23,6 @@ export function link_images(imagePath: string) {
     path = images.password;
   } else if (imagePath === "username") {
     path = images.username;
-  } else if (imagePath === "home") {
-    path = images.home;
-  } else if (imagePath === "cart") {
-    path = images.cart;
   }
 
   return path;
