@@ -3,7 +3,7 @@ import { GlobalStyles } from "../../constants/colors";
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 35,
+    marginTop: 30,
   },
   header: {
     flexDirection: "row",

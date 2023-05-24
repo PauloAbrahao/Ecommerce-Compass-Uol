@@ -1,20 +1,15 @@
-import {
-  SafeAreaView,
-  Text,
-  FlatList,
-  View,
-  Image,
-  ImageSourcePropType,
-} from "react-native";
+import { Text, FlatList, View, Image, ScrollView } from "react-native";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
+
+import Card from "../Card/index";
 
 import styles from "./style";
 
 interface store {
   id: number;
   title: string;
-  price: number;
+  price: string;
   description: string;
   category: string;
   image: string;
@@ -43,45 +38,25 @@ const index = () => {
     fetchData();
   }, []);
 
-  const RenderProducts: React.FC<store> = ({ title, image }) => {
+  const RenderProducts: React.FC<store> = (item) => {
     return (
       <View style={styles.content}>
-        <View style={styles.square}>
-          <Text>{title}</Text>
-          <Image source={{ uri: image }} style={{ width: 20, height: 20 }} />
-        </View>
+        <Card {...item} isCart={false} />
       </View>
     );
   };
 
   return (
     <FlatList
-      // style={styles.container}
       numColumns={2}
       data={data}
       renderItem={({ item }) => <RenderProducts {...item} />}
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={styles.container}
       columnWrapperStyle={styles.content}
-    >
-      {/* <View style={styles.content}>
-          <View style={styles.square}></View>
-          <View style={styles.square}></View>
-          <View style={styles.square}></View>
-          <View style={styles.square}></View>
-          <View style={styles.square}></View>
-          <View style={styles.square}></View>
-          <View style={styles.square}></View>
-          <View style={styles.square}></View>
-        </View> */}
-    </FlatList>
+      scrollEnabled={true}
+    ></FlatList>
   );
-
-  // return (
-  //   <View>
-  //     {data && data.map((item) => <Text key={item.id}>{item.title}</Text>)}
-  //   </View>
-  // );
 };
 
 export default index;
