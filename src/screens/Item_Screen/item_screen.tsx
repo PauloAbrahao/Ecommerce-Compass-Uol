@@ -21,7 +21,7 @@ const ProductScreen = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false); // Adicionado
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/6')
+    fetch('https://fakestoreapi.com/products/17')
       .then(response => response.json())
       .then((data: Product) => setProduct(data));
   }, []);
@@ -42,8 +42,8 @@ const ProductScreen = () => {
     }
   };
 
-  const handleBuy = () => { // Adicionado
-    setIsLoading(true); // Adicionado
+  const handleBuy = () => { 
+    setIsLoading(true);
 
     // Simulação de uma requisição à API
     setTimeout(() => {
@@ -59,22 +59,31 @@ const ProductScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.box}>
+
         <Text style={styles.title}>{product.title}</Text>
         <Image style={styles.image} source={{ uri: product.image }} resizeMode="contain" />
         <Text style={styles.rating}>Rating: {product.rating.rate}</Text>
+        
+       
 
-        <View style={styles.pricestyle}>
+        
+        <View style={styles.containerPrice}>
+        
           <Price>{product.price.toFixed(2)}</Price>
-        </View>
 
-        <View style={styles.quantityContainer}>
-          <TouchableOpacity onPress={handleSubtract}>
-            <Text style={styles.icon}>-</Text>
-          </TouchableOpacity>
-          <Text style={styles.quantity}>{quantity}</Text>
-          <TouchableOpacity onPress={handleAdd}>
-            <Text style={styles.icon}>+</Text>
-          </TouchableOpacity>
+            <View style={styles.itemNum2}>
+              <TouchableOpacity onPress={handleSubtract}>
+                <Text style={styles.icon}>-</Text>
+              </TouchableOpacity>
+            </View>
+
+            <Text style={styles.quantity}>{quantity}</Text>
+
+            <View style={styles.itemNum}>
+              <TouchableOpacity onPress={handleAdd}>
+                <Text style={styles.icon}>+</Text>
+              </TouchableOpacity>
+            </View>
         </View>
 
         <Text style={styles.description}>{product.description}</Text>

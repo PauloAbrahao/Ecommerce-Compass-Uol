@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { GlobalStyles } from "../../constants/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   box: {
-    backgroundColor: '#3C3C3E',
+    backgroundColor: 'white',
     padding: 20,
     borderRadius: 20,
     justifyContent: 'center',
@@ -19,7 +20,7 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 0,
-    color: 'white',
+    color: 'black',
   },
   image: {
     width: 200,
@@ -37,7 +38,7 @@ export const styles = StyleSheet.create({
     textAlign: 'justify',
     paddingHorizontal: 20,
     marginBottom: 10,
-    color: 'white',
+    color: 'black',
   },
   quantityContainer: {
     flexDirection: 'row',
@@ -46,8 +47,9 @@ export const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30,
-    paddingHorizontal: 10,
     color: '#D78F3C',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   quantity: {
     fontSize: 30,
@@ -64,7 +66,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   buttonText: {
-    color: 'white',
+    color: 'black',
     fontSize: 16,
     textAlign: 'center',
   },
@@ -80,7 +82,20 @@ export const styles = StyleSheet.create({
   bottoncentralization: {
     alignSelf: 'center',
   },
-  pricestyle: {
+  itemNum: {
+    width: 40,
+    height: 40,
+    backgroundColor: GlobalStyles.Colors.background,
+    borderRadius: 50,
+  },
+  itemNum2: {
+    width: 40,
+    height: 40,
+    backgroundColor: GlobalStyles.Colors.background,
+    borderRadius: 50,
     
+  },
+  containerPrice: {
+    flexDirection: 'row',
   },
 });
