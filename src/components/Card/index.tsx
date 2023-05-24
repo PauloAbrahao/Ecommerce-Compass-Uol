@@ -11,7 +11,7 @@ import Price from "../Price";
 import QuantityButton from "../QuantityButton";
 
 const heartImage = require("../../../assets/icons/heart.png");
-const heartImageWhite = require("../../../assets/icons/heartWhite.png");
+const heartFavImage = require("../../../assets/icons/heartFav.png");
 const minusImage = require("../../../assets/icons/minusCart.png");
 
 interface CardProps {
@@ -50,11 +50,11 @@ function Card({
           <Image source={image} style={styles.image} />
         </View>
         <View style={styles.priceContainer}>
-          <Price>{price}</Price>
+          <Price isHome={true}>{price}</Price>
           {!isCart && (
             <Pressable onPress={heartIconPress}>
               <Image
-                source={favorite ? heartImageWhite : heartImage}
+                source={favorite ? heartFavImage : heartImage}
                 style={cardHome.iconHeart}
               />
             </Pressable>

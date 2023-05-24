@@ -1,6 +1,6 @@
 import React from "react";
 import { Image, Pressable, ImageSourcePropType } from "react-native";
-import { styles } from "./style";
+import { cartButton, detailButton } from "./style";
 
 type QuantityButtonProps = {
   children: ImageSourcePropType;
@@ -13,6 +13,8 @@ function QuantityButton({
   onPress,
   isCart,
 }: QuantityButtonProps): JSX.Element {
+  const styles = isCart ? cartButton : detailButton;
+
   return (
     <Pressable
       style={({ pressed }) => [styles.button, pressed && styles.pressed]}

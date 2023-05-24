@@ -3,13 +3,13 @@ import { GlobalStyles } from "../../constants/colors";
 
 export const cardHome = StyleSheet.create({
   card: {
-    width: 175,
+    width: 180,
     height: 220,
-    backgroundColor: GlobalStyles.Colors.card_product,
+    backgroundColor: "white",
     borderRadius: 10,
   },
   title: {
-    color: "white",
+    color: "#2D2D2D",
     fontSize: 12,
   },
   titleContainer: {
@@ -45,12 +45,12 @@ export const cardCart = StyleSheet.create({
   card: {
     width: 368,
     height: 139,
-    backgroundColor: GlobalStyles.Colors.card_product,
+    backgroundColor: "white",
     borderRadius: 20,
     flexDirection: "column",
   },
   title: {
-    color: "white",
+    color: "#2D2D2D",
     fontSize: 14,
   },
   titleContainer: {
@@ -88,9 +88,5 @@ export const cardCart = StyleSheet.create({
     right: 0,
     top: -13,
     bottom: 0,
-  },
-  line: {
-    borderBottomWidth: 10,
-    borderColor: GlobalStyles.Colors.warning,
   },
 });

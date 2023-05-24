@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 import { GlobalStyles } from "../../constants/colors";
 
-export const styles = StyleSheet.create({
+export const styleHome = StyleSheet.create({
   container: {
     width: 109,
     height: 30,
@@ -13,5 +13,22 @@ export const styles = StyleSheet.create({
   },
   text: {
     color: GlobalStyles.Colors.primary,
+    fontSize: 13,
+  },
+});
+
+export const styleProduct = StyleSheet.create({
+  container: {
+    width: 170,
+    height: 50,
+    backgroundColor: GlobalStyles.Colors.background,
+    borderRadius: 15,
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    color: GlobalStyles.Colors.primary,
+    fontSize: 19,
   },
 });
