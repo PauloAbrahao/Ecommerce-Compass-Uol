@@ -105,8 +105,14 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     marginVertical: 10,
   },
-  star: {
-    fontSize: 20,
-    color: '#FFD700',
+  starsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 15,
+    marginVertical: 20,
+    marginLeft: 10,
+  },
+  starsContainer2: {
+    borderRadius: 50,
   },
 });
