@@ -16,9 +16,9 @@ export const styles = StyleSheet.create({
     width: '90%',
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 0,
     color: 'white',
   },
   image: {
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     color: '#D78F3C',
   },
   description: {
-    fontSize: 16,
+    fontSize: 13.5,
     textAlign: 'justify',
     paddingHorizontal: 20,
     marginBottom: 10,
@@ -69,9 +69,18 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
   },
   price: {
-    fontSize: 30,
-    paddingHorizontal: 10,
+    fontSize: 28,
     color: '#D78F3C',
   },
-  
+  pricebox: {
+    backgroundColor: '#3C3C3E',
+    borderRadius: 20,
+    justifyContent: 'center',
+  },
+  bottoncentralization: {
+    alignSelf: 'center',
+  },
+  pricestyle: {
+    
+  },
 });
