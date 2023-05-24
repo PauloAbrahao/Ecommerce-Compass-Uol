@@ -36,9 +36,10 @@ export const styles = StyleSheet.create({
   description: {
     fontSize: 13.5,
     textAlign: 'justify',
-    paddingHorizontal: 20,
+    paddingHorizontal: 10,
     marginBottom: 10,
     color: 'black',
+    marginTop: 15,
   },
   quantityContainer: {
     flexDirection: 'row',
@@ -55,6 +56,7 @@ export const styles = StyleSheet.create({
     fontSize: 30,
     paddingHorizontal: 10,
     color: '#D78F3C',
+    fontWeight: 'bold',
   },
   button: {
     backgroundColor: '#20BE4C',
@@ -93,7 +95,7 @@ export const styles = StyleSheet.create({
     height: 40,
     backgroundColor: GlobalStyles.Colors.background,
     borderRadius: 50,
-    
+    marginLeft: 80,
   },
   containerPrice: {
     flexDirection: 'row',

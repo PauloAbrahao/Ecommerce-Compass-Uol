@@ -21,7 +21,7 @@ const ProductScreen = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false); // Adicionado
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/17')
+    fetch('https://fakestoreapi.com/products/1')
       .then(response => response.json())
       .then((data: Product) => setProduct(data));
   }, []);
