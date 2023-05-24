@@ -49,25 +49,48 @@ export const cardCart = StyleSheet.create({
     borderRadius: 20,
     flexDirection: "column",
   },
-  container: {
-    flexDirection: "row-reverse",
-    justifyContent: "flex-end",
-  },
   title: {
     color: "white",
-    fontSize: 12,
+    fontSize: 14,
   },
   titleContainer: {
-    marginTop: 6,
+    position: "absolute",
+    left: 135,
+    right: 0,
+    top: 8,
+    bottom: 0,
   },
   imageContainer: {
-    marginTop: 10,
-    marginBottom: 16,
+    position: "absolute",
+    left: 5,
+    right: 0,
+    top: 8,
+    bottom: 0,
   },
   image: {
     width: 122,
     height: 122,
     resizeMode: "contain",
   },
-  priceContainer: {},
+  priceContainer: {
+    position: "absolute",
+    left: 135,
+    right: 0,
+    top: 97,
+    bottom: 0,
+  },
+  pressed: {
+    opacity: 0.7,
+  },
+  remove: {
+    position: "absolute",
+    left: 325,
+    right: 0,
+    top: 0,
+    bottom: 0,
+  },
+  line: {
+    borderBottomWidth: 10,
+    borderColor: GlobalStyles.Colors.warning,
+  },
 });

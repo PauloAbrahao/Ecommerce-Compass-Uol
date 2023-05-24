@@ -21,7 +21,35 @@ const Grid = () => {
           image={myImage}
           title="JBL TEste TESDDSD SDSDk dskhdsdh"
           price="300,00"
+          isCart={true}
+          favorite={false}
+        />
+        <Card
+          image={myImage}
+          title="JBL TEste TESDDSD SDSDk dskhdsdh"
+          price="300,00"
+          isCart={true}
+          favorite={false}
+        />
+        <Card
+          image={myImage}
+          title="JBL TEste TESDDSD SDSDk dskhdsdh"
+          price="300,00"
+          isCart={true}
+          favorite={false}
+        />
+        <Card
+          image={myImage}
+          title="JBL TEste TESDDSD SDSDk dskhdsdh"
+          price="300,00"
           isCart={false}
+          favorite={false}
+        />
+        <Card
+          image={myImage}
+          title="JBL TEste TESDDSD SDSDk dskhdsdh"
+          price="300,00"
+          isCart={true}
           favorite={false}
         />
       </View>
