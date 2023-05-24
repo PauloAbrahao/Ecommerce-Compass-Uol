@@ -21,7 +21,7 @@ const ProductScreen = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false); // Adicionado
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/1')
+    fetch('https://fakestoreapi.com/products/19')
       .then(response => response.json())
       .then((data: Product) => setProduct(data));
   }, []);
@@ -42,7 +42,7 @@ const ProductScreen = () => {
     }
   };
 
-  const handleBuy = () => { 
+  const handleBuy = () => {
     setIsLoading(true);
 
     // Simulação de uma requisição à API
@@ -56,34 +56,41 @@ const ProductScreen = () => {
     return <Text>Loading...</Text>;
   }
 
+  // Função para renderizar as estrelas com base no rating
+  const renderStars = () => {
+    const { rate } = product.rating;
+    const stars = [];
+
+    for (let i = 0; i < rate; i++) {
+      stars.push(<Text key={i} style={styles.star}>⭐</Text>);
+    }
+
+    return stars;
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.box}>
-
         <Text style={styles.title}>{product.title}</Text>
         <Image style={styles.image} source={{ uri: product.image }} resizeMode="contain" />
-        <Text style={styles.rating}>Rating: {product.rating.rate}</Text>
-        
-       
+        <View style={styles.ratingContainer}>{renderStars()}</View>
 
-        
         <View style={styles.containerPrice}>
-        
           <Price>{product.price.toFixed(2)}</Price>
 
-            <View style={styles.itemNum2}>
-              <TouchableOpacity onPress={handleSubtract}>
-                <Text style={styles.icon}>-</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.itemNum2}>
+            <TouchableOpacity onPress={handleSubtract}>
+              <Text style={styles.icon}>-</Text>
+            </TouchableOpacity>
+          </View>
 
-            <Text style={styles.quantity}>{quantity}</Text>
+          <Text style={styles.quantity}>{quantity}</Text>
 
-            <View style={styles.itemNum}>
-              <TouchableOpacity onPress={handleAdd}>
-                <Text style={styles.icon}>+</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.itemNum}>
+            <TouchableOpacity onPress={handleAdd}>
+              <Text style={styles.icon}>+</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
         <Text style={styles.description}>{product.description}</Text>

@@ -100,4 +100,13 @@ export const styles = StyleSheet.create({
   containerPrice: {
     flexDirection: 'row',
   },
+  ratingContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  star: {
+    fontSize: 20,
+    color: '#FFD700',
+  },
 });
