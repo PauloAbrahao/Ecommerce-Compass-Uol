@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import React from "react";
 import Grid from "../../components/HomeGrid/index";
 
@@ -11,7 +11,10 @@ const Home = () => {
     <View style={styles.container}>
       <Header />
       {/* GRID COMPONENT */}
-      <Grid />
+
+      <ScrollView>
+        <Grid />
+      </ScrollView>
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import { Text, FlatList, View, Image, ScrollView } from "react-native";
+import { FlatList, View } from "react-native";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 
@@ -54,7 +54,7 @@ const index = () => {
       keyExtractor={(item) => item.id.toString()}
       contentContainerStyle={styles.container}
       columnWrapperStyle={styles.content}
-      scrollEnabled={true}
+      scrollEnabled={false}
     ></FlatList>
   );
 };

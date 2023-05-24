@@ -43,7 +43,7 @@ function Card({
         onPress={onPress}
       >
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Text numberOfLines={2} style={styles.title}>{title}</Text>
         </View>
         <View style={styles.imageContainer}>
           <Image source={{ uri: image }} style={styles.image} />
