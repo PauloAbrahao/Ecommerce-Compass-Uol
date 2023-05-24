@@ -1,4 +1,11 @@
-import { ScrollView, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  FlatList,
+  View,
+  Image,
+  ImageSourcePropType,
+} from "react-native";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 
@@ -36,28 +43,45 @@ const index = () => {
     fetchData();
   }, []);
 
-  console.log("data", data);
-
-  // return (
-  //   <ScrollView style={styles.container}>
-  //     <View style={styles.content}>
-  //       <View style={styles.square}></View>
-  //       <View style={styles.square}></View>
-  //       <View style={styles.square}></View>
-  //       <View style={styles.square}></View>
-  //       <View style={styles.square}></View>
-  //       <View style={styles.square}></View>
-  //       <View style={styles.square}></View>
-  //       <View style={styles.square}></View>
-  //     </View>
-  //   </ScrollView>
-  // );
+  const RenderProducts: React.FC<store> = ({ title, image }) => {
+    return (
+      <View style={styles.content}>
+        <View style={styles.square}>
+          <Text>{title}</Text>
+          <Image source={{ uri: image }} style={{ width: 20, height: 20 }} />
+        </View>
+      </View>
+    );
+  };
 
   return (
-    <View>
-      {data && data.map((item) => <Text key={item.id}>{item.title}</Text>)}
-    </View>
+    <FlatList
+      // style={styles.container}
+      numColumns={2}
+      data={data}
+      renderItem={({ item }) => <RenderProducts {...item} />}
+      keyExtractor={(item) => item.id.toString()}
+      contentContainerStyle={styles.container}
+      columnWrapperStyle={styles.content}
+    >
+      {/* <View style={styles.content}>
+          <View style={styles.square}></View>
+          <View style={styles.square}></View>
+          <View style={styles.square}></View>
+          <View style={styles.square}></View>
+          <View style={styles.square}></View>
+          <View style={styles.square}></View>
+          <View style={styles.square}></View>
+          <View style={styles.square}></View>
+        </View> */}
+    </FlatList>
   );
+
+  // return (
+  //   <View>
+  //     {data && data.map((item) => <Text key={item.id}>{item.title}</Text>)}
+  //   </View>
+  // );
 };
 
 export default index;

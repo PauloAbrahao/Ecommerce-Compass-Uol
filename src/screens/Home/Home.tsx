@@ -1,18 +1,18 @@
-import { ScrollView } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import Grid from "../../components/HomeGrid/index";
 
-import Header from "./Header";
+import Header from "../../components/Header/index";
 
 import styles from "./style";
 
 const Home = () => {
   return (
-    <ScrollView style={styles.container}>
-      {/* GRID COMPONENT */}
+    <View style={styles.container}>
       <Header />
+      {/* GRID COMPONENT */}
       <Grid />
-    </ScrollView>
+    </View>
   );
 };
 
