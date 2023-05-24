@@ -43,7 +43,7 @@ const Grid = () => {
           title="JBL TEste TESDDSD SDSDk dskhdsdh"
           price="300,00"
           isCart={false}
-          favorite={false}
+          favorite={true}
         />
         <Card
           image={myImage}

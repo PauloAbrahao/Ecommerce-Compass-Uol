@@ -86,7 +86,7 @@ export const cardCart = StyleSheet.create({
     position: "absolute",
     left: 325,
     right: 0,
-    top: 0,
+    top: -13,
     bottom: 0,
   },
   line: {

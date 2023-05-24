@@ -11,6 +11,7 @@ import Price from "../Price";
 import QuantityButton from "../QuantityButton";
 
 const heartImage = require("../../../assets/icons/heart.png");
+const heartImageWhite = require("../../../assets/icons/heartWhite.png");
 const minusImage = require("../../../assets/icons/minusCart.png");
 
 interface CardProps {
@@ -37,10 +38,29 @@ function Card({
   const styles = isCart ? cardCart : cardHome;
 
   return (
-    <Pressable
-      style={({ pressed }) => [styles.card, pressed && cardHome.pressed]}
-      onPress={onPress}
-    >
+    <View>
+      <Pressable
+        style={({ pressed }) => [styles.card, pressed && cardHome.pressed]}
+        onPress={onPress}
+      >
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
+        <View style={styles.imageContainer}>
+          <Image source={image} style={styles.image} />
+        </View>
+        <View style={styles.priceContainer}>
+          <Price>{price}</Price>
+          {!isCart && (
+            <Pressable onPress={heartIconPress}>
+              <Image
+                source={favorite ? heartImageWhite : heartImage}
+                style={cardHome.iconHeart}
+              />
+            </Pressable>
+          )}
+        </View>
+      </Pressable>
       {isCart && (
         <View style={cardCart.remove}>
           <QuantityButton
@@ -50,27 +70,7 @@ function Card({
           />
         </View>
       )}
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>{title}</Text>
-      </View>
-      <View style={styles.imageContainer}>
-        <Image source={image} style={styles.image} />
-      </View>
-      <View style={styles.priceContainer}>
-        <Price>{price}</Price>
-        {!isCart ? (
-          <Pressable onPress={heartIconPress}>
-            <Image
-              source={heartImage}
-              style={[
-                cardHome.iconHeart,
-                favorite && { backgroundColor: "white" },
-              ]}
-            />
-          </Pressable>
-        ) : null}
-      </View>
-    </Pressable>
+    </View>
   );
 }
 
