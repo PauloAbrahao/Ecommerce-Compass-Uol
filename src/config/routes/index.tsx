@@ -4,8 +4,8 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
-  View,
   Text,
+  View,
 } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -15,7 +15,7 @@ import SignUp_Screen from "../../screens/SignUp/SignUp_Screen";
 import Home from "../../screens/Home/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import CustomTabBar from "./customTabBar/index";
+import CustomTabBar from "./customTabBar/index2";
 
 import fetchFonts from "../../../assets/fonts/fonts";
 
@@ -36,82 +36,30 @@ const index = () => {
   const BottomTabsNavigator = () => {
     return (
       <Tab.Navigator
-        initialRouteName="Home"
-        // tabBar={() => <CustomTabBar />}
         screenOptions={{
-          tabBarItemStyle: {
-            position: "absolute",
-            flexDirection: "row",
-            display: "flex",
-            justifyContent: "space-between",
-            width: "100%",
-            height: "100%",
-            backgroundColor: "red",
-            // alignItems: "",
-            // margin: 0,
-            // padding: 0,
-          },
           headerShown: false,
-          tabBarLabelStyle: {
-            fontSize: 12,
-            fontFamily: "Inter-SemiBold",
+          tabBarShowLabel: false,
+          tabBarStyle: {
+            backgroundColor: "#282729",
+            height: 70,
+            borderTopWidth: 0,
+            justifyContent: "space-between",
           },
-          tabBarActiveTintColor: "#D78F3C",
-          tabBarInactiveTintColor: "#fff",
         }}
       >
         <Tab.Screen
-          name="HOME"
+          name="Home"
           component={Home}
           options={{
-            tabBarStyle: {
-              backgroundColor: "#282729",
-
-              height: 72,
-              paddingTop: 5,
-              paddingBottom: 10,
-              borderTopWidth: 0,
-            },
-
-            tabBarActiveTintColor: "#D78F3C",
-            tabBarIcon: ({ focused }) => {
-              return (
-                <Image
-                  source={
-                    focused
-                      ? require("../../../assets/icons/home_focused.png")
-                      : require("../../../assets/icons/home.png")
-                  }
-                />
-              );
-            },
+            tabBarIcon: () => <CustomTabBar text="HOME" icon="home" />,
           }}
         />
 
         <Tab.Screen
-          name="CART"
-          component={Home}
+          name="Cart"
+          component={SignUp_Screen}
           options={{
-            // tabBarStyle: {
-            //   backgroundColor: "#282729",
-            //   width: "100%",
-            //   height: 72,
-            //   paddingTop: 5,
-            //   paddingBottom: 10,
-            //   borderTopWidth: 0,
-            // },
-            tabBarActiveTintColor: "#D78F3C",
-            tabBarIcon: ({ focused }) => {
-              return (
-                <Image
-                  source={
-                    focused
-                      ? require("../../../assets/icons/cart_focused.png")
-                      : require("../../../assets/icons/cart.png")
-                  }
-                />
-              );
-            },
+            tabBarIcon: () => <CustomTabBar text="CART" icon="cart" />,
           }}
         />
       </Tab.Navigator>
