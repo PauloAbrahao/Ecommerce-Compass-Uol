@@ -1,7 +1,8 @@
 import React from "react";
 import { Image } from "react-native";
 
-import SignUp_Screen from "../../../screens/SignUp/SignUp_Screen";
+
+import Cart from "../../../screens/Cart";
 import Home from "../../../screens/Home/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -42,7 +43,7 @@ const BottomTabsNavigator = () => {
 
       <Tab.Screen
         name="CART"
-        component={SignUp_Screen}
+        component={Cart}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image

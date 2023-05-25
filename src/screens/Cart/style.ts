@@ -16,7 +16,19 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-
+    cardContainer:{
+        marginRight: 15,
+        marginLeft: 15,
+        borderBottomWidth: 1,
+        borderBottomColor: GlobalStyles.Colors.input_placeholder,
+        paddingBottom: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 20,
+    },
+    headerList:{
+        maxHeight: '60%',
+    },
     text: {
         color: GlobalStyles.Colors.input_placeholder,
         fontSize: 24,
@@ -37,6 +49,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
     },
     footerButton:{
+        position: 'absolute',
+        bottom: 0,
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
