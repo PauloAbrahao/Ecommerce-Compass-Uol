@@ -66,9 +66,9 @@ const Cart = () => {
                 <Text style={styles.text}>Total</Text>
                 <Text style={styles.textCount}>R$0</Text>
             </View>
-            {isCartEmpty ? rederEmptyCart() : renderFlatList()}
-           {/*  <CustomModal header="Good" message="Compra feita" onClose={() => closeModal()} visible={modalVisible} /> */}
-            <View style={styles.footerButton}>
+             {isCartEmpty ? rederEmptyCart() : renderFlatList()} 
+            <CustomModal header="Good!" message="Product successfully purchased." onClose={() => closeModal()} visible={modalVisible} /> 
+           <View style={styles.footerButton}>
                 <ButtonBuy children="BUY" onPress={() => openModal()} isloading={false} />
             </View>
         </View>
