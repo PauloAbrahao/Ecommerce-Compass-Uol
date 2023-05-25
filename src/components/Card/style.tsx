@@ -7,13 +7,16 @@ export const cardHome = StyleSheet.create({
     height: 220,
     backgroundColor: GlobalStyles.Colors.card_product,
     borderRadius: 10,
+    flexDirection: "column",
+    justifyContent: "space-around",
   },
   title: {
     color: "white",
     fontSize: 12,
+    paddingLeft: 16,
   },
   titleContainer: {
-    alignItems: "center",
+    alignItems: "flex-start",
     justifyContent: "center",
     marginTop: 6,
   },
@@ -21,7 +24,7 @@ export const cardHome = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 10,
-    marginBottom: 16,
+    marginBottom: 5,
   },
   image: {
     width: 122,
@@ -31,7 +34,9 @@ export const cardHome = StyleSheet.create({
   priceContainer: {
     flexDirection: "row",
     marginHorizontal: 10,
+    paddingBottom: 7,
     justifyContent: "space-between",
+    alignItems: "center",
   },
   iconHeart: {
     resizeMode: "cover",

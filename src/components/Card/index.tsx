@@ -3,7 +3,6 @@ import {
   Pressable,
   Image,
   Text,
-  ImageSourcePropType,
   View,
 } from "react-native";
 import { cardCart, cardHome } from "./style";
@@ -15,7 +14,7 @@ const heartImageWhite = require("../../../assets/icons/heartWhite.png");
 const minusImage = require("../../../assets/icons/minusCart.png");
 
 interface CardProps {
-  image: ImageSourcePropType;
+  image: string;
   title: string;
   price: string;
   onPress?: () => void;
@@ -44,10 +43,10 @@ function Card({
         onPress={onPress}
       >
         <View style={styles.titleContainer}>
-          <Text style={styles.title}>{title}</Text>
+          <Text numberOfLines={2} style={styles.title}>{title}</Text>
         </View>
         <View style={styles.imageContainer}>
-          <Image source={image} style={styles.image} />
+          <Image source={{ uri: image }} style={styles.image} />
         </View>
         <View style={styles.priceContainer}>
           <Price>{price}</Price>

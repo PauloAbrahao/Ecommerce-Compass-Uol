@@ -2,21 +2,19 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
+    justifyContent: "space-between",
     flex: 1,
-    marginBottom: 30,
-    paddingTop: 20
+    width: "100%",
+    paddingTop: 10,
+    paddingHorizontal: 10,
   },
   content: {
-    justifyContent: "center",
+    justifyContent: "space-around",
     flexDirection: "row",
     flexWrap: "wrap",
+
     gap: 20,
-  },
-  square: {
-    width: 180,
-    height: 210,
-    borderRadius: 10,
-    backgroundColor: "#ffffff",
+    marginBottom: 10,
   },
 });
 
