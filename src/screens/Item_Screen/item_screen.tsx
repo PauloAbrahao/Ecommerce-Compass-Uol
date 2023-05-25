@@ -5,6 +5,7 @@ import ButtonBuy from '../../components/ButtonBuy';
 import Price from '../../components/Price';
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 interface Product {
   title: string;
@@ -14,6 +15,7 @@ interface Product {
   rating: {
     rate: number;
   };
+  heart: number;
 }
 
 const ProductScreen = () => {
@@ -41,6 +43,12 @@ const ProductScreen = () => {
   const handleSubtract = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
+    }
+  };
+  const handleToggleHeart = () => {
+    if (product) {
+      const updatedHeart = product.heart === 0 ? 1 : 0;
+      setProduct({ ...product, heart: updatedHeart });
     }
   };
 
@@ -106,7 +114,18 @@ const ProductScreen = () => {
     <View style={styles.container}>
       <View style={styles.box}>
 
-        <Text style={styles.title}>{product.title}</Text>
+        <View style={styles.titleBox}>
+          <Text style={styles.title}>{product.title}</Text>
+
+          <TouchableOpacity onPress={handleToggleHeart}>
+              {product.heart === 1 ? (
+                <AntDesign name="heart" size={35} color="black" style={{marginLeft: 20}}/>
+              ) : (
+                <AntDesign name="hearto" size={35} color="black" style={{marginLeft: 20}}/>
+              )}
+            </TouchableOpacity>
+        </View>
+
         <Image style={styles.image} source={{ uri: product.image }} resizeMode="contain" />
 
         <View style={styles.starsContainer}>

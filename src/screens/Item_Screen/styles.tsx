@@ -15,12 +15,15 @@ export const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     width: '90%',
+    
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: 'bold',
     marginTop: 0,
     color: 'black',
+    maxWidth: '90%',
+    textAlign: 'justify',
   },
   image: {
     width: 200,
@@ -34,7 +37,7 @@ export const styles = StyleSheet.create({
     color: '#D78F3C',
   },
   description: {
-    fontSize: 13.5,
+    fontSize: 13,
     textAlign: 'justify',
     paddingHorizontal: 10,
     marginBottom: 10,
@@ -114,5 +117,9 @@ export const styles = StyleSheet.create({
   },
   starsContainer2: {
     borderRadius: 50,
+  },
+  titleBox: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
