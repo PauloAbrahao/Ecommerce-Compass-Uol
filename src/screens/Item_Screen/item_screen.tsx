@@ -25,7 +25,7 @@ const ProductScreen = ({ route }: any) => {
 
   const { id, title, price, image, description, rating } = route.params;
 
-  const { addToCart, updateProductQuantity } = useCart();
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
     const product = {
@@ -34,8 +34,9 @@ const ProductScreen = ({ route }: any) => {
       price: price,
       quantity: quantity,
     };
-    
-    addToCart(product);
+
+    addToCart(product, quantity);
+
     setIsLoading(true);
 
     setTimeout(() => {
@@ -140,7 +141,7 @@ const ProductScreen = ({ route }: any) => {
         <Text style={styles.description}>{description}</Text>
 
         <View style={styles.bottoncentralization}>
-          <ButtonBuy onPress={handleAddToCart} isloading={isLoading}>
+          <ButtonBuy onPress={handleAddToCart} isloading={isLoading} quantity={quantity}>
             ADD TO CART
           </ButtonBuy>
         </View>
