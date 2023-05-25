@@ -23,7 +23,7 @@ const ProductScreen = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products/19')
+    fetch('https://fakestoreapi.com/products/16')
       .then(response => response.json())
       .then((data: Product) => setProduct(data));
   }, []);
@@ -123,7 +123,7 @@ const ProductScreen = () => {
               </TouchableOpacity>
             </View>
 
-            <Text style={styles.quantity}>{quantity}</Text>
+            <Text style={styles.quantity}>{quantity}</Text> 
 
             <View style={styles.itemNum}>
               <TouchableOpacity onPress={handleAdd}>
