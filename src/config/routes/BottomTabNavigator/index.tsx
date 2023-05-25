@@ -1,8 +1,7 @@
 import React from "react";
 import { Image } from "react-native";
 
-
-import Cart from "../../../screens/Cart";
+import Cart_Screen from "../../../screens/Cart/index";
 import Home from "../../../screens/Home/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
@@ -18,10 +17,8 @@ const BottomTabsNavigator = () => {
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
-          backgroundColor: "#282729",
           height: 70,
           borderTopWidth: 0,
-          justifyContent: "space-between",
         },
       }}
     >
@@ -43,7 +40,7 @@ const BottomTabsNavigator = () => {
 
       <Tab.Screen
         name="CART"
-        component={Cart}
+        component={Cart_Screen}
         options={{
           tabBarIcon: ({ focused }) => (
             <Image
