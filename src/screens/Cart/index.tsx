@@ -36,7 +36,12 @@ const Cart = () => {
 
     const renderItem = ({ item, index }: any) => (
         <View style={styles.cardContainer}>
-            <Card isCart image={require('../../../assets/icons/username.png')} price="300" title="Teste" removeButtonPress={() => removeItem(index)} />
+            <Card
+                isCart
+                image="carro"
+                price="300"
+                title="Teste"
+                removeButtonPress={() => removeItem(index)} />
         </View>
     );
     const renderFlatList = () => {
@@ -61,8 +66,8 @@ const Cart = () => {
                 <Text style={styles.text}>Total</Text>
                 <Text style={styles.textCount}>R$0</Text>
             </View>
-            {/* {isCartEmpty ? rederEmptyCart() : renderFlatList()} */}
-            <CustomModal header="Good" message="Compra feita" onClose={() => closeModal()} visible={modalVisible} />
+            {isCartEmpty ? rederEmptyCart() : renderFlatList()}
+           {/*  <CustomModal header="Good" message="Compra feita" onClose={() => closeModal()} visible={modalVisible} /> */}
             <View style={styles.footerButton}>
                 <ButtonBuy children="BUY" onPress={() => openModal()} isloading={false} />
             </View>
