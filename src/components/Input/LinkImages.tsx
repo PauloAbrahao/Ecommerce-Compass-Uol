@@ -1,5 +1,12 @@
 // CREATE AN OBJECT OF IMAGES TO BE USED IN THE FORMS
-const images = {
+
+interface Images {
+  email: NodeRequire;
+  password: NodeRequire;
+  username: NodeRequire;
+}
+
+const images: Images = {
   email: require("../../../assets/icons/email.png"),
   password: require("../../../assets/icons/password.png"),
   username: require("../../../assets/icons/username.png"),

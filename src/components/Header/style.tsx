@@ -1,10 +1,9 @@
 import { StyleSheet } from "react-native";
-import { GlobalStyles } from "../../../constants/colors";
+import { GlobalStyles } from "../../constants/colors";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    marginTop: 20,
+    marginTop: 30,
   },
   header: {
     flexDirection: "row",
@@ -30,11 +29,13 @@ const styles = StyleSheet.create({
     fontFamily: "Inter-Medium",
   },
   line: {
-    width: 87,
+    width: 90,
     height: 4,
     backgroundColor: "#F5F5F5",
     border: "4px",
-    marginTop: 3,
+    marginLeft: -5,
+    borderRadius: 4,
+    marginTop: 2,
   },
 });
 

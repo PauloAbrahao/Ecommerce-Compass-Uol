@@ -15,12 +15,12 @@ const Footer: React.FC<FooterProps> = ({
   second_footer_text,
   signUp,
 }) => {
-  
   // DEFINE NAVIGATION TYPE
   type WelcomeScreenNavigationProp = StackNavigationProp<
     ParamListBase,
     "Welcome_Screen"
   >;
+
   type SignUpScreenNavigationProp = StackNavigationProp<
     ParamListBase,
     "SignUp_Screen"
