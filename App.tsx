@@ -1,11 +1,14 @@
 import { NavigationContainer } from "@react-navigation/native";
-import AppNavigator from "./src/config/routes/StackNavigator/index";
+import AppRoutes from "./src/config/routes/StackNavigator/index";
+import { AppProvider } from "./src/context/index";
 
 export default function App() {
   return (
     <>
       <NavigationContainer>
-        <AppNavigator />
+        <AppProvider>
+          <AppRoutes />
+        </AppProvider>
       </NavigationContainer>
     </>
   );

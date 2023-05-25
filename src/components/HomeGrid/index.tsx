@@ -1,6 +1,7 @@
-import { FlatList, View } from "react-native";
-import { useState, useEffect } from "react";
+import { FlatList, Pressable, TouchableOpacity, View } from "react-native";
+import { useState, useEffect, useContext } from "react";
 import axios, { AxiosResponse } from "axios";
+import { useCart } from "../../context";
 
 import Card from "../Card/index";
 
@@ -9,7 +10,7 @@ import styles from "./style";
 interface store {
   id: number;
   title: string;
-  price: string;
+  price: number;
   description: string;
   category: string;
   image: string;
@@ -20,6 +21,7 @@ interface store {
 }
 
 const index = () => {
+  const { addToCart } = useCart();
   const [data, setData] = useState<store[]>([]);
 
   useEffect(() => {
