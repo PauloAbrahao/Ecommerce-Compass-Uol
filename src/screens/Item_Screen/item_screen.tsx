@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { styles } from './styles';
-import ButtonBuy from '../../components/ButtonBuy';
-import Price from '../../components/Price';
-import { FontAwesome } from '@expo/vector-icons';
-import { Feather } from '@expo/vector-icons';
+import React, { useState } from "react";
+import { View, Text, Image, TouchableOpacity } from "react-native";
+import { styles } from "./styles";
+import ButtonBuy from "../../components/ButtonBuy";
+import Price from "../../components/Price";
+import { FontAwesome } from "@expo/vector-icons";
+import { Feather } from "@expo/vector-icons";
+import { useCart } from "../../context";
 
 interface Product {
+  id: number;
   title: string;
   price: number;
   description: string;
@@ -16,20 +18,29 @@ interface Product {
   };
 }
 
-const ProductScreen = () => {
-  const [product, setProduct] = useState<Product | null>(null);
+const ProductScreen = ({ route }: any) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [savedQuantity, setSavedQuantity] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products/16')
-      .then(response => response.json())
-      .then((data: Product) => setProduct(data));
-  }, []);
+  const { id, title, price, image, description, rating } = route.params;
 
-  const handleAdd = () => {
-    setQuantity(quantity + 1);
+  const { addToCart, updateProductQuantity } = useCart();
+
+  const handleAddToCart = () => {
+    const product = {
+      id: id,
+      title: title,
+      price: price,
+      quantity: quantity,
+    };
+    
+    addToCart(product);
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
 
   const handleSaveQuantity = () => {
@@ -38,27 +49,21 @@ const ProductScreen = () => {
     }
   };
 
+  const handleAdd = () => {
+    setQuantity(quantity + 1);
+  };
+
   const handleSubtract = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }
   };
 
-  const handleBuy = () => {
-    setIsLoading(true);
-
-    // Simulação de uma requisição à API
-    setTimeout(() => {
-      setIsLoading(false);
-      // Lógica adicional após a compra, se necessário
-    }, 2000);
-  };
-
   const renderStars = (rate: number) => {
     const stars = [];
     const fullStarCount = Math.floor(rate);
     const halfStar = rate % 1 !== 0;
-  
+
     for (let i = 0; i < fullStarCount; i++) {
       stars.push(
         <FontAwesome
@@ -70,7 +75,7 @@ const ProductScreen = () => {
         />
       );
     }
-  
+
     if (halfStar) {
       stars.push(
         <FontAwesome
@@ -82,61 +87,61 @@ const ProductScreen = () => {
         />
       );
     }
-  
+
     const remainingStars = 5 - Math.ceil(rate);
     for (let i = 0; i < remainingStars; i++) {
-    stars.push(
-      <Feather
-        key={`empty-star-${i}`}
-        name="star"
-        size={28}
-        color="#D78F3C"
-        style={{ marginRight: 7 }}
-      />
-    );
-  }
-  
+      stars.push(
+        <Feather
+          key={`empty-star-${i}`}
+          name="star"
+          size={28}
+          color="#D78F3C"
+          style={{ marginRight: 7 }}
+        />
+      );
+    }
+
     return stars;
   };
 
-  if (!product) {
+  if (!id) {
     return <Text>Loading...</Text>;
   }
   return (
     <View style={styles.container}>
       <View style={styles.box}>
+        <Text style={styles.title}>{title}</Text>
+        <Image
+          style={styles.image}
+          source={{ uri: image }}
+          resizeMode="contain"
+        />
 
-        <Text style={styles.title}>{product.title}</Text>
-        <Image style={styles.image} source={{ uri: product.image }} resizeMode="contain" />
-
-        <View style={styles.starsContainer}>
-          {renderStars(product.rating.rate)}
-        </View>
+        <View style={styles.starsContainer}>{renderStars(rating.rate)}</View>
 
         <View style={styles.containerPrice}>
-        
-          <Price>{product.price.toFixed(2)}</Price>
+          <Price>{price.toFixed(2)}</Price>
 
-            <View style={styles.itemNum2}>
-              <TouchableOpacity onPress={handleSubtract}>
-                <Text style={styles.icon}>-</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.itemNum2}>
+            <TouchableOpacity onPress={handleSubtract}>
+              <Text style={styles.icon}>-</Text>
+            </TouchableOpacity>
+          </View>
 
-            <Text style={styles.quantity}>{quantity}</Text> 
+          <Text style={styles.quantity}>{quantity}</Text>
 
-            <View style={styles.itemNum}>
-              <TouchableOpacity onPress={handleAdd}>
-                <Text style={styles.icon}>+</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.itemNum}>
+            <TouchableOpacity onPress={handleAdd}>
+              <Text style={styles.icon}>+</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <Text style={styles.description}>{product.description}</Text>
+        <Text style={styles.description}>{description}</Text>
 
         <View style={styles.bottoncentralization}>
-          <ButtonBuy onPress={handleBuy} isloading={isLoading}>
-            BUY
+          <ButtonBuy onPress={handleAddToCart} isloading={isLoading}>
+            ADD TO CART
           </ButtonBuy>
         </View>
       </View>

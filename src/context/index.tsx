@@ -4,6 +4,7 @@ interface Product {
   id: number;
   title: string;
   price: number;
+  quantity: number;
 }
 
 interface CartItem extends Product {
@@ -41,8 +42,11 @@ const AppProvider = ({ children }: CartProviderProps) => {
     if (existingItem) {
       const updatedItem = {
         ...existingItem,
-        productQuantity: existingItem.productQuantity + 1,
-        total: (existingItem.productQuantity + 1) * existingItem.price,
+        productQuantity: existingItem.productQuantity + existingItem.quantity,
+        total:
+          (existingItem.productQuantity + existingItem.quantity) *
+          existingItem.price,
+        cartQuantity: existingItem.cartQuantity + existingItem.quantity,
       };
 
       const updatedCartItems = cartItems.map((item) =>
@@ -72,13 +76,16 @@ const AppProvider = ({ children }: CartProviderProps) => {
     return totalCount;
   };
 
-  const updateProductQuantity = (
-    productId: number,
-    productQuantity: number
-  ) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === productId ? { ...item, productQuantity } : item
-    );
+  const updateProductQuantity = (productId: number, newQuantity: number) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === productId) {
+        return {
+          ...item,
+          quantity: newQuantity,
+        };
+      }
+      return item;
+    });
 
     setCartItems(updatedCartItems);
   };

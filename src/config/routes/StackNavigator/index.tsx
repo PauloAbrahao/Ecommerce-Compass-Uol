@@ -4,11 +4,14 @@ import {
   Image,
   TouchableOpacity,
   ActivityIndicator,
+  View,
 } from "react-native";
 
 import { createStackNavigator } from "@react-navigation/stack";
 import Welcome_Screen from "../../../screens/Login/Welcome_Screen";
 import SignUp_Screen from "../../../screens/SignUp/SignUp_Screen";
+import Details_Screen from "../../../screens/Item_Screen/item_screen";
+import Cart from "../../../components/CartComponent";
 
 import fetchFonts from "../../../../assets/fonts/fonts";
 import BottomTabsNavigator from "../BottomTabNavigator";
@@ -70,7 +73,45 @@ const index = () => {
           component={SignUp_Screen}
         />
 
-        {/* HOME SCREEN */}
+        {/* DETAILS SCREEN */}
+        <Stack.Screen
+          name="Details_Screen"
+          component={Details_Screen}
+          options={({ navigation }) => ({
+            headerTitle: "",
+            headerStyle: {
+              backgroundColor: "#282729",
+              shadowColor: "transparent",
+            },
+            headerRight: () => (
+              <View style={{marginTop: 50, marginRight: 30}}>
+                <Cart />
+              </View>
+            ),
+
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.goBack();
+                }}
+              >
+                <Image
+                  source={require("../../../../assets/icons/arrow.png")}
+                  style={{
+                    width: 30,
+                    height: 30,
+                    marginLeft: 30,
+                    marginTop: 40,
+                  }}
+                  resizeMode="contain"
+                />
+              </TouchableOpacity>
+            ),
+            headerBackTitleVisible: false,
+          })}
+        />
+
+        {/* BOTTOM TAB NAVIGATOR */}
         <Stack.Screen
           options={{ headerShown: false }}
           name="Home"

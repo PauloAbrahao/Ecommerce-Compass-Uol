@@ -1,7 +1,6 @@
-import { FlatList, Pressable, TouchableOpacity, View } from "react-native";
-import { useState, useEffect, useContext } from "react";
+import { FlatList, View } from "react-native";
+import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
-import { useCart } from "../../context";
 
 import Card from "../Card/index";
 
@@ -21,7 +20,6 @@ interface store {
 }
 
 const index = () => {
-  const { addToCart } = useCart();
   const [data, setData] = useState<store[]>([]);
 
   useEffect(() => {

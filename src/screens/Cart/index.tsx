@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text } from "react-native";
 import ButtonBuy from "../../components/ButtonBuy";
 import styles from "./style";
 import { useCart } from "../../context";
@@ -23,7 +23,7 @@ const Cart = () => {
         <View key={item.id} style={{ backgroundColor: "#fff" }}>
           <Text>{item.id}</Text>
           <Text>{item.title}</Text>
-          <Text>Quantidade: {item.productQuantity}</Text>
+          <Text>Quantidade de produto: {item.quantity}</Text>
           <Text>Quantidade Total: {getTotalItemCount()}</Text>
 
           <Text>Total: R$ {item.total.toFixed(2)}</Text>
