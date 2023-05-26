@@ -50,7 +50,7 @@ function Card({
           <Image source={image} style={styles.image} />
         </View>
         <View style={styles.priceContainer}>
-          <Price isHome={true}>{price}</Price>
+          <Price isHome={!isCart}>{price}</Price>
           {!isCart && (
             <Pressable onPress={heartIconPress}>
               <Image
