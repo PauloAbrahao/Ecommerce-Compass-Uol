@@ -1,14 +1,14 @@
-<<<<<<< HEAD
 import React, { useEffect, useState } from "react";
-import { View, Text, FlatList } from "react-native";
+import {  View, Text, FlatList } from "react-native";
+import { useCart } from "../../context";
 import ButtonBuy from "../../components/ButtonBuy";
 import styles from "./style";
 import Card from "../../components/Card";
 import CustomModal from "../../components/Modal";
 
-
 const Cart = () => {
-    const [cartItems, setCartItems] = useState([1, 2, 3, 4, 5, 6, 7]);
+    const { cartItems, getTotalItemCount } = useCart();
+    const [cardList, setcardList] = useState([1, 2, 3, 4, 5, 6, 7]);
     const [isCartEmpty, setIsCartEmpty] = useState(false);
     const [modalVisible, setModalVisible] = useState(false);
 
@@ -21,9 +21,9 @@ const Cart = () => {
     };
 
     const removeItem = (index: number) => {
-        const newItems = [...cartItems];
+        const newItems = [...cardList];
         newItems.splice(index, 1);
-        setCartItems(newItems);
+        setcardList(newItems);
     }
 
     const rederEmptyCart = () => {
@@ -38,9 +38,10 @@ const Cart = () => {
     const renderItem = ({ item, index }: any) => (
         <View style={styles.cardContainer}>
             <Card
+                id={1}
                 isCart
                 image="carro"
-                price="300"
+                price={100}
                 title="Teste"
                 removeButtonPress={() => removeItem(index)} />
         </View>
@@ -49,7 +50,7 @@ const Cart = () => {
         return (
             <View style={styles.headerList}>
                 <FlatList
-                    data={cartItems}
+                    data={cardList}
                     renderItem={renderItem}
                     keyExtractor={(item, index) => index.toString()}
                 />
@@ -58,8 +59,8 @@ const Cart = () => {
     }
 
     useEffect(() => {
-        setIsCartEmpty(cartItems.length === 0);
-    }, [cartItems]);
+        setIsCartEmpty(cardList.length === 0);
+    }, [cardList]);
 
     return (
         <View style={styles.viewPort}>
@@ -67,50 +68,13 @@ const Cart = () => {
                 <Text style={styles.text}>Total</Text>
                 <Text style={styles.textCount}>R$0</Text>
             </View>
-             {isCartEmpty ? rederEmptyCart() : renderFlatList()} 
-            <CustomModal header="Good!" message="Product successfully purchased." onClose={() => closeModal()} visible={modalVisible} /> 
-           <View style={styles.footerButton}>
+            {isCartEmpty ? rederEmptyCart() : renderFlatList()}
+            <CustomModal header="Good!" message="Product successfully purchased." onClose={() => closeModal()} visible={modalVisible} />
+            <View style={styles.footerButton}>
                 <ButtonBuy children="BUY" onPress={() => openModal()} isloading={false} />
             </View>
-=======
-import { View, Text, Pressable } from "react-native";
-import ButtonBuy from "../../components/ButtonBuy";
-import styles from "./style";
-import { useCart } from "../../context";
-
-const Cart = () => {
-  const { cartItems, getTotalItemCount } = useCart();
-
-  console.log("cartItems Carrinho", cartItems);
-
-  return (
-    <View style={styles.viewPort}>
-      <View style={styles.header}>
-        <Text style={styles.text}>Total</Text>
-        <Text style={styles.textCount}>R$0</Text>
-      </View>
-      <View style={styles.container}>
-        <Text style={styles.textContainer}>Ops, Empty Cart :(</Text>
-        <Text style={styles.subTextContainer}>Add a product</Text>
-      </View>
-
-      {cartItems.map((item) => (
-        <View key={item.id} style={{ backgroundColor: "#fff" }}>
-          <Text>{item.id}</Text>
-          <Text>{item.title}</Text>
-          <Text>Quantidade: {item.productQuantity}</Text>
-          <Text>Quantidade Total: {getTotalItemCount()}</Text>
-
-          <Text>Total: R$ {item.total.toFixed(2)}</Text>
->>>>>>> f0b09d569daef540f42bddf256e0ff43cfcd797b
         </View>
-      ))}
-
-      <View style={styles.footerButton}>
-        <ButtonBuy children="BUY" onPress={() => {}} isloading={false} />
-      </View>
-    </View>
-  );
+    );
 };
 
 export default Cart;
