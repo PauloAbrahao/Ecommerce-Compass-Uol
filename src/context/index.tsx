@@ -4,9 +4,10 @@ interface Product {
   id: number;
   title: string;
   price: number;
+  image: string;
 }
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
   productQuantity: number;
   cartQuantity: number;
   total: number;

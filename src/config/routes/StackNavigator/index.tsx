@@ -84,7 +84,7 @@ const index = () => {
               shadowColor: "transparent",
             },
             headerRight: () => (
-              <View style={{marginTop: 50, marginRight: 30}}>
+              <View style={{ marginTop: 50, marginRight: 30 }}>
                 <Cart />
               </View>
             ),

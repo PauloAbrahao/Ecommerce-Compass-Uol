@@ -42,7 +42,9 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
       id: id,
       title: title,
       price: price,
-      quantity: quantity,
+      image: image,
+      description: description,
+      rating: rating,
     };
 
     addToCart(product, quantity);

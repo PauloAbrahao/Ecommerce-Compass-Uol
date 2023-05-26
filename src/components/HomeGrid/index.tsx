@@ -38,14 +38,6 @@ const index = () => {
     fetchData();
   }, []);
 
-  // const RenderProducts: React.FC<store> = (item) => {
-  //   return (
-  //     <View style={styles.content}>
-  //       <Card {...item} isCart={false} />
-  //     </View>
-  //   );
-  // };
-
   return (
     <FlatList
       numColumns={2}
