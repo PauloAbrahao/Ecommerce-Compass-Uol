@@ -4,18 +4,30 @@ import { GlobalStyles } from "../../constants/colors";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#282729',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#282729",
+  },
+  scrollViewContainer: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    flexGrow: 1,
+    paddingTop: 25,
+  },
+  scrollViewContent: {
+    alignItems: "center",
+    justifyContent: "center",
   },
   box: {
     backgroundColor: 'white',
     padding: 20,
     borderRadius: 20,
     justifyContent: 'center',
-    width: '90%',
-    
+    width: '95%',
+    marginTop: 25,
+    marginBottom: 30,
   },
   title: {
     fontSize: 16,
