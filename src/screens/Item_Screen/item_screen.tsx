@@ -6,11 +6,9 @@ import Price from "../../components/Price";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useCart } from "../../context";
-import { AntDesign } from '@expo/vector-icons';
-import RenderStars from './components/stars/stars';
-import { handleToggleHeart } from '../../components/Favorite_Heart/heart';
 
 interface Product {
+  id: number;
   title: string;
   price: number;
   description: string;
@@ -18,23 +16,32 @@ interface Product {
   rating: {
     rate: number;
   };
-  heart: number;
 }
 
-const ProductScreen = () => {
-  const [product, setProduct] = useState<Product | null>(null);
+const ProductScreen = ({ route }: any) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [savedQuantity, setSavedQuantity] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  useEffect(() => {
-    fetch('https://fakestoreapi.com/products/16')
-      .then(response => response.json())
-      .then((data: Product) => setProduct(data));
-  }, []);
+  const { id, title, price, image, description, rating } = route.params;
 
-  const handleAdd = () => {
-    setQuantity(quantity + 1);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    const product = {
+      id: id,
+      title: title,
+      price: price,
+      quantity: quantity,
+    };
+
+    addToCart(product, quantity);
+
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
   };
 
   const handleSaveQuantity = () => {
@@ -43,15 +50,13 @@ const ProductScreen = () => {
     }
   };
 
+  const handleAdd = () => {
+    setQuantity(quantity + 1);
+  };
+
   const handleSubtract = () => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
-    }
-  };
-  const handleToggleHeart = () => {
-    if (product) {
-      const updatedHeart = product.heart === 0 ? 1 : 0;
-      setProduct({ ...product, heart: updatedHeart });
     }
   };
 
@@ -101,54 +106,43 @@ const ProductScreen = () => {
   };
 
   if (!id) {
-  const handleBuy = () => {
-    setIsLoading(true);
-
-    // Simulação de uma requisição à API
-    setTimeout(() => {
-      setIsLoading(false);
-      // Lógica adicional após a compra, se necessário
-    }, 2000);
-  };
-
-  if (!product) {
     return <Text>Loading...</Text>;
   }
   return (
     <View style={styles.container}>
       <View style={styles.box}>
+        <Text style={styles.title}>{title}</Text>
+        <Image
+          style={styles.image}
+          source={{ uri: image }}
+          resizeMode="contain"
+        />
 
-        <Text style={styles.title}>{product.title}</Text>
-        <Image style={styles.image} source={{ uri: product.image }} resizeMode="contain" />
-
-        <View style={styles.starsContainer}>
-          {renderStars(product.rating.rate)}
-        </View>
+        <View style={styles.starsContainer}>{renderStars(rating.rate)}</View>
 
         <View style={styles.containerPrice}>
-        
-          <Price>{product.price.toFixed(2)}</Price>
+          <Price>{price.toFixed(2)}</Price>
 
-            <View style={styles.itemNum2}>
-              <TouchableOpacity onPress={handleSubtract}>
-                <Text style={styles.icon}>-</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.itemNum2}>
+            <TouchableOpacity onPress={handleSubtract}>
+              <Text style={styles.icon}>-</Text>
+            </TouchableOpacity>
+          </View>
 
-            <Text style={styles.quantity}>{quantity}</Text> 
+          <Text style={styles.quantity}>{quantity}</Text>
 
-            <View style={styles.itemNum}>
-              <TouchableOpacity onPress={handleAdd}>
-                <Text style={styles.icon}>+</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={styles.itemNum}>
+            <TouchableOpacity onPress={handleAdd}>
+              <Text style={styles.icon}>+</Text>
+            </TouchableOpacity>
+          </View>
         </View>
 
-        <Text style={styles.description}>{product.description}</Text>
+        <Text style={styles.description}>{description}</Text>
 
         <View style={styles.bottoncentralization}>
-          <ButtonBuy onPress={handleBuy} isloading={isLoading}>
-            BUY
+          <ButtonBuy onPress={handleAddToCart} isloading={isLoading} quantity={quantity}>
+            ADD TO CART
           </ButtonBuy>
         </View>
       </View>
