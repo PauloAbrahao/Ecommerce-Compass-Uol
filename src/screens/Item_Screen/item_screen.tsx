@@ -7,18 +7,28 @@ import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useCart } from "../../context";
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-  rating: {
-    rate: number;
-  };
-}
+import { RouteProp } from "@react-navigation/native";
 
-const ProductScreen = ({ route }: any) => {
+type RootStackParamList = {
+  Product: {
+    id: number;
+    title: string;
+    price: number;
+    image: string;
+    description: string;
+    rating: {
+      rate: number;
+    };
+  };
+};
+
+type ProductScreenRouteProp = RouteProp<RootStackParamList, "Product">;
+
+type ProductScreenProps = {
+  route: ProductScreenRouteProp;
+};
+
+const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [savedQuantity, setSavedQuantity] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -108,6 +118,7 @@ const ProductScreen = ({ route }: any) => {
   if (!id) {
     return <Text>Loading...</Text>;
   }
+
   return (
     <View style={styles.container}>
       <View style={styles.box}>
@@ -141,7 +152,7 @@ const ProductScreen = ({ route }: any) => {
         <Text style={styles.description}>{description}</Text>
 
         <View style={styles.bottoncentralization}>
-          <ButtonBuy onPress={handleAddToCart} isloading={isLoading} quantity={quantity}>
+          <ButtonBuy onPress={handleAddToCart} isloading={isLoading}>
             ADD TO CART
           </ButtonBuy>
         </View>

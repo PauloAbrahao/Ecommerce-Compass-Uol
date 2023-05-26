@@ -19,17 +19,17 @@ type CartProviderProps = {
 interface CartContextData {
   cartItems: CartItem[];
   addToCart: (product: Product, quantity: number) => void;
+  removeFromCart: (productId: number) => void;
   getTotalItemCount: () => number;
   getTotalPrice: () => number;
-  updateTotal: (productId: number, total: number) => void;
 }
 
 export const CartContext = createContext<CartContextData>({
   cartItems: [],
   addToCart: () => {},
+  removeFromCart: () => {},
   getTotalItemCount: () => 0,
   getTotalPrice: () => 0,
-  updateTotal: () => {},
 });
 
 const AppProvider = ({ children }: CartProviderProps) => {
@@ -37,6 +37,10 @@ const AppProvider = ({ children }: CartProviderProps) => {
 
   const addToCart = (product: Product, quantity: number) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (quantity === 0) {
+      return;
+    }
 
     if (existingItem) {
       const updatedItem = {
@@ -63,6 +67,29 @@ const AppProvider = ({ children }: CartProviderProps) => {
     }
   };
 
+  const removeFromCart = (productId: number) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === productId) {
+        const updatedItem: CartItem = {
+          ...item,
+          productQuantity: item.productQuantity - 1,
+          cartQuantity: item.cartQuantity - 1,
+          total: item.total - item.price,
+        };
+
+        return updatedItem;
+      }
+
+      return item;
+    });
+
+    const filteredCartItems = updatedCartItems.filter(
+      (item) => item.productQuantity > 0
+    );
+
+    setCartItems(filteredCartItems);
+  };
+
   const getTotalItemCount = () => {
     let totalCount: number = 0;
 
@@ -83,19 +110,11 @@ const AppProvider = ({ children }: CartProviderProps) => {
     return total;
   };
 
-  const updateTotal = (productId: number, total: number) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === productId ? { ...item, total } : item
-    );
-
-    setCartItems(updatedCartItems);
-  };
-
   const contextValue: CartContextData = {
     cartItems,
     addToCart,
+    removeFromCart,
     getTotalItemCount,
-    updateTotal,
     getTotalPrice,
   };
 
