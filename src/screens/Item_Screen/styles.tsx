@@ -30,11 +30,11 @@ export const styles = StyleSheet.create({
     marginBottom: 30,
   },
   title: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: 'bold',
     marginTop: 0,
     color: 'black',
-    maxWidth: '90%',
+    maxWidth: '85%',
     textAlign: 'justify',
   },
   image: {
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
     color: '#D78F3C',
   },
   description: {
-    fontSize: 13,
+    fontSize: 14,
     textAlign: 'justify',
     paddingHorizontal: 10,
     marginBottom: 10,
@@ -62,58 +62,38 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   icon: {
-    fontSize: 30,
+    fontSize: 35,
     color: '#D78F3C',
     fontWeight: 'bold',
     textAlign: 'center',
   },
   quantity: {
-    fontSize: 30,
+    fontSize: 35,
     paddingHorizontal: 10,
     color: '#D78F3C',
     fontWeight: 'bold',
-  },
-  button: {
-    backgroundColor: '#20BE4C',
-    borderRadius: 15,
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    marginTop: 10,
-    width: '70%',
-    alignSelf: 'center',
-  },
-  buttonText: {
-    color: 'black',
-    fontSize: 16,
-    textAlign: 'center',
-  },
-  price: {
-    fontSize: 28,
-    color: '#D78F3C',
-  },
-  pricebox: {
-    backgroundColor: '#3C3C3E',
-    borderRadius: 20,
-    justifyContent: 'center',
   },
   bottoncentralization: {
     alignSelf: 'center',
   },
   itemNum: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     backgroundColor: GlobalStyles.Colors.background,
     borderRadius: 50,
+    marginRight: 10,
   },
   itemNum2: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     backgroundColor: GlobalStyles.Colors.background,
     borderRadius: 50,
-    marginLeft: 80,
+    marginLeft: 15,
+    
   },
   containerPrice: {
     flexDirection: 'row',
+    marginLeft: -5,
   },
   ratingContainer: {
     flexDirection: 'row',
