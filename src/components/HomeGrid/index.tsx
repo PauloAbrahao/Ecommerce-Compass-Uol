@@ -9,7 +9,7 @@ import styles from "./style";
 interface store {
   id: number;
   title: string;
-  price: string;
+  price: number;
   description: string;
   category: string;
   image: string;

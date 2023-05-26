@@ -3,16 +3,22 @@ import { Pressable, Image, Text, View } from "react-native";
 import { cardCart, cardHome } from "./style";
 import Price from "../Price";
 import QuantityButton from "../QuantityButton";
-import { icons } from "../../../assets/icons";
+import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const heartImage = require("../../../assets/icons/heart.png");
 const heartFavImage = require("../../../assets/icons/heartFav.png");
 const minusImage = require("../../../assets/icons/minusCart.png");
 
-interface CardProps {
-  image: string;
+export interface CardProps {
+  id: number;
+  image?: string;
   title: string;
-  price: string;
+  price: number;
+  description?: string;
+  rating?: {
+    rate: number;
+  };
   onPress?: () => void;
   isCart: boolean;
   heartIconPress?: () => void;
@@ -20,10 +26,19 @@ interface CardProps {
   removeButtonPress?: () => void;
 }
 
+// DEFINE NAVIGATION TYPE
+type DetailsScreenNavigationProp = StackNavigationProp<
+  ParamListBase,
+  "Details_Screen"
+>;
+
 function Card({
+  id,
   image,
   title,
   price,
+  description,
+  rating,
   onPress,
   isCart,
   favorite,
@@ -32,11 +47,24 @@ function Card({
 }: CardProps): JSX.Element {
   const styles = isCart ? cardCart : cardHome;
 
+  const navigation: DetailsScreenNavigationProp = useNavigation();
+
+  const handleNavigate = () => {
+    navigation.navigate("Details_Screen", {
+      id,
+      title,
+      price,
+      image,
+      description,
+      rating,
+    });
+  };
+
   return (
     <View>
       <Pressable
         style={({ pressed }) => [styles.card, pressed && cardHome.pressed]}
-        onPress={onPress}
+        onPress={handleNavigate}
       >
         <View style={styles.titleContainer}>
           <Text numberOfLines={2} style={styles.title}>
@@ -47,7 +75,7 @@ function Card({
           <Image source={{ uri: image }} style={styles.image} />
         </View>
         <View style={styles.priceContainer}>
-          <Price isHome={!isCart}>{price}</Price>
+          <Price>{price.toString()}</Price>
           {!isCart && (
             <Pressable onPress={heartIconPress}>
               <Image

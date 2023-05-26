@@ -18,13 +18,14 @@ const styles = StyleSheet.create({
     backgroundColor: GlobalStyles.Colors.button,
   },
   counter: {
+    width: 30,
     position: "absolute",
     paddingTop: -3,
     marginBottom: 5,
 
     textAlign: "center",
     color: "#fff",
-    fontSize: 16,
+    fontSize: 13,
     fontFamily: "Inter-SemiBold",
   },
 });

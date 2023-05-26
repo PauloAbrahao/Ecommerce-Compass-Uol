@@ -6,20 +6,21 @@ type ButtonBuyProps = {
   children: string;
   onPress: () => void;
   isloading: boolean;
-  disable: boolean;
+  quantity: number;
 };
 
 function ButtonBuy({
   children,
   onPress,
   isloading,
-  disable,
+  quantity,
 }: ButtonBuyProps): JSX.Element {
   return (
     <Pressable
       disabled={disable}
       style={({ pressed }) => [styles.button, pressed && styles.pressed]}
       onPress={onPress}
+      disabled={quantity === 0 ? true : false}
     >
       <View>
         {isloading ? (
