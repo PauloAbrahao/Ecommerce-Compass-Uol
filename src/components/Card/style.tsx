@@ -5,15 +5,17 @@ export const cardHome = StyleSheet.create({
   card: {
     width: 175,
     height: 220,
-    backgroundColor: GlobalStyles.Colors.card_product,
+    backgroundColor: "white",
     borderRadius: 10,
     flexDirection: "column",
     justifyContent: "space-around",
   },
   title: {
-    color: "white",
+    color: "#2D2D2D",
     fontSize: 12,
     paddingLeft: 16,
+    fontStyle: "normal",
+    fontFamily: "Inter-Bold",
   },
   titleContainer: {
     alignItems: "flex-start",
@@ -50,13 +52,15 @@ export const cardCart = StyleSheet.create({
   card: {
     width: 368,
     height: 139,
-    backgroundColor: GlobalStyles.Colors.card_product,
+    backgroundColor: "white",
     borderRadius: 20,
     flexDirection: "column",
   },
   title: {
-    color: "white",
+    color: "#2D2D2D",
     fontSize: 14,
+    fontStyle: "normal",
+    fontFamily: "Inter-Bold",
   },
   titleContainer: {
     position: "absolute",
@@ -81,7 +85,7 @@ export const cardCart = StyleSheet.create({
     position: "absolute",
     left: 135,
     right: 0,
-    top: 97,
+    top: 77,
     bottom: 0,
   },
   pressed: {
@@ -93,9 +97,5 @@ export const cardCart = StyleSheet.create({
     right: 0,
     top: -13,
     bottom: 0,
-  },
-  line: {
-    borderBottomWidth: 10,
-    borderColor: GlobalStyles.Colors.warning,
   },
 });
