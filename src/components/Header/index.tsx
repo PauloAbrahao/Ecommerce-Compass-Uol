@@ -1,7 +1,9 @@
-import { View, Text, Image } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
 
 import styles from "./style";
+
+import Image from "../CartComponent/index";
 
 const index = () => {
   return (
@@ -12,8 +14,8 @@ const index = () => {
           <Text style={styles.name}>Welliton</Text>
           <View style={styles.line}></View>
         </View>
-        <View style={styles.headerRight} >
-          <Image source={require("../../../../assets/icons/cart.png")} />
+        <View style={styles.headerRight}>
+          <Image />
         </View>
       </View>
     </View>
