@@ -18,9 +18,9 @@ type CartProviderProps = {
 
 interface CartContextData {
   cartItems: CartItem[];
-  addToCart: (product: Product) => void;
+  addToCart: (product: Product, quantity: number) => void;
   getTotalItemCount: () => number;
-  updateProductQuantity: (productId: number, productQuantity: number) => void;
+  getTotalPrice: () => number;
   updateTotal: (productId: number, total: number) => void;
 }
 
@@ -28,21 +28,22 @@ export const CartContext = createContext<CartContextData>({
   cartItems: [],
   addToCart: () => {},
   getTotalItemCount: () => 0,
-  updateProductQuantity: () => {},
+  getTotalPrice: () => 0,
   updateTotal: () => {},
 });
 
 const AppProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, quantity: number) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
 
     if (existingItem) {
       const updatedItem = {
         ...existingItem,
-        productQuantity: existingItem.productQuantity + 1,
-        total: (existingItem.productQuantity + 1) * existingItem.price,
+        productQuantity: existingItem.productQuantity + quantity,
+        total: (existingItem.productQuantity + quantity) * existingItem.price,
+        cartQuantity: existingItem.cartQuantity + quantity,
       };
 
       const updatedCartItems = cartItems.map((item) =>
@@ -53,9 +54,9 @@ const AppProvider = ({ children }: CartProviderProps) => {
     } else {
       const newItem: CartItem = {
         ...product,
-        productQuantity: 1,
-        cartQuantity: 1,
-        total: product.price,
+        productQuantity: quantity,
+        cartQuantity: quantity,
+        total: product.price * quantity,
       };
 
       setCartItems([...cartItems, newItem]);
@@ -72,15 +73,14 @@ const AppProvider = ({ children }: CartProviderProps) => {
     return totalCount;
   };
 
-  const updateProductQuantity = (
-    productId: number,
-    productQuantity: number
-  ) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === productId ? { ...item, productQuantity } : item
-    );
+  const getTotalPrice = () => {
+    let total = 0;
 
-    setCartItems(updatedCartItems);
+    for (const item of cartItems) {
+      total += item.price * item.cartQuantity;
+    }
+
+    return total;
   };
 
   const updateTotal = (productId: number, total: number) => {
@@ -95,8 +95,8 @@ const AppProvider = ({ children }: CartProviderProps) => {
     cartItems,
     addToCart,
     getTotalItemCount,
-    updateProductQuantity,
     updateTotal,
+    getTotalPrice,
   };
 
   return (

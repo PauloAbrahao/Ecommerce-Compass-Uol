@@ -3,7 +3,8 @@ import { Pressable, Image, Text, View } from "react-native";
 import { cardCart, cardHome } from "./style";
 import Price from "../Price";
 import QuantityButton from "../QuantityButton";
-import { useCart } from "../../context";
+import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
 
 const heartImage = require("../../../assets/icons/heart.png");
 const heartImageWhite = require("../../../assets/icons/heartWhite.png");
@@ -14,6 +15,10 @@ export interface CardProps {
   image?: string;
   title: string;
   price: number;
+  description?: string;
+  rating?: {
+    rate: number;
+  };
   onPress?: () => void;
   isCart: boolean;
   heartIconPress?: () => void;
@@ -21,11 +26,19 @@ export interface CardProps {
   removeButtonPress?: () => void;
 }
 
+// DEFINE NAVIGATION TYPE
+type DetailsScreenNavigationProp = StackNavigationProp<
+  ParamListBase,
+  "Details_Screen"
+>;
+
 function Card({
   id,
   image,
   title,
   price,
+  description,
+  rating,
   onPress,
   isCart,
   favorite,
@@ -34,23 +47,24 @@ function Card({
 }: CardProps): JSX.Element {
   const styles = isCart ? cardCart : cardHome;
 
-  const { addToCart } = useCart();
+  const navigation: DetailsScreenNavigationProp = useNavigation();
 
-  const handleAddToCart = () => {
-    const product = {
-      id: id,
-      title: title,
-      price: price,
-    };
-
-    addToCart(product);
+  const handleNavigate = () => {
+    navigation.navigate("Details_Screen", {
+      id,
+      title,
+      price,
+      image,
+      description,
+      rating,
+    });
   };
 
   return (
     <View>
       <Pressable
         style={({ pressed }) => [styles.card, pressed && cardHome.pressed]}
-        onPress={handleAddToCart}
+        onPress={handleNavigate}
       >
         <View style={styles.titleContainer}>
           <Text numberOfLines={2} style={styles.title}>
