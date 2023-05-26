@@ -17,7 +17,6 @@ function ButtonBuy({
 }: ButtonBuyProps): JSX.Element {
   return (
     <Pressable
-      disabled={disable}
       style={({ pressed }) => [styles.button, pressed && styles.pressed]}
       onPress={onPress}
       disabled={quantity === 0 ? true : false}

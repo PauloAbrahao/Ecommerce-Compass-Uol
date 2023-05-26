@@ -4,7 +4,7 @@ import { styleHome, styleProduct } from "./style";
 
 interface PriceProps {
   children: string;
-  isHome: boolean;
+  isHome?: boolean;
 }
 
 function Price({ children, isHome }: PriceProps): JSX.Element {

@@ -22,7 +22,7 @@ export const styleHome = StyleSheet.create({
 
 export const styleProduct = StyleSheet.create({
   container: {
-    width: 170,
+    width: 177,
     height: 50,
     backgroundColor: GlobalStyles.Colors.background,
     borderRadius: 15,
