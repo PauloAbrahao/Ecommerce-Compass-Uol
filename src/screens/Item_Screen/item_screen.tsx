@@ -5,6 +5,9 @@ import ButtonBuy from '../../components/ButtonBuy';
 import Price from '../../components/Price';
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
+import RenderStars from './components/stars/stars';
+import { handleToggleHeart } from '../../components/Favorite_Heart/heart';
 
 interface Product {
   title: string;
@@ -14,6 +17,7 @@ interface Product {
   rating: {
     rate: number;
   };
+  heart: number;
 }
 
 const ProductScreen = () => {
@@ -54,63 +58,30 @@ const ProductScreen = () => {
     }, 2000);
   };
 
-  const renderStars = (rate: number) => {
-    const stars = [];
-    const fullStarCount = Math.floor(rate);
-    const halfStar = rate % 1 !== 0;
-  
-    for (let i = 0; i < fullStarCount; i++) {
-      stars.push(
-        <FontAwesome
-          key={`full-star-${i}`}
-          name="star"
-          size={28}
-          color="#D78F3C"
-          style={{ marginRight: 7 }}
-        />
-      );
-    }
-  
-    if (halfStar) {
-      stars.push(
-        <FontAwesome
-          key="half-star"
-          name="star-half-empty"
-          size={28}
-          color="#D78F3C"
-          style={{ marginRight: 7 }}
-        />
-      );
-    }
-  
-    const remainingStars = 5 - Math.ceil(rate);
-    for (let i = 0; i < remainingStars; i++) {
-    stars.push(
-      <Feather
-        key={`empty-star-${i}`}
-        name="star"
-        size={28}
-        color="#D78F3C"
-        style={{ marginRight: 7 }}
-      />
-    );
-  }
-  
-    return stars;
-  };
-
   if (!product) {
     return <Text>Loading...</Text>;
   }
+  
   return (
     <View style={styles.container}>
       <View style={styles.box}>
 
-        <Text style={styles.title}>{product.title}</Text>
+        <View style={styles.titleBox}>
+          <Text style={styles.title}>{product.title}</Text>
+
+          <TouchableOpacity onPress={() => handleToggleHeart(product, setProduct)}>
+            {product.heart === 1 ? (
+              <AntDesign name="heart" size={35} color="black" style={{ marginLeft: 20 }} />
+            ) : (
+              <AntDesign name="hearto" size={35} color="black" style={{ marginLeft: 20 }} />
+            )}
+          </TouchableOpacity>
+        </View>
+
         <Image style={styles.image} source={{ uri: product.image }} resizeMode="contain" />
 
         <View style={styles.starsContainer}>
-          {renderStars(product.rating.rate)}
+          <RenderStars rate={product.rating.rate} />
         </View>
 
         <View style={styles.containerPrice}>
