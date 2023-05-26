@@ -3,7 +3,7 @@ import { GlobalStyles } from "../../constants/colors";
 
 export const cardHome = StyleSheet.create({
   card: {
-    width: 180,
+    width: 175,
     height: 220,
     backgroundColor: "white",
     borderRadius: 10,
@@ -14,6 +14,8 @@ export const cardHome = StyleSheet.create({
     color: "#2D2D2D",
     fontSize: 12,
     paddingLeft: 16,
+    fontStyle: "normal",
+    fontFamily: "Inter-Bold",
   },
   titleContainer: {
     alignItems: "flex-start",
@@ -57,6 +59,8 @@ export const cardCart = StyleSheet.create({
   title: {
     color: "#2D2D2D",
     fontSize: 14,
+    fontStyle: "normal",
+    fontFamily: "Inter-Bold",
   },
   titleContainer: {
     position: "absolute",
@@ -81,7 +85,7 @@ export const cardCart = StyleSheet.create({
     position: "absolute",
     left: 135,
     right: 0,
-    top: 97,
+    top: 77,
     bottom: 0,
   },
   pressed: {

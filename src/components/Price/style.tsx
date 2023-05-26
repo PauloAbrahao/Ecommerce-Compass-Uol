@@ -13,7 +13,10 @@ export const styleHome = StyleSheet.create({
   },
   text: {
     color: GlobalStyles.Colors.primary,
-    fontSize: 13,
+    fontSize: 14,
+    fontStyle: "normal",
+    fontFamily: "Inter-Bold",
+    letterSpacing: 0.05,
   },
 });
 
@@ -29,6 +32,9 @@ export const styleProduct = StyleSheet.create({
   },
   text: {
     color: GlobalStyles.Colors.primary,
-    fontSize: 19,
+    fontSize: 18,
+    fontStyle: "normal",
+    fontFamily: "Inter-Bold",
+    letterSpacing: 0.05,
   },
 });

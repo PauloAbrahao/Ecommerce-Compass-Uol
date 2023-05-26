@@ -1,13 +1,9 @@
 import React from "react";
-import {
-  Pressable,
-  Image,
-  Text,
-  View,
-} from "react-native";
+import { Pressable, Image, Text, View } from "react-native";
 import { cardCart, cardHome } from "./style";
 import Price from "../Price";
 import QuantityButton from "../QuantityButton";
+import { icons } from "../../../assets/icons";
 
 const heartImage = require("../../../assets/icons/heart.png");
 const heartFavImage = require("../../../assets/icons/heartFav.png");
@@ -43,7 +39,9 @@ function Card({
         onPress={onPress}
       >
         <View style={styles.titleContainer}>
-          <Text numberOfLines={2} style={styles.title}>{title}</Text>
+          <Text numberOfLines={2} style={styles.title}>
+            {title}
+          </Text>
         </View>
         <View style={styles.imageContainer}>
           <Image source={{ uri: image }} style={styles.image} />
@@ -64,7 +62,7 @@ function Card({
         <View style={cardCart.remove}>
           <QuantityButton
             isCart={isCart}
-            children={minusImage}
+            children={icons.minusCart}
             onPress={removeButtonPress}
           />
         </View>
