@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
 import { styles } from "./styles";
 import ButtonBuy from "../../components/ButtonBuy";
 import Price from "../../components/Price";
@@ -134,9 +134,11 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
         visible={modalVisible}
       />
 
+    <View style={styles.scrollViewContainer}>
+      <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <View style={styles.box}>
         <Text style={styles.title}>{title}</Text>
-
+        
         <Image
           style={styles.image}
           source={{ uri: image }}
@@ -173,6 +175,8 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
           />
         </View>
       </View>
+      </ScrollView>
+    </View>
     </View>
   );
 };

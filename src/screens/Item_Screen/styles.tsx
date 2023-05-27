@@ -8,6 +8,18 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "#282729",
   },
+  scrollViewContainer: {
+    flex: 1,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+    flexGrow: 1,
+    paddingTop: 25,
+  },
+  scrollViewContent: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
   box: {
     backgroundColor: "white",
     padding: 20,
@@ -58,7 +70,7 @@ export const styles = StyleSheet.create({
     marginTop: -5,
   },
   quantity: {
-    fontSize: 30,
+    fontSize: 35,
     paddingHorizontal: 10,
     color: "#D78F3C",
     fontWeight: "bold",
@@ -95,8 +107,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   itemNum: {
-    width: 40,
-    height: 40,
+    width: 50,
+    height: 50,
     backgroundColor: GlobalStyles.Colors.background,
     borderRadius: 50,
     alignItems: "center",
