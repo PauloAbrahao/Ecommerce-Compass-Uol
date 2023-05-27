@@ -90,6 +90,7 @@ const Cart = () => {
           children="BUY"
           onPress={() => openModal()}
           isloading={isLoading}
+          quantity={cartItems.length}
         />
       </View>
     </View>

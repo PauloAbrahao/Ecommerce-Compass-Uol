@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image } from "react-native";
 import { styles } from "./styles";
 import ButtonBuy from "../../components/ButtonBuy";
 import Price from "../../components/Price";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useCart } from "../../context";
+import QuantityButton from "../../components/QuantityButton";
 
 import { RouteProp } from "@react-navigation/native";
 import CustomModal from "../../components/Modal";
+import Favorite from "../../components/Favorite";
+
+import { icons } from "../../../assets/icons";
 
 type RootStackParamList = {
   Product: {
@@ -20,6 +24,8 @@ type RootStackParamList = {
     rating: {
       rate: number;
     };
+    favorite: boolean;
+    heartIconPress: () => void;
   };
 };
 
@@ -34,7 +40,8 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { id, title, price, image, description, rating } = route.params;
+  const { id, title, price, image, description, rating, favorite, heartIconPress } =
+    route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -55,6 +62,7 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
       image: image,
       description: description,
       rating: rating,
+      favorite: favorite,
     };
 
     setIsLoading(true);
@@ -125,8 +133,13 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
     return <Text>Loading...</Text>;
   }
 
+  
+
   return (
     <View style={styles.container}>
+
+      <Favorite heartIconPress={heartIconPress} favorite={favorite} />
+
       <CustomModal
         header="Good!"
         message="Product added to cart."
@@ -149,15 +162,14 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
           <Price>{price.toFixed(2)}</Price>
 
           <View style={styles.numContainer}>
-            <TouchableOpacity onPress={handleSubtract} style={styles.itemNum}>
-              <Text style={styles.icon}>-</Text>
-            </TouchableOpacity>
+            <QuantityButton
+              children={icons.minusImage}
+              onPress={handleSubtract}
+            />
 
             <Text style={styles.quantity}>{quantity}</Text>
 
-            <TouchableOpacity onPress={handleAdd} style={styles.itemNum}>
-              <Text style={styles.icon}>+</Text>
-            </TouchableOpacity>
+            <QuantityButton children={icons.plusImage} onPress={handleAdd} />
           </View>
         </View>
 
@@ -170,6 +182,7 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
             onPress={handleAddToCart}
             children="ADD TO CART"
             isloading={isLoading}
+            quantity={quantity}
           />
         </View>
       </View>
