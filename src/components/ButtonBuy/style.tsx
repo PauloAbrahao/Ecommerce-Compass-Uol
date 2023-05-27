@@ -14,4 +14,11 @@ export const styles = StyleSheet.create({
   pressed: {
     opacity: 0.7,
   },
+  text: {
+    color: "#FFFFFF",
+    fontSize: 15,
+    fontFamily: "Inter-SemiBold",
+    textAlign: "center",
+    letterSpacing: 0.1,
+  },
 });
