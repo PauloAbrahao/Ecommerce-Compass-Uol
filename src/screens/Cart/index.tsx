@@ -10,11 +10,16 @@ const Cart = () => {
   const { cartItems, getTotalPrice, removeFromCart, resetCart } = useCart();
   const [isCartEmpty, setIsCartEmpty] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const openModal = () => {
-    setModalVisible(true);
+    setIsLoading(true);
+    setTimeout(() => {
+      setModalVisible(true);
+      setIsLoading(false);
+    }, 3000);
   };
-  
+
   const closeModal = () => {
     setModalVisible(false);
     resetCart();
@@ -84,7 +89,7 @@ const Cart = () => {
         <ButtonBuy
           children="BUY"
           onPress={() => openModal()}
-          isloading={false}
+          isloading={isLoading}
         />
       </View>
     </View>

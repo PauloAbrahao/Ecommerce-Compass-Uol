@@ -57,15 +57,13 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
       rating: rating,
     };
 
-    addToCart(product, quantity);
-
     setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false);
+      openModal();
+      addToCart(product, quantity);
     }, 3000);
-
-    openModal();
   };
 
   const handleAdd = () => {
@@ -131,7 +129,7 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
     <View style={styles.container}>
       <CustomModal
         header="Good!"
-        message="Product successfully purchased."
+        message="Product added to cart."
         onClose={() => closeModal()}
         visible={modalVisible}
       />
