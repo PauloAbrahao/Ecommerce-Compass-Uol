@@ -1,21 +1,15 @@
 import React from "react";
 
 import { View, Text } from "react-native";
-import Input from "../Input/Input";
-import Button from "../Button/Button";
 import { ParamListBase, useNavigation } from "@react-navigation/native";
-
-import Checkbox from "expo-checkbox";
-
-import styles from "./style";
 import { show_error } from "./ValidateInputs";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { FormProps } from "../../config/types";
 
-// DEFINE PROPS INTERFACE FOR FORM COMPONENT
-interface FormProps {
-  isSignUpPage?: boolean;
-  text_button: string;
-}
+import Checkbox from "expo-checkbox";
+import Input from "../Input";
+import Button from "../Button";
+import styles from "./style";
 
 const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
   // DEFINE STATES FOR INPUT FIELDS

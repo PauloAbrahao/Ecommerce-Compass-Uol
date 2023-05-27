@@ -1,25 +1,14 @@
+import React from "react";
 import {
   Image,
-  KeyboardTypeOptions,
   TextInput,
   View,
 } from "react-native";
-import React from "react";
-
-import styles from "./style";
+import { InputProps } from "../../config/types";
 import { link_images } from "./LinkImages";
+import styles from "./style";
 
 // INTERFACE FOR INPUT PROPS
-interface InputProps {
-  placeholder: string;
-  icon: string;
-  value?: string;
-  onChangeText: (value: string) => void;
-  color?: string;
-  keyboardType?: KeyboardTypeOptions;
-  secureTextEntry?: boolean;
-}
-
 const Input: React.FC<InputProps> = ({
   placeholder,
   icon,

@@ -1,20 +1,14 @@
 import React from "react";
 import { View, Pressable, Text, ActivityIndicator } from "react-native";
 import { styles } from "./style";
+import { ButtonBuyProps } from "../../config/types";
 
-type ButtonBuyProps = {
-  children: string;
-  onPress: () => void;
-  isloading: boolean;
-  quantity: number;
-};
-
-function ButtonBuy({
+const ButtonBuy: React.FC<ButtonBuyProps> = ({
   children,
   onPress,
   isloading,
   quantity,
-}: ButtonBuyProps): JSX.Element {
+}) => {
   return (
     <Pressable
       style={({ pressed }) => [styles.button, pressed && styles.pressed]}

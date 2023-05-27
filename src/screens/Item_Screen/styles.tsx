@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#282729",
+    backgroundColor: GlobalStyles.Colors.background,
   },
   box: {
     backgroundColor: "white",
@@ -34,7 +34,7 @@ export const styles = StyleSheet.create({
   rating: {
     fontSize: 16,
     marginBottom: 10,
-    color: "#D78F3C",
+    color: GlobalStyles.Colors.primary,
   },
   description: {
     fontSize: 13,
@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 30,
-    color: "#D78F3C",
+    color: GlobalStyles.Colors.primary,
     fontWeight: "bold",
     alignItems: "center",
     textAlign: "center",
@@ -60,11 +60,11 @@ export const styles = StyleSheet.create({
   quantity: {
     fontSize: 30,
     paddingHorizontal: 10,
-    color: "#D78F3C",
+    color: GlobalStyles.Colors.primary,
     fontWeight: "bold",
   },
   button: {
-    backgroundColor: "#20BE4C",
+    backgroundColor: GlobalStyles.Colors.button,
     borderRadius: 15,
     paddingVertical: 10,
     paddingHorizontal: 20,
@@ -79,10 +79,10 @@ export const styles = StyleSheet.create({
   },
   price: {
     fontSize: 28,
-    color: "#D78F3C",
+    color: GlobalStyles.Colors.primary,
   },
   pricebox: {
-    backgroundColor: "#3C3C3E",
+    backgroundColor: GlobalStyles.Colors.card_product,
     borderRadius: 20,
     justifyContent: "center",
   },

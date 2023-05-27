@@ -1,14 +1,10 @@
 import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import { ParamListBase, useNavigation } from "@react-navigation/native";
-import styles from "./style";
 import { StackNavigationProp } from "@react-navigation/stack";
+import { FooterProps } from "../../config/types";
+import styles from "./style";
 
-interface FooterProps {
-  first_footer_text: string;
-  second_footer_text: string;
-  signUp?: boolean;
-}
 
 const Footer: React.FC<FooterProps> = ({
   first_footer_text,

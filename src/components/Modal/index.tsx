@@ -1,12 +1,8 @@
 import React from 'react';
 import { View, Text, Modal, TouchableOpacity } from 'react-native';
+import { ModalProps } from '../../config/types';
 import styles from './style';
-interface ModalProps {
-  visible: boolean;
-  onClose: () => void;
-  header: string;
-  message: string;
-}
+
 
 const CustomModal: React.FC<ModalProps> = ({ visible, onClose, header, message }) => {
   return (

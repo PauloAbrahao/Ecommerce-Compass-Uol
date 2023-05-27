@@ -1,17 +1,17 @@
+import React from "react";
 import {
   KeyboardAvoidingView,
+  ScrollView,
   Text,
   View,
-  ScrollView,
   Dimensions,
 } from "react-native";
-import React from "react";
 
 import styles from "./style";
-import Footer from "../../components/Footer/Footer";
-import Form from "../../components/Form/Form";
+import Footer from "../../components/Footer";
+import Form from "../../components/Form";
 
-const Welcome_Screen = () => {
+const SignUp_Screen = () => {
   const windowHeight = Dimensions.get("window").height;
 
   return (
@@ -19,7 +19,7 @@ const Welcome_Screen = () => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior="padding"
-        keyboardVerticalOffset={-400}
+        keyboardVerticalOffset={-300}
       >
         <ScrollView
           contentOffset={{ x: 0, y: 200 }}
@@ -27,19 +27,19 @@ const Welcome_Screen = () => {
           style={styles.content}
         >
           <View style={{ height: windowHeight }}>
-            {/* WELCOME TITLE */}
-            <Text style={styles.title}>WELCOME</Text>
+            {/* SIGN UP TITLE */}
+            <Text style={styles.title}>SIGN UP</Text>
 
-            <View style={[styles.inputs]}>
+            <View style={styles.forms}>
               {/* LOGIN FORM */}
-              <Form isSignUpPage={false} text_button="LOGIN" />
+              <Form isSignUpPage={true} text_button="CREATE ACCOUNT" />
             </View>
           </View>
 
           <Footer
-            signUp={false}
-            first_footer_text="Don't have an account?"
-            second_footer_text="Sign Up"
+            signUp={true}
+            first_footer_text="Already have an account?"
+            second_footer_text="Sign In"
           />
         </ScrollView>
       </KeyboardAvoidingView>
@@ -47,4 +47,4 @@ const Welcome_Screen = () => {
   );
 };
 
-export default Welcome_Screen;
+export default SignUp_Screen;

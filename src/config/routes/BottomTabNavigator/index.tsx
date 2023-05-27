@@ -1,11 +1,11 @@
 import React from "react";
 import { Image } from "react-native";
-
-import Cart_Screen from "../../../screens/Cart/index";
-import Home from "../../../screens/Home/Home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import CustomTabBar from "../customTabBar/index";
+import Cart_Screen from "../../../screens/Cart/index";
+import Home from "../../../screens/Home";
+
 
 const Tab = createBottomTabNavigator();
 

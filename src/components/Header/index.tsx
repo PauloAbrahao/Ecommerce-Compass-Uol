@@ -1,11 +1,10 @@
-import { View, Text } from "react-native";
 import React from "react";
-
+import { View, Text } from "react-native";
+import Image from "../CartComponent/index";
 import styles from "./style";
 
-import Image from "../CartComponent/index";
 
-const index = () => {
+const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -22,4 +21,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Header;

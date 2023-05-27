@@ -1,10 +1,5 @@
 // CREATE AN OBJECT OF IMAGES TO BE USED IN THE FORMS
-
-interface Images {
-  email: NodeRequire;
-  password: NodeRequire;
-  username: NodeRequire;
-}
+import { Images } from "../../config/interface";
 
 const images: Images = {
   email: require("../../../assets/icons/email.png"),

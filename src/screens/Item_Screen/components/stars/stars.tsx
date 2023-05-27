@@ -1,10 +1,7 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
-
-interface RenderStarsProps {
-  rate: number;
-}
+import { RenderStarsProps } from '../../../../config/interface'; 
 
 const RenderStars: React.FC<RenderStarsProps> = ({ rate }) => {
   const stars = [];

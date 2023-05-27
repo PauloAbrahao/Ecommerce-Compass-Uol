@@ -8,8 +8,8 @@ import CustomModal from "../../components/Modal";
 
 const Cart = () => {
   const { cartItems, getTotalPrice, removeFromCart, resetCart } = useCart();
-  const [isCartEmpty, setIsCartEmpty] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [isCartEmpty, setIsCartEmpty] = useState<boolean>(false);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const openModal = () => {

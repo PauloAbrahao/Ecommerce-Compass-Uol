@@ -9,7 +9,7 @@ export interface FavoriteProps {
   favorite?: boolean;
 }
 
-const index = ({ heartIconPress, favorite }: FavoriteProps) => {
+const Favorite: React.FC<FavoriteProps> = ({ heartIconPress, favorite }) => {
 
   return (
     <>
@@ -23,4 +23,4 @@ const index = ({ heartIconPress, favorite }: FavoriteProps) => {
   );
 };
 
-export default index;
+export default Favorite;

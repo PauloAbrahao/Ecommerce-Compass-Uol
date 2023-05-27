@@ -10,8 +10,13 @@ type ButtonBuyProps = {
   children: string;
   onPress: () => void;
   isloading: boolean;
+  quantity: number;
 };
-
+type ValidateProps ={
+  isValueValid: boolean;
+  text: string;
+  isTerms: boolean;
+}
 type FooterProps = {
   first_footer_text: string;
   second_footer_text: string;
@@ -35,10 +40,30 @@ type InputProps = {
 
 type PriceProps = {
   children: string;
+  isHome?: boolean;
 };
 
 type QuantityButtonProps = {
   children: ImageSourcePropType;
   onPress?: () => void;
   isCart?: boolean;
+};
+
+type ModalProps =  {
+  visible: boolean;
+  onClose: () => void;
+  header: string;
+  message: string;
+}
+
+export type {
+  ButtonProps,
+  ButtonBuyProps,
+  FooterProps,
+  FormProps,
+  InputProps,
+  PriceProps,
+  QuantityButtonProps,
+  ValidateProps,
+  ModalProps
 };

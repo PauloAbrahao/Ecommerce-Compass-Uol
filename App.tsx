@@ -1,5 +1,5 @@
 import { NavigationContainer } from "@react-navigation/native";
-import AppRoutes from "./src/config/routes/StackNavigator/index";
+import AddRoutes from "./src/config/routes/StackNavigator";
 import { AppProvider } from "./src/context/index";
 
 export default function App() {
@@ -7,7 +7,7 @@ export default function App() {
     <>
       <NavigationContainer>
         <AppProvider>
-          <AppRoutes />
+          <AddRoutes />
         </AppProvider>
       </NavigationContainer>
     </>

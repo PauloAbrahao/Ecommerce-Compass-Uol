@@ -7,16 +7,17 @@ import {
   View,
 } from "react-native";
 
-import { createStackNavigator } from "@react-navigation/stack";
-import Welcome_Screen from "../../../screens/Login/Welcome_Screen";
-import SignUp_Screen from "../../../screens/SignUp/SignUp_Screen";
-import Details_Screen from "../../../screens/Item_Screen/item_screen";
+import Welcome_Screen from "../../../screens/Login";
+import SignUp_Screen from "../../../screens/SignUp";
+import Detail_Screen from "../../../screens/Item_Screen";
 import Cart from "../../../components/CartComponent";
+import { createStackNavigator } from "@react-navigation/stack";
 
 import fetchFonts from "../../../../assets/fonts/fonts";
 import BottomTabsNavigator from "../BottomTabNavigator";
 
-const index = () => {
+
+const AddRoutes = () => {
   const [loaded, setLoaded] = React.useState<boolean>(false);
 
   React.useEffect(() => {
@@ -76,7 +77,6 @@ const index = () => {
         {/* DETAILS SCREEN */}
         <Stack.Screen
           name="Details_Screen"
-          component={Details_Screen}
           options={({ navigation }) => ({
             headerTitle: "",
             headerStyle: {
@@ -88,12 +88,12 @@ const index = () => {
                 <Cart />
               </View>
             ),
-
+            
             headerLeft: () => (
               <TouchableOpacity
-                onPress={() => {
-                  navigation.goBack();
-                }}
+              onPress={() => {
+                navigation.goBack();
+              }}
               >
                 <Image
                   source={require("../../../../assets/icons/arrow.png")}
@@ -104,11 +104,12 @@ const index = () => {
                     marginTop: 40,
                   }}
                   resizeMode="contain"
-                />
+                  />
               </TouchableOpacity>
             ),
             headerBackTitleVisible: false,
           })}
+          component={Detail_Screen}
         />
 
         {/* BOTTOM TAB NAVIGATOR */}
@@ -122,4 +123,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default AddRoutes;
