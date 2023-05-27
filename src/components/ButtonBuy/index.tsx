@@ -22,7 +22,7 @@ function ButtonBuy({
         {isloading ? (
           <ActivityIndicator size={"large"} color="white" />
         ) : (
-          <Text>{children}</Text>
+          <Text style={styles.text}>{children}</Text>
         )}
       </View>
     </Pressable>
