@@ -125,4 +125,13 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  heartContainer: {
+    position: "absolute",
+    top: 74,
+    bottom: 0,
+    left: 330,
+    right: 0,
+    width: 30,
+    height: 30,
+  },
 });

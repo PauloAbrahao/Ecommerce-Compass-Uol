@@ -10,7 +10,6 @@ export interface FavoriteProps {
 }
 
 const index = ({ heartIconPress, favorite }: FavoriteProps) => {
-
   return (
     <>
       <Pressable onPress={heartIconPress}>
