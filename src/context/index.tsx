@@ -21,6 +21,7 @@ interface CartContextData {
   cartItems: CartItem[];
   addToCart: (product: Product, quantity: number) => void;
   removeFromCart: (productId: number) => void;
+  resetCart: () => void;
   getTotalItemCount: () => number;
   getTotalPrice: () => number;
 }
@@ -28,7 +29,8 @@ interface CartContextData {
 export const CartContext = createContext<CartContextData>({
   cartItems: [],
   addToCart: () => {},
-  removeFromCart: () => {},
+  removeFromCart: () => { },
+  resetCart: () => { },
   getTotalItemCount: () => 0,
   getTotalPrice: () => 0,
 });
@@ -91,6 +93,10 @@ const AppProvider = ({ children }: CartProviderProps) => {
     setCartItems(filteredCartItems);
   };
 
+  const resetCart = () => {
+    setCartItems([]);
+  };
+
   const getTotalItemCount = () => {
     let totalCount: number = 0;
 
@@ -115,6 +121,7 @@ const AppProvider = ({ children }: CartProviderProps) => {
     cartItems,
     addToCart,
     removeFromCart,
+    resetCart,
     getTotalItemCount,
     getTotalPrice,
   };

@@ -8,6 +8,7 @@ import { Feather } from "@expo/vector-icons";
 import { useCart } from "../../context";
 
 import { RouteProp } from "@react-navigation/native";
+import CustomModal from "../../components/Modal";
 
 type RootStackParamList = {
   Product: {
@@ -29,13 +30,22 @@ type ProductScreenProps = {
 };
 
 const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState<number>(0);
-  const [savedQuantity, setSavedQuantity] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { id, title, price, image, description, rating } = route.params;
 
-  const { addToCart } = useCart();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    // setQuantity(0);
+  };
 
   const handleAddToCart = () => {
     const product = {
@@ -53,13 +63,9 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
-  };
+    }, 3000);
 
-  const handleSaveQuantity = () => {
-    if (quantity >= 1) {
-      setSavedQuantity(quantity);
-    }
+    openModal();
   };
 
   const handleAdd = () => {
@@ -123,8 +129,16 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
 
   return (
     <View style={styles.container}>
+      <CustomModal
+        header="Good!"
+        message="Product successfully purchased."
+        onClose={() => closeModal()}
+        visible={modalVisible}
+      />
+
       <View style={styles.box}>
         <Text style={styles.title}>{title}</Text>
+
         <Image
           style={styles.image}
           source={{ uri: image }}
@@ -136,27 +150,29 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
         <View style={styles.containerPrice}>
           <Price>{price.toFixed(2)}</Price>
 
-          <View style={styles.itemNum2}>
-            <TouchableOpacity onPress={handleSubtract}>
+          <View style={styles.numContainer}>
+            <TouchableOpacity onPress={handleSubtract} style={styles.itemNum}>
               <Text style={styles.icon}>-</Text>
             </TouchableOpacity>
-          </View>
 
-          <Text style={styles.quantity}>{quantity}</Text>
+            <Text style={styles.quantity}>{quantity}</Text>
 
-          <View style={styles.itemNum}>
-            <TouchableOpacity onPress={handleAdd}>
+            <TouchableOpacity onPress={handleAdd} style={styles.itemNum}>
               <Text style={styles.icon}>+</Text>
             </TouchableOpacity>
           </View>
         </View>
 
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.description} numberOfLines={4}>
+          {description}
+        </Text>
 
         <View style={styles.bottoncentralization}>
-          <ButtonBuy onPress={handleAddToCart} isloading={isLoading}>
-            ADD TO CART
-          </ButtonBuy>
+          <ButtonBuy
+            onPress={handleAddToCart}
+            children="ADD TO CART"
+            isloading={isLoading}
+          />
         </View>
       </View>
     </View>

@@ -7,16 +7,17 @@ import Card from "../../components/Card";
 import CustomModal from "../../components/Modal";
 
 const Cart = () => {
-  const { cartItems, getTotalPrice, removeFromCart } = useCart();
+  const { cartItems, getTotalPrice, removeFromCart, resetCart } = useCart();
   const [isCartEmpty, setIsCartEmpty] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
 
   const openModal = () => {
     setModalVisible(true);
   };
-
+  
   const closeModal = () => {
     setModalVisible(false);
+    resetCart();
   };
 
   const removeItem = (index: number) => {
