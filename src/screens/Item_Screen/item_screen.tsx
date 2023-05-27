@@ -10,7 +10,6 @@ import QuantityButton from "../../components/QuantityButton";
 
 import { RouteProp } from "@react-navigation/native";
 import CustomModal from "../../components/Modal";
-import Favorite from "../../components/Favorite";
 
 import { icons } from "../../../assets/icons";
 
@@ -24,8 +23,8 @@ type RootStackParamList = {
     rating: {
       rate: number;
     };
-    favorite: boolean;
-    heartIconPress: () => void;
+    favorite?: boolean;
+    heartIconPress?: () => void;
   };
 };
 
@@ -40,7 +39,7 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { id, title, price, image, description, rating, favorite, heartIconPress } =
+  const { id, title, price, image, description, rating, favorite } =
     route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
@@ -133,13 +132,8 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
     return <Text>Loading...</Text>;
   }
 
-  
-
   return (
     <View style={styles.container}>
-
-      <Favorite heartIconPress={heartIconPress} favorite={favorite} />
-
       <CustomModal
         header="Good!"
         message="Product added to cart."
