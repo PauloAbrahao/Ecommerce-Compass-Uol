@@ -4,9 +4,11 @@ interface Product {
   id: number;
   title: string;
   price: number;
+  image: string;
+  favorite: boolean;
 }
 
-interface CartItem extends Product {
+export interface CartItem extends Product {
   productQuantity: number;
   cartQuantity: number;
   total: number;
@@ -17,26 +19,36 @@ type CartProviderProps = {
 };
 
 interface CartContextData {
+  
   cartItems: CartItem[];
   addToCart: (product: Product, quantity: number) => void;
+  removeFromCart: (productId: number) => void;
+  resetCart: () => void;
   getTotalItemCount: () => number;
   getTotalPrice: () => number;
-  updateTotal: (productId: number, total: number) => void;
+  toggleFavorite: (itemId: number) => void;
 }
 
 export const CartContext = createContext<CartContextData>({
   cartItems: [],
   addToCart: () => {},
+  removeFromCart: () => {},
+  resetCart: () => {},
   getTotalItemCount: () => 0,
   getTotalPrice: () => 0,
-  updateTotal: () => {},
+  toggleFavorite: () => {},
 });
 
 const AppProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [favorite, setFavorite] = useState(false);
 
   const addToCart = (product: Product, quantity: number) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
+
+    if (quantity === 0) {
+      return;
+    }
 
     if (existingItem) {
       const updatedItem = {
@@ -63,6 +75,33 @@ const AppProvider = ({ children }: CartProviderProps) => {
     }
   };
 
+  const removeFromCart = (productId: number) => {
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === productId) {
+        const updatedItem: CartItem = {
+          ...item,
+          productQuantity: item.productQuantity - 1,
+          cartQuantity: item.cartQuantity - 1,
+          total: item.total - item.price,
+        };
+
+        return updatedItem;
+      }
+
+      return item;
+    });
+
+    const filteredCartItems = updatedCartItems.filter(
+      (item) => item.productQuantity > 0
+    );
+
+    setCartItems(filteredCartItems);
+  };
+
+  const resetCart = () => {
+    setCartItems([]);
+  };
+
   const getTotalItemCount = () => {
     let totalCount: number = 0;
 
@@ -83,10 +122,20 @@ const AppProvider = ({ children }: CartProviderProps) => {
     return total;
   };
 
-  const updateTotal = (productId: number, total: number) => {
-    const updatedCartItems = cartItems.map((item) =>
-      item.id === productId ? { ...item, total } : item
-    );
+  const toggleFavorite = (itemId: number) => {
+    // setFavorite((prevFavorite) => !prevFavorite);
+    const updatedCartItems = cartItems.map((item) => {
+      if (item.id === itemId) {
+        const updatedItem: CartItem = {
+          ...item,
+          favorite: !item.favorite,
+        };
+
+        return updatedItem;
+      }
+
+      return item;
+    });
 
     setCartItems(updatedCartItems);
   };
@@ -94,9 +143,11 @@ const AppProvider = ({ children }: CartProviderProps) => {
   const contextValue: CartContextData = {
     cartItems,
     addToCart,
+    removeFromCart,
+    resetCart,
     getTotalItemCount,
-    updateTotal,
     getTotalPrice,
+    toggleFavorite,
   };
 
   return (

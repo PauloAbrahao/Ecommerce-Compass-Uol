@@ -6,10 +6,9 @@ import QuantityButton from "../QuantityButton";
 import { ParamListBase, useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-import { icons } from "../../../assets/icons";
+import Favorite from "../Favorite";
 
-const heartImage = require("../../../assets/icons/heart.png");
-const heartFavImage = require("../../../assets/icons/heartFav.png");
+import { icons } from "../../../assets/icons";
 
 export interface CardProps {
   id: number;
@@ -57,6 +56,8 @@ function Card({
       image,
       description,
       rating,
+      heartIconPress,
+      favorite,
     });
   };
 
@@ -77,12 +78,7 @@ function Card({
         <View style={styles.priceContainer}>
           <Price isHome={!isCart}>{price.toString()}</Price>
           {!isCart && (
-            <Pressable onPress={heartIconPress}>
-              <Image
-                source={favorite ? heartFavImage : heartImage}
-                style={cardHome.iconHeart}
-              />
-            </Pressable>
+            <Favorite heartIconPress={heartIconPress} favorite={favorite} />
           )}
         </View>
       </Pressable>

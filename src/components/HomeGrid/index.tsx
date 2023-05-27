@@ -1,8 +1,8 @@
-import { FlatList, View } from "react-native";
+import { FlatList } from "react-native";
 import { useState, useEffect } from "react";
 import axios, { AxiosResponse } from "axios";
 
-import Card from "../Card/index";
+import RenderProducts from "./Components/RenderProducts";
 
 import styles from "./style";
 
@@ -37,14 +37,6 @@ const index = () => {
     };
     fetchData();
   }, []);
-
-  const RenderProducts: React.FC<store> = (item) => {
-    return (
-      <View style={styles.content}>
-        <Card {...item} isCart={false} />
-      </View>
-    );
-  };
 
   return (
     <FlatList

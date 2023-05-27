@@ -1,53 +1,77 @@
 import React, { useState } from "react";
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, Image } from "react-native";
 import { styles } from "./styles";
 import ButtonBuy from "../../components/ButtonBuy";
 import Price from "../../components/Price";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { useCart } from "../../context";
+import QuantityButton from "../../components/QuantityButton";
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  image: string;
-  rating: {
-    rate: number;
+import { RouteProp } from "@react-navigation/native";
+import CustomModal from "../../components/Modal";
+import Favorite from "../../components/Favorite";
+
+import { icons } from "../../../assets/icons";
+
+type RootStackParamList = {
+  Product: {
+    id: number;
+    title: string;
+    price: number;
+    image: string;
+    description: string;
+    rating: {
+      rate: number;
+    };
+    favorite: boolean;
+    heartIconPress: () => void;
   };
-}
+};
 
-const ProductScreen = ({ route }: any) => {
+type ProductScreenRouteProp = RouteProp<RootStackParamList, "Product">;
+
+type ProductScreenProps = {
+  route: ProductScreenRouteProp;
+};
+
+const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
+  const { addToCart } = useCart();
   const [quantity, setQuantity] = useState<number>(0);
-  const [savedQuantity, setSavedQuantity] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { id, title, price, image, description, rating } = route.params;
+  const { id, title, price, image, description, rating, favorite, heartIconPress } =
+    route.params;
 
-  const { addToCart } = useCart();
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+
+  const closeModal = () => {
+    setModalVisible(false);
+    setQuantity(0);
+  };
 
   const handleAddToCart = () => {
     const product = {
       id: id,
       title: title,
       price: price,
-      quantity: quantity,
+      image: image,
+      description: description,
+      rating: rating,
+      favorite: favorite,
     };
-
-    addToCart(product, quantity);
 
     setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
-  };
-
-  const handleSaveQuantity = () => {
-    if (quantity >= 1) {
-      setSavedQuantity(quantity);
-    }
+      openModal();
+      addToCart(product, quantity);
+    }, 3000);
   };
 
   const handleAdd = () => {
@@ -108,13 +132,24 @@ const ProductScreen = ({ route }: any) => {
   if (!id) {
     return <Text>Loading...</Text>;
   }
+
+  
+
   return (
     <View style={styles.container}>
-    <View style={styles.scrollViewContainer}>
-      <ScrollView contentContainerStyle={styles.scrollViewContent}>
+
+      <Favorite heartIconPress={heartIconPress} favorite={favorite} />
+
+      <CustomModal
+        header="Good!"
+        message="Product added to cart."
+        onClose={() => closeModal()}
+        visible={modalVisible}
+      />
+
       <View style={styles.box}>
         <Text style={styles.title}>{title}</Text>
-        
+
         <Image
           style={styles.image}
           source={{ uri: image }}
@@ -126,31 +161,31 @@ const ProductScreen = ({ route }: any) => {
         <View style={styles.containerPrice}>
           <Price>{price.toFixed(2)}</Price>
 
-          <View style={styles.itemNum2}>
-            <TouchableOpacity onPress={handleSubtract}>
-              <Text style={styles.icon}>-</Text>
-            </TouchableOpacity>
-          </View>
+          <View style={styles.numContainer}>
+            <QuantityButton
+              children={icons.minusImage}
+              onPress={handleSubtract}
+            />
 
-          <Text style={styles.quantity}>{quantity}</Text>
+            <Text style={styles.quantity}>{quantity}</Text>
 
-          <View style={styles.itemNum}>
-            <TouchableOpacity onPress={handleAdd}>
-              <Text style={styles.icon}>+</Text>
-            </TouchableOpacity>
+            <QuantityButton children={icons.plusImage} onPress={handleAdd} />
           </View>
         </View>
 
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.description} numberOfLines={4}>
+          {description}
+        </Text>
 
         <View style={styles.bottoncentralization}>
-          <ButtonBuy onPress={handleAddToCart} isloading={isLoading} quantity={quantity}>
-            ADD TO CART
-          </ButtonBuy>
+          <ButtonBuy
+            onPress={handleAddToCart}
+            children="ADD TO CART"
+            isloading={isLoading}
+            quantity={quantity}
+          />
         </View>
       </View>
-      </ScrollView>
-    </View>
     </View>
   );
 };
