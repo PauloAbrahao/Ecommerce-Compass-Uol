@@ -44,7 +44,7 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
 
   const closeModal = () => {
     setModalVisible(false);
-    // setQuantity(0);
+    setQuantity(0);
   };
 
   const handleAddToCart = () => {
