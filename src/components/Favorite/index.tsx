@@ -11,7 +11,7 @@ const Favorite: React.FC<FavoriteProps> = ({ heartIconPress, favorite, isDetail 
 
   return (
     <>
-      <Pressable onPress={heartIconPress}>
+      <Pressable onPress={heartIconPress} style={isDetail ? cardDetail.container : cardHome.container}>
         <Image
           source={favorite ? icons.heartFavImage : icons.heartImage}
           style={favorite ? style.iconHeartPressed : style.iconHeart}

@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { GlobalStyles } from "../../constants/colors";
 
 export const cardHome = StyleSheet.create({
   card: {
@@ -11,6 +10,7 @@ export const cardHome = StyleSheet.create({
     justifyContent: "space-around",
   },
   title: {
+    width: 150,
     color: "#2D2D2D",
     fontSize: 12,
     paddingLeft: 16,
@@ -57,6 +57,7 @@ export const cardCart = StyleSheet.create({
     flexDirection: "column",
   },
   title: {
+    width: 170,
     color: "#2D2D2D",
     fontSize: 14,
     fontStyle: "normal",
