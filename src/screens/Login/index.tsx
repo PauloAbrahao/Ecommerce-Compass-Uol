@@ -19,29 +19,29 @@ const Welcome_Screen = () => {
       <KeyboardAvoidingView
         style={styles.container}
         behavior="padding"
-        keyboardVerticalOffset={-400}
+        keyboardVerticalOffset={200}
       >
-        <ScrollView
+        {/* <ScrollView
           contentOffset={{ x: 0, y: 200 }}
           scrollEnabled={false}
           style={styles.content}
-        >
-          <View style={{ height: windowHeight }}>
-            {/* WELCOME TITLE */}
-            <Text style={styles.title}>WELCOME</Text>
+        >  */}
+        <View style={{ height: windowHeight }}>
+          {/* WELCOME TITLE */}
+          <Text style={styles.title}>WELCOME</Text>
 
-            <View style={[styles.inputs]}>
-              {/* LOGIN FORM */}
-              <Form isSignUpPage={false} text_button="LOGIN" />
-            </View>
+          <View style={[styles.inputs]}>
+            {/* LOGIN FORM */}
+            <Form isSignUpPage={false} text_button="LOGIN" />
           </View>
+        </View>
 
-          <Footer
-            signUp={false}
-            first_footer_text="Don't have an account?"
-            second_footer_text="Sign Up"
-          />
-        </ScrollView>
+        <Footer
+          signUp={false}
+          first_footer_text="Don't have an account?"
+          second_footer_text="Sign Up"
+        />
+        {/* </ScrollView> */}
       </KeyboardAvoidingView>
     </>
   );
