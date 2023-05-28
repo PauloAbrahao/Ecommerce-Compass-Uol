@@ -37,7 +37,6 @@ export const CartContext = createContext<CartContextData>({
 
 const AppProvider = ({ children }: CartProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [favorite, setFavorite] = useState(false);
 
   const addToCart = (product: Product, quantity: number) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
