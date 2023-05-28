@@ -3,14 +3,13 @@ import { View, Text, Image } from "react-native";
 import { styles } from "./styles";
 import ButtonBuy from "../../components/ButtonBuy";
 import Price from "../../components/Price";
-import { FontAwesome } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
 import { useCart } from "../../context";
 import QuantityButton from "../../components/QuantityButton";
 
 import { RouteProp } from "@react-navigation/native";
 import CustomModal from "../../components/Modal";
 import Favorite from "../../components/Favorite";
+import Stars from "./components/stars";
 
 import { icons } from "../../../assets/icons";
 
@@ -40,8 +39,16 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { id, title, price, image, description, rating, favorite, heartIconPress } =
-    route.params;
+  const {
+    id,
+    title,
+    price,
+    image,
+    description,
+    rating,
+    favorite,
+    heartIconPress,
+  } = route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -84,60 +91,16 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
     }
   };
 
-  const renderStars = (rate: number) => {
-    const stars = [];
-    const fullStarCount = Math.floor(rate);
-    const halfStar = rate % 1 !== 0;
-
-    for (let i = 0; i < fullStarCount; i++) {
-      stars.push(
-        <FontAwesome
-          key={`full-star-${i}`}
-          name="star"
-          size={28}
-          color="#D78F3C"
-          style={{ marginRight: 7 }}
-        />
-      );
-    }
-
-    if (halfStar) {
-      stars.push(
-        <FontAwesome
-          key="half-star"
-          name="star-half-empty"
-          size={28}
-          color="#D78F3C"
-          style={{ marginRight: 7 }}
-        />
-      );
-    }
-
-    const remainingStars = 5 - Math.ceil(rate);
-    for (let i = 0; i < remainingStars; i++) {
-      stars.push(
-        <Feather
-          key={`empty-star-${i}`}
-          name="star"
-          size={28}
-          color="#D78F3C"
-          style={{ marginRight: 7 }}
-        />
-      );
-    }
-
-    return stars;
-  };
-
   if (!id) {
-    return <Text>Loading...</Text>;
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loading}>Loading...</Text>
+      </View>
+    );
   }
-
-  
 
   return (
     <View style={styles.container}>
-
       <Favorite heartIconPress={heartIconPress} favorite={favorite} />
 
       <CustomModal
@@ -156,7 +119,9 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
           resizeMode="contain"
         />
 
-        <View style={styles.starsContainer}>{renderStars(rating.rate)}</View>
+        <View style={styles.starsContainer}>
+          <Stars rate={rating.rate} />
+        </View>
 
         <View style={styles.containerPrice}>
           <Price>{price.toFixed(2)}</Price>

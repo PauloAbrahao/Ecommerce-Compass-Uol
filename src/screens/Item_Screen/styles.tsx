@@ -125,4 +125,17 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+  loadingContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: GlobalStyles.Colors.background,
+  },
+  loading: {
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: GlobalStyles.Colors.background,
+    color: "#fff",
+  },
 });
