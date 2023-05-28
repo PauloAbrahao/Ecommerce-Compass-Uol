@@ -76,7 +76,9 @@ function Card({
         <View style={styles.priceContainer}>
           <Price isHome={!isCart}>{price.toString()}</Price>
           {!isCart && (
-            <Favorite favorite={favorite} heartIconPress={heartIconPress} />
+            <View style={{ width: 35, height: 35 }}>
+              <Favorite favorite={favorite} heartIconPress={heartIconPress} />
+            </View>
           )}
         </View>
       </Pressable>

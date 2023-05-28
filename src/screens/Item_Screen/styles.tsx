@@ -129,7 +129,7 @@ export const styles = StyleSheet.create({
     position: "absolute",
     top: 74,
     bottom: 0,
-    left: 330,
+    left: 324,
     right: 0,
     width: 30,
     height: 30,

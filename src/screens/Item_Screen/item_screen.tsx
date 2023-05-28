@@ -191,6 +191,7 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
         <Favorite
           heartIconPress={() => toggleFavorite(id)}
           favorite={Favorites.isFavorite(id)}
+          isDetail={true}
         />
       </View>
     </View>
