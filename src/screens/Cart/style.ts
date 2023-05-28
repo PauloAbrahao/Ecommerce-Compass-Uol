@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
         textTransform: 'uppercase',  
     },
     textContainer:{
-        color: '#d9d9d9',
+        color: GlobalStyles.Colors.text_container,
         fontSize: 32,
         marginBottom: 60,
     },
     subTextContainer:{
-        color: '#f5f5f5',
+        color: GlobalStyles.Colors.subText_container,
         fontSize: 20,
     },
     footerButton:{

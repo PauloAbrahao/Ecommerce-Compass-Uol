@@ -1,11 +1,6 @@
 import React, { createContext, useState, useContext } from "react";
-
-type FavoritesContextType = {
-  favorites: number[];
-  addFavorite: (product: number) => void;
-  removeFavorite: (productId: number) => void;
-  isFavorite: (productId: number) => boolean;
-};
+import { FavoritesContextType } from "../config/types";
+import { ProviderProps } from "../config/types";
 
 const FavoritesContext = createContext<FavoritesContextType>({
   favorites: [],
@@ -14,11 +9,7 @@ const FavoritesContext = createContext<FavoritesContextType>({
   isFavorite: () => false,
 });
 
-type FavProviderProps = {
-  children: React.ReactNode;
-};
-
-export const FavoritesProvider = ({ children }: FavProviderProps) => {
+export const FavoritesProvider = ({ children }: ProviderProps) => {
   const [favorites, setFavorites] = useState<number[]>([]);
 
   const addFavorite = (product: number) => {

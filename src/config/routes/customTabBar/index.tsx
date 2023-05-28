@@ -1,3 +1,4 @@
+import React, { ReactElement, ReactNode } from "react";
 import {
   View,
   Text,
@@ -5,10 +6,9 @@ import {
   TouchableOpacity,
   ImageSourcePropType,
 } from "react-native";
-import React, { ReactElement, ReactNode } from "react";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs/src/types";
-
 import styles from "./style";
+
 
 const index: React.FC<BottomTabBarProps> = ({
   state,

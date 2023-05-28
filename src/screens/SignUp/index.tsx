@@ -8,8 +8,8 @@ import {
 } from "react-native";
 
 import styles from "./style";
-import Footer from "../../components/Footer/Footer";
-import Form from "../../components/Form/Form";
+import Footer from "../../components/Footer";
+import Form from "../../components/Form";
 
 const SignUp_Screen = () => {
   const windowHeight = Dimensions.get("window").height;

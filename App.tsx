@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
-import AppRoutes from "./src/config/routes/StackNavigator/index";
 import { AppProvider } from "./src/context/index";
 import { FavoritesProvider } from "./src/context/favContext";
+import AppRoutes from "./src/config/routes/StackNavigator";
 
 export default function App() {
   return (

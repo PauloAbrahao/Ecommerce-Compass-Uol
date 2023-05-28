@@ -1,5 +1,6 @@
-import { StyleSheet, Text } from "react-native";
-import { GlobalStyles } from "../../constants/colors";
+import React from "react";
+import { Text } from "react-native";
+import styles from "./style";
 
 // FUNCTION show_error TAKES THREE ARGUMENTS AND RETURNS A TEXT COMPONENT
 // THE FIRST ARGUMENT IS A BOOLEAN, LIKE IsEmailValid, IsPasswordValid, ETC.
@@ -21,25 +22,3 @@ export function show_error(
   }
 }
 
-const styles = StyleSheet.create({
-  validationText: {
-    color: GlobalStyles.Colors.warning,
-    fontSize: 12,
-    fontFamily: "Inter-Medium",
-    marginLeft: 40,
-    marginTop: -27,
-    marginBottom: 12,
-    alignSelf: "flex-start",
-    textAlign: "center",
-  },
-  validationTerms: {
-    color: GlobalStyles.Colors.warning,
-    fontSize: 12,
-    fontFamily: "Inter-Medium",
-    marginLeft: 40,
-    marginTop: -25,
-    marginBottom: 15,
-    alignSelf: "flex-start",
-    textAlign: "center",
-  },
-});

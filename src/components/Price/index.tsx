@@ -1,13 +1,9 @@
 import React from "react";
 import { View, Text } from "react-native";
 import { styleHome, styleProduct } from "./style";
+import { PriceProps } from "../../config/types";
 
-interface PriceProps {
-  children: string;
-  isHome?: boolean;
-}
-
-function Price({ children, isHome }: PriceProps): JSX.Element {
+const Price: React.FC<PriceProps> = ({ children, isHome })=>{
   const styles = isHome ? styleHome : styleProduct;
 
   return (

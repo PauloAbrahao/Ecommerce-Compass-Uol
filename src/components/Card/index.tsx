@@ -1,38 +1,16 @@
 import React from "react";
 import { Pressable, Image, Text, View } from "react-native";
 import { cardCart, cardHome } from "./style";
+import {useNavigation } from "@react-navigation/native";
+import { icons } from "../../../assets/icons";
+import { CardProps } from "../../config/interface";
+import { DetailsScreenNavigationProp } from "../../config/types";
+
 import Price from "../Price";
 import QuantityButton from "../QuantityButton";
-import { ParamListBase, useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-
 import Favorite from "../Favorite";
 
-import { icons } from "../../../assets/icons";
-
-export interface CardProps {
-  id: number;
-  image?: string;
-  title: string;
-  price: number;
-  description?: string;
-  rating?: {
-    rate: number;
-  };
-  onPress?: () => void;
-  isCart: boolean;
-  heartIconPress?: () => void;
-  favorite?: boolean;
-  removeButtonPress?: () => void;
-}
-
-// DEFINE NAVIGATION TYPE
-type DetailsScreenNavigationProp = StackNavigationProp<
-  ParamListBase,
-  "Details_Screen"
->;
-
-function Card({
+const Card: React.FC<CardProps> =({
   id,
   image,
   title,
@@ -43,7 +21,7 @@ function Card({
   favorite,
   heartIconPress,
   removeButtonPress,
-}: CardProps): JSX.Element {
+}) => {
   const styles = isCart ? cardCart : cardHome;
 
   const navigation: DetailsScreenNavigationProp = useNavigation();

@@ -1,12 +1,9 @@
 import React from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import { RenderStarsProps } from '../../../../config/interface'; 
 
-interface RenderStarsProps {
-  rate: number;
-}
-
-const RenderStars: React.FC<RenderStarsProps> = ({ rate }) => {
+const index: React.FC<RenderStarsProps> = ({ rate }) => {
   const stars = [];
   const fullStarCount = Math.floor(rate);
   const halfStar = rate % 1 !== 0;
@@ -51,4 +48,4 @@ const RenderStars: React.FC<RenderStarsProps> = ({ rate }) => {
   return <>{stars}</>;
 };
 
-export default RenderStars;
+export default index;

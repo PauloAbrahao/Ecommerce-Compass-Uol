@@ -4,6 +4,7 @@ import { GlobalStyles } from "../../constants/colors";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    height: "100%",
     alignItems: "center",
     justifyContent: "flex-start",
     backgroundColor: GlobalStyles.Colors.background,

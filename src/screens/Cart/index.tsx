@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, ListRenderItem } from "react-native";
-import { CartItem, useCart } from "../../context";
+import { CartItem } from "../../config/interface";
+import { useCart } from "../../context";
 import ButtonBuy from "../../components/ButtonBuy";
 import styles from "./style";
 import Card from "../../components/Card";
@@ -8,8 +9,8 @@ import CustomModal from "../../components/Modal";
 
 const Cart = () => {
   const { cartItems, getTotalPrice, removeFromCart, resetCart } = useCart();
-  const [isCartEmpty, setIsCartEmpty] = useState(false);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [isCartEmpty, setIsCartEmpty] = useState<boolean>(false);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const openModal = () => {

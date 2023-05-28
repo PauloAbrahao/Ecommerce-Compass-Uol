@@ -1,14 +1,14 @@
-import { Image, TouchableOpacity, View, Text } from "react-native";
 import React from "react";
-import { ParamListBase, useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
-
-import styles from "./styles";
+import { Image, TouchableOpacity, View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { CartScreenNavigator } from "../../config/types";
 import { useCart } from "../../context";
+import styles from "./styles";
 
-type CartScreenNavigator = StackNavigationProp<ParamListBase, "Cart_Screen">;
 
-const index = () => {
+
+
+const CartComponent: React.FC = () => {
   const { getTotalItemCount } = useCart();
   const navigation: CartScreenNavigator = useNavigation();
 
@@ -31,4 +31,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default CartComponent;

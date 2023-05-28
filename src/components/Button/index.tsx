@@ -1,13 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity, ActivityIndicator } from "react-native";
-
+import { ButtonProps } from "../../config/types";
 import styles from "./style";
-
-interface ButtonProps {
-  title: string;
-  onPress?: () => void;
-  isLoading?: boolean;
-}
 
 const Button: React.FC<ButtonProps> = ({ title, onPress, isLoading }) => {
   return (

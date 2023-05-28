@@ -8,4 +8,7 @@ export const icons = {
   cartFocused: require("./cart_focused.png"),
   cartHeader: require("./cart_header.png"),
   cart: require("./cart.png"),
+  username: require("./username.png"),
+  password: require("./password.png"),
+  email: require("./email.png")
 };
