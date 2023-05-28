@@ -5,6 +5,7 @@ import { ParamListBase, useNavigation } from "@react-navigation/native";
 import { show_error } from "./ValidateInputs";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { FormProps } from "../../config/types";
+import {icons} from "../../../assets/icons"
 
 import Checkbox from "expo-checkbox";
 import Input from "../Input";
@@ -96,7 +97,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {/* EMAIL INPUT */}
       <Input
         placeholder="Your email"
-        icon="email"
+        icon={icons.email}
         value={email}
         onChangeText={setEmail}
         color={isEmailValid ? "#656262" : "#FF4B4B"}
@@ -109,7 +110,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {isSignUpPage ? (
         <Input
           placeholder="username"
-          icon="username"
+          icon={icons.username}
           value={username}
           onChangeText={setUsername}
           color={isUsernameValid ? "#656262" : "#FF4B4B"}
@@ -120,7 +121,7 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
       {/* PASSWORD INPUT */}
       <Input
         placeholder="Your password"
-        icon="password"
+        icon={icons.password}
         value={password}
         onChangeText={setPassword}
         color={isPasswordValid ? "#656262" : "#FF4B4B"}
