@@ -18,8 +18,9 @@ export const styles = StyleSheet.create({
     height: "84%",
   },
   title: {
+    width: 250,
     fontSize: 16,
-    fontWeight: "bold",
+    fontFamily: "Inter-Bold",
     color: "black",
     maxWidth: "90%",
     textAlign: "justify",
@@ -38,6 +39,7 @@ export const styles = StyleSheet.create({
   },
   description: {
     fontSize: 13,
+    fontFamily: "Inter-Medium",
     textAlign: "justify",
     paddingHorizontal: 10,
     marginBottom: 20,
@@ -58,10 +60,9 @@ export const styles = StyleSheet.create({
     marginTop: -5,
   },
   quantity: {
-    fontSize: 30,
-    paddingHorizontal: 10,
+    fontSize: 35,
+    paddingHorizontal: 8,
     color: GlobalStyles.Colors.primary,
-    fontWeight: "bold",
   },
   button: {
     backgroundColor: GlobalStyles.Colors.button,
@@ -91,14 +92,9 @@ export const styles = StyleSheet.create({
     marginBottom: 10,
   },
   numContainer: {
+    maxWidth: 140,
+    justifyContent: "center",
     flexDirection: "row",
-    alignItems: "center",
-  },
-  itemNum: {
-    width: 40,
-    height: 40,
-    backgroundColor: GlobalStyles.Colors.background,
-    borderRadius: 50,
     alignItems: "center",
   },
   containerPrice: {
