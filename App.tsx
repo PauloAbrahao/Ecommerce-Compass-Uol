@@ -1,16 +1,18 @@
 import { NavigationContainer } from "@react-navigation/native";
-import AddRoutes from "./src/config/routes/StackNavigator";
 import { AppProvider } from "./src/context/index";
+import { FavoritesProvider } from "./src/context/favContext";
+import AppRoutes from "./src/config/routes/StackNavigator";
 
 export default function App() {
   return (
     <>
       <NavigationContainer>
-        <AppProvider>
-          <AddRoutes />
-        </AppProvider>
+        <FavoritesProvider>
+          <AppProvider>
+            <AppRoutes />
+          </AppProvider>
+        </FavoritesProvider>
       </NavigationContainer>
     </>
   );
 }
-

@@ -1,22 +1,24 @@
 import { Image, Pressable } from "react-native";
 import React from "react";
-import { cardHome } from "./style";
+import { cardHome, cardDetail } from "./style";
 
 import { icons } from "../../../assets/icons";
 
 export interface FavoriteProps {
   heartIconPress?: () => void;
   favorite?: boolean;
+  isDetail?: boolean;
 }
 
-const Favorite: React.FC<FavoriteProps> = ({ heartIconPress, favorite }) => {
+const Favorite: React.FC<FavoriteProps> = ({ heartIconPress, favorite, isDetail }) => {
+  const style = isDetail ? cardDetail : cardHome;
 
   return (
     <>
       <Pressable onPress={heartIconPress}>
         <Image
           source={favorite ? icons.heartFavImage : icons.heartImage}
-          style={cardHome.iconHeart}
+          style={favorite ? style.iconHeartPressed : style.iconHeart}
         />
       </Pressable>
     </>

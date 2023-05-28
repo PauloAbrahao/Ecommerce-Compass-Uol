@@ -77,6 +77,7 @@ const AddRoutes = () => {
         {/* DETAILS SCREEN */}
         <Stack.Screen
           name="Details_Screen"
+          
           options={({ navigation }) => ({
             headerTitle: "",
             headerStyle: {
@@ -109,7 +110,7 @@ const AddRoutes = () => {
             ),
             headerBackTitleVisible: false,
           })}
-          component={Detail_Screen}
+          component={Detail_Screen as never}
         />
 
         {/* BOTTOM TAB NAVIGATOR */}

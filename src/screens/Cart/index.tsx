@@ -43,11 +43,8 @@ const Cart = () => {
       {Array.from({ length: item.productQuantity }).map((_, index) => (
         <View style={styles.cardContainer} key={`${item.id}-${index}`}>
           <Card
-            id={item.id}
+            {...item}
             isCart
-            image={item.image}
-            price={item.price}
-            title={item.title}
             removeButtonPress={() => removeItem(item.id)}
             key={`${item.id}-${index}`}
           />

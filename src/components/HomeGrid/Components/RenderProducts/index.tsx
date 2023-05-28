@@ -1,9 +1,9 @@
 import { View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import Card from "../../../Card";
+import { useFavorites } from "../../../../context/favContext";
 
 import styles from "./style";
-import { useCart } from "../../../../context";
 
 interface store {
   id: number;
@@ -16,25 +16,23 @@ interface store {
     rate: number;
     count: number;
   };
-  favorite?: boolean;
 }
 
 const index: React.FC<store> = (item) => {
-  const [favorite, setFavorite] = useState<boolean>(false);
-
-  // const { cartItems } = useCart();
-
-  const toggleFavorite = () => {
-    setFavorite(!favorite);
-  };
-
+  const Favorites = useFavorites();
   return (
     <View style={styles.content}>
       <Card
         {...item}
         isCart={false}
-        heartIconPress={toggleFavorite}
-        favorite={favorite}
+        heartIconPress={() => {
+          if (Favorites.isFavorite(item.id)) {
+            Favorites.removeFavorite(item.id);
+          } else {
+            Favorites.addFavorite(item.id);
+          }
+        }}
+        favorite={Favorites.isFavorite(item.id)}
       />
     </View>
   );
