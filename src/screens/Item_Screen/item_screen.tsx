@@ -5,7 +5,8 @@ import ButtonBuy from "../../components/ButtonBuy";
 import Price from "../../components/Price";
 import { FontAwesome } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
-import { useCart } from "../../context";
+import { CartItem, useCart } from "../../context";
+import { useFavorites } from "../../context/favContext";
 import QuantityButton from "../../components/QuantityButton";
 
 import { RouteProp } from "@react-navigation/native";
@@ -24,8 +25,6 @@ type RootStackParamList = {
     rating: {
       rate: number;
     };
-    favorite: boolean;
-    heartIconPress: () => void;
   };
 };
 
@@ -40,8 +39,7 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
   const [quantity, setQuantity] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const { id, title, price, image, description, rating, favorite, heartIconPress } =
-    route.params;
+  const { id, title, price, image, description, rating } = route.params;
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -62,7 +60,6 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
       image: image,
       description: description,
       rating: rating,
-      favorite: favorite,
     };
 
     setIsLoading(true);
@@ -133,13 +130,17 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
     return <Text>Loading...</Text>;
   }
 
-  
+  const Favorites = useFavorites();
+  const toggleFavorite = (id: any) => {
+    if (Favorites.isFavorite(id)) {
+      Favorites.removeFavorite(id);
+    } else {
+      Favorites.addFavorite(id);
+    }
+  };
 
   return (
     <View style={styles.container}>
-
-      <Favorite heartIconPress={heartIconPress} favorite={favorite} />
-
       <CustomModal
         header="Good!"
         message="Product added to cart."
@@ -185,6 +186,13 @@ const ProductScreen: React.FC<ProductScreenProps> = ({ route }) => {
             quantity={quantity}
           />
         </View>
+      </View>
+      <View style={styles.heartContainer}>
+        <Favorite
+          heartIconPress={() => toggleFavorite(id)}
+          favorite={Favorites.isFavorite(id)}
+          isDetail={true}
+        />
       </View>
     </View>
   );

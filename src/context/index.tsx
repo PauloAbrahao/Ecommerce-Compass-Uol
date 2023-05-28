@@ -5,7 +5,6 @@ interface Product {
   title: string;
   price: number;
   image: string;
-  favorite: boolean;
 }
 
 export interface CartItem extends Product {
@@ -19,14 +18,12 @@ type CartProviderProps = {
 };
 
 interface CartContextData {
-  
   cartItems: CartItem[];
   addToCart: (product: Product, quantity: number) => void;
   removeFromCart: (productId: number) => void;
   resetCart: () => void;
   getTotalItemCount: () => number;
   getTotalPrice: () => number;
-  toggleFavorite: (itemId: number) => void;
 }
 
 export const CartContext = createContext<CartContextData>({
@@ -36,7 +33,6 @@ export const CartContext = createContext<CartContextData>({
   resetCart: () => {},
   getTotalItemCount: () => 0,
   getTotalPrice: () => 0,
-  toggleFavorite: () => {},
 });
 
 const AppProvider = ({ children }: CartProviderProps) => {
@@ -122,24 +118,6 @@ const AppProvider = ({ children }: CartProviderProps) => {
     return total;
   };
 
-  const toggleFavorite = (itemId: number) => {
-    // setFavorite((prevFavorite) => !prevFavorite);
-    const updatedCartItems = cartItems.map((item) => {
-      if (item.id === itemId) {
-        const updatedItem: CartItem = {
-          ...item,
-          favorite: !item.favorite,
-        };
-
-        return updatedItem;
-      }
-
-      return item;
-    });
-
-    setCartItems(updatedCartItems);
-  };
-
   const contextValue: CartContextData = {
     cartItems,
     addToCart,
@@ -147,7 +125,6 @@ const AppProvider = ({ children }: CartProviderProps) => {
     resetCart,
     getTotalItemCount,
     getTotalPrice,
-    toggleFavorite,
   };
 
   return (
