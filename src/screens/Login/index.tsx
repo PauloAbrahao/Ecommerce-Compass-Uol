@@ -2,7 +2,6 @@ import {
   KeyboardAvoidingView,
   Text,
   View,
-  ScrollView,
   Dimensions,
 } from "react-native";
 import React from "react";
@@ -21,11 +20,6 @@ const Welcome_Screen = () => {
         behavior="padding"
         keyboardVerticalOffset={200}
       >
-        {/* <ScrollView
-          contentOffset={{ x: 0, y: 200 }}
-          scrollEnabled={false}
-          style={styles.content}
-        >  */}
         <View style={{ height: windowHeight }}>
           {/* WELCOME TITLE */}
           <Text style={styles.title}>WELCOME</Text>
@@ -41,7 +35,6 @@ const Welcome_Screen = () => {
           first_footer_text="Don't have an account?"
           second_footer_text="Sign Up"
         />
-        {/* </ScrollView> */}
       </KeyboardAvoidingView>
     </>
   );
