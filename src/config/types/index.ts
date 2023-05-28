@@ -32,7 +32,7 @@ type FormProps = {
 
 type InputProps = {
   placeholder: string;
-  icon: string;
+  icon: ImageSourcePropType;
   value?: string;
   onChangeText: (value: string) => void;
   color?: string;

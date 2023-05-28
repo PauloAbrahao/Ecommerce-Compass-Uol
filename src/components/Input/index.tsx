@@ -5,7 +5,6 @@ import {
   View,
 } from "react-native";
 import { InputProps } from "../../config/types";
-import { link_images } from "./LinkImages";
 import styles from "./style";
 
 // INTERFACE FOR INPUT PROPS
@@ -17,12 +16,11 @@ const Input: React.FC<InputProps> = ({
   ...props
 }) => {
   // CALL THE FUNCTION TO SET THE PATH TO THE CORRECT IMAGE
-  const path = link_images(icon);
 
   return (
     <View>
       <View style={[styles.container, { borderColor: color }]}>
-        <Image source={path} resizeMode="contain" style={styles.icon} />
+        <Image source={icon} resizeMode="contain" style={styles.icon} />
         <TextInput
           style={styles.input}
           placeholder={placeholder}
