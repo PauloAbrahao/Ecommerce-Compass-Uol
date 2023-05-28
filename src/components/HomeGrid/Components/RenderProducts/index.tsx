@@ -2,21 +2,8 @@ import { View } from "react-native";
 import React from "react";
 import Card from "../../../Card";
 import { useFavorites } from "../../../../context/favContext";
-
+import { store } from "../../../../config/interface";
 import styles from "./style";
-
-interface store {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
 
 const index: React.FC<store> = (item) => {
   const Favorites = useFavorites();

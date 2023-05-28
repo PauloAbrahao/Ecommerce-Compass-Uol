@@ -26,7 +26,7 @@ interface Product {
 interface store {
   id: number;
   title: string;
-  price: string;
+  price: number;
   description: string;
   category: string;
   image: string;
@@ -43,5 +43,41 @@ interface Images {
 interface RenderStarsProps {
   rate: number;
 }
+interface FavoriteProps {
+  heartIconPress?: () => void;
+  favorite?: boolean;
+  isDetail?: boolean;
+}
+interface ProductContex {
+  id: number;
+  title: string;
+  price: number;
+  image: string;
+}
+interface CartItem extends ProductContex {
+  productQuantity: number;
+  cartQuantity: number;
+  total: number;
+}
 
-export { CardProps, store, Images, Product, RenderStarsProps };
+interface CartContextData {
+  cartItems: CartItem[];
+  addToCart: (product: ProductContex, quantity: number) => void;
+  removeFromCart: (productId: number) => void;
+  resetCart: () => void;
+  getTotalItemCount: () => number;
+  getTotalPrice: () => number;
+}
+
+
+export {
+  CardProps,
+  store,
+  Images,
+  Product,
+  RenderStarsProps,
+  FavoriteProps,
+  CartItem,
+  ProductContex,
+  CartContextData
+};

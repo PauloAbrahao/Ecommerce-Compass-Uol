@@ -1,20 +1,14 @@
 import React from "react";
 import { Pressable, Image, Text, View } from "react-native";
 import { cardCart, cardHome } from "./style";
-import Price from "../Price";
-import QuantityButton from "../QuantityButton";
-import { ParamListBase, useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
+import {useNavigation } from "@react-navigation/native";
 import { icons } from "../../../assets/icons";
 import { CardProps } from "../../config/interface";
+import { DetailsScreenNavigationProp } from "../../config/types";
 
+import Price from "../Price";
+import QuantityButton from "../QuantityButton";
 import Favorite from "../Favorite";
-
-// DEFINE NAVIGATION TYPE
-type DetailsScreenNavigationProp = StackNavigationProp<
-  ParamListBase,
-  "Details_Screen"
->;
 
 const Card: React.FC<CardProps> =({
   id,

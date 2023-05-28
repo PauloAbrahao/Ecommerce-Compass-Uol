@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15,
   },
   text: {
-    color: "#F5F5F5",
+    color: GlobalStyles.Colors.subText_container,
     fontFamily: "Inter-Medium",
     fontSize: 16,
   },

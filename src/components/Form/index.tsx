@@ -1,11 +1,10 @@
 import React from "react";
 
 import { View, Text } from "react-native";
-import { ParamListBase, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { show_error } from "./ValidateInputs";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { FormProps } from "../../config/types";
-
+import { HomeScreenNavigationProp } from "../../config/types";
 import Checkbox from "expo-checkbox";
 import Input from "../Input";
 import Button from "../Button";
@@ -25,8 +24,6 @@ const Form: React.FC<FormProps> = ({ isSignUpPage, text_button }) => {
   const [isPasswordValid, setIsPasswordValid] = React.useState<boolean>(true);
   const [isTermsValid, setIsTermsValid] = React.useState<boolean>(true);
 
-  // DEFINE NAVIGATION TYPE
-  type HomeScreenNavigationProp = StackNavigationProp<ParamListBase, "Home">;
 
   const navigation: HomeScreenNavigationProp = useNavigation();
 

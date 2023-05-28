@@ -1,25 +1,14 @@
 import { FlatList } from "react-native";
 import { useState, useEffect } from "react";
+import { store } from "../../config/interface";
 import axios, { AxiosResponse } from "axios";
 
 import RenderProducts from "./Components/RenderProducts";
 
 import styles from "./style";
 
-interface store {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
 
-const index = () => {
+const Grid = () => {
   const [data, setData] = useState<store[]>([]);
 
   useEffect(() => {
@@ -51,4 +40,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Grid;

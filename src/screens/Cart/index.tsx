@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, FlatList, ListRenderItem } from "react-native";
-import { CartItem, useCart } from "../../context";
+import { CartItem } from "../../config/interface";
+import { useCart } from "../../context";
 import ButtonBuy from "../../components/ButtonBuy";
 import styles from "./style";
 import Card from "../../components/Card";

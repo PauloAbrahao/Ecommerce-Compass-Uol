@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "./styles";
+import { Feather } from "@expo/vector-icons";
 import ButtonBuy from "../../components/ButtonBuy";
+import { useFavorites } from "../../context/favContext";
 import Price from "../../components/Price";
 import { FontAwesome } from "@expo/vector-icons";
-import { Feather } from "@expo/vector-icons";
 import { useCart } from "../../context";
-import { useFavorites } from "../../context/favContext";
 import QuantityButton from "../../components/QuantityButton";
+import Favorite  from "../../components/Favorite";
 
 import { RouteProp } from "@react-navigation/native";
 import CustomModal from "../../components/Modal";

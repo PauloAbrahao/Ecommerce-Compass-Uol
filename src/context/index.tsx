@@ -1,30 +1,6 @@
 import { createContext, useContext, useState } from "react";
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-}
-
-export interface CartItem extends Product {
-  productQuantity: number;
-  cartQuantity: number;
-  total: number;
-}
-
-type CartProviderProps = {
-  children: React.ReactNode;
-};
-
-interface CartContextData {
-  cartItems: CartItem[];
-  addToCart: (product: Product, quantity: number) => void;
-  removeFromCart: (productId: number) => void;
-  resetCart: () => void;
-  getTotalItemCount: () => number;
-  getTotalPrice: () => number;
-}
+import { ProviderProps } from "../config/types";
+import { CartItem, ProductContex, CartContextData } from "../config/interface";
 
 export const CartContext = createContext<CartContextData>({
   cartItems: [],
@@ -35,10 +11,10 @@ export const CartContext = createContext<CartContextData>({
   getTotalPrice: () => 0,
 });
 
-const AppProvider = ({ children }: CartProviderProps) => {
+const AppProvider = ({ children }: ProviderProps) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = (product: Product, quantity: number) => {
+  const addToCart = (product: ProductContex, quantity: number) => {
     const existingItem = cartItems.find((item) => item.id === product.id);
 
     if (quantity === 0) {
