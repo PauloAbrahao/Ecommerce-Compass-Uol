@@ -76,7 +76,7 @@ const index = () => {
         {/* DETAILS SCREEN */}
         <Stack.Screen
           name="Details_Screen"
-          component={Details_Screen}
+          component={Details_Screen as never}
           options={({ navigation }) => ({
             headerTitle: "",
             headerStyle: {

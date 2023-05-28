@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import Card from "../../../Card";
 import { useFavorites } from "../../../../context/favContext";
 

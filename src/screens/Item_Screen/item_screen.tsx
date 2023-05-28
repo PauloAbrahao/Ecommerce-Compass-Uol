@@ -11,7 +11,6 @@ import QuantityButton from "../../components/QuantityButton";
 
 import { RouteProp } from "@react-navigation/native";
 import CustomModal from "../../components/Modal";
-import Favorite from "../../components/Favorite";
 
 import { icons } from "../../../assets/icons";
 
