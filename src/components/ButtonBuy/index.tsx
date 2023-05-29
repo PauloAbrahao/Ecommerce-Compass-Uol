@@ -11,7 +11,7 @@ const ButtonBuy: React.FC<ButtonBuyProps> = ({
 }) => {
   return (
     <Pressable
-      style={({ pressed }) => [styles.button, pressed && styles.pressed]}
+      style={({ pressed }) => [styles.button, pressed && styles.pressed, quantity === 0 && styles.quantity]}
       onPress={onPress}
       disabled={quantity === 0 ? true : false}
     >

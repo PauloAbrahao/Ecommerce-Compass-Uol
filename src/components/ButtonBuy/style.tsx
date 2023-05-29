@@ -14,6 +14,9 @@ export const styles = StyleSheet.create({
   pressed: {
     opacity: 0.7,
   },
+  quantity: {
+    opacity: 0.6,
+  },
   text: {
     color: "#FFFFFF",
     fontSize: 15,
