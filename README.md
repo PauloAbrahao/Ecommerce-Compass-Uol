@@ -10,13 +10,13 @@
 To run this app on your local machine, firt clone the repository:
 
 ```bash
-  git clone https://github.com/PauloAbrahao/Login-Page-Compass.git
+  git clone https://github.com/PauloAbrahao/Ecommerce-Compass-Uol.git
 ```
 
 Then, navigate to the project directory and install the dependencies:
 
 ```bash
-  cd Login-Page-Compass
+  cd Ecommerce-Compass-Uol
 ```
 
 ```bash
