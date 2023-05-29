@@ -1,4 +1,4 @@
-import { FlatList } from "react-native";
+import { ActivityIndicator, FlatList, View } from "react-native";
 import { useState, useEffect } from "react";
 import { store } from "../../config/interface";
 import axios, { AxiosResponse } from "axios";
@@ -6,7 +6,6 @@ import axios, { AxiosResponse } from "axios";
 import RenderProducts from "./Components/RenderProducts";
 
 import styles from "./style";
-
 
 const Grid = () => {
   const [data, setData] = useState<store[]>([]);
@@ -26,6 +25,14 @@ const Grid = () => {
     };
     fetchData();
   }, []);
+
+  if (data.length === 0) {
+    return (
+      <View style={styles.loading}>
+        <ActivityIndicator />
+      </View>
+    );
+  }
 
   return (
     <FlatList
