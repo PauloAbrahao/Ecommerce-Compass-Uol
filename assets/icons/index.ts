@@ -1,0 +1,18 @@
+export const icons = {
+  arrow: require("./Images/arrow.png"),
+  cartFocused: require("./Images/cart_focused.png"),
+  cartHeader: require("./Images/cart_header.png"),
+  cart: require("./Images/cart.png"),
+  email: require("./Images/email.png"),
+  heartImage: require("./Images/heart.png"),
+  heartFavImage: require("./Images/heartFav.png"),
+  homeFocused: require("./Images/home_focused.png"),
+  home: require("./Images/home.png"),
+  minusImage: require("./Images/minus.png"),
+  minusCart: require("./Images/minusCart.png"),
+  password: require("./Images/password.png"),
+  plusImage: require("./Images/plus.png"),
+  username: require("./Images/username.png"),
+  startFull: require("./Images/starFull.png"),
+  StartHalf: require("./Images/starHalf.png"),
+};

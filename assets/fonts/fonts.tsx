@@ -6,6 +6,7 @@ const fetchFonts = () => {
     "Inter-Medium": require("./Inter-Medium.ttf"),
     "Inter-SemiBold": require("./Inter-SemiBold.ttf"),
     "Khula-Bold": require("./Khula-Bold.ttf"),
+    "Karla-Regular": require("./Karla-Regular.ttf"),
   });
 };
 

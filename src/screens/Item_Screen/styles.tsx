@@ -1,0 +1,146 @@
+import { StyleSheet } from "react-native";
+import { GlobalStyles } from "../../constants/colors";
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: GlobalStyles.Colors.background,
+  },
+  box: {
+    backgroundColor: "white",
+    padding: 20,
+    borderRadius: 20,
+    flexDirection: "column",
+    justifyContent: "space-between",
+    width: "90%",
+    height: "84%",
+  },
+  title: {
+    width: 250,
+    fontSize: 16,
+    fontFamily: "Inter-Bold",
+    color: "black",
+    maxWidth: "90%",
+    textAlign: "justify",
+  },
+  image: {
+    width: 200,
+    height: 200,
+    alignSelf: "center",
+    marginVertical: 10,
+    marginTop: 20,
+  },
+  rating: {
+    fontSize: 16,
+    marginBottom: 10,
+    color: GlobalStyles.Colors.primary,
+  },
+  description: {
+    fontSize: 13,
+    fontFamily: "Inter-Medium",
+    textAlign: "justify",
+    paddingHorizontal: 10,
+    marginBottom: 20,
+    color: "black",
+    marginTop: 15,
+  },
+  quantityContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 10,
+  },
+  icon: {
+    fontSize: 30,
+    color: GlobalStyles.Colors.primary,
+    fontWeight: "bold",
+    alignItems: "center",
+    textAlign: "center",
+    marginTop: -5,
+  },
+  quantity: {
+    fontSize: 35,
+    paddingHorizontal: 8,
+    color: GlobalStyles.Colors.primary,
+  },
+  button: {
+    backgroundColor: GlobalStyles.Colors.button,
+    borderRadius: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+    width: "70%",
+    alignSelf: "center",
+  },
+  buttonText: {
+    color: "black",
+    fontSize: 16,
+    textAlign: "center",
+  },
+  price: {
+    fontSize: 28,
+    color: GlobalStyles.Colors.primary,
+  },
+  pricebox: {
+    backgroundColor: GlobalStyles.Colors.card_product,
+    borderRadius: 20,
+    justifyContent: "center",
+  },
+  bottoncentralization: {
+    alignSelf: "center",
+    marginBottom: 10,
+  },
+  numContainer: {
+    maxWidth: 140,
+    justifyContent: "center",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  containerPrice: {
+    justifyContent: "space-between",
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  ratingContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  starsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 15,
+    marginVertical: 20,
+    marginLeft: 10,
+  },
+  starsContainer2: {
+    borderRadius: 50,
+  },
+  titleBox: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  heartContainer: {
+    position: "absolute",
+    top: 74,
+    bottom: 0,
+    left: 324,
+    right: 0,
+    width: 30,
+    height: 30,
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: GlobalStyles.Colors.background,
+  },
+  loading: {
+    textAlign: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: GlobalStyles.Colors.background,
+    color: "#fff",
+  },
+});
