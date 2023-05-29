@@ -7,6 +7,7 @@ import {
   ImageSourcePropType,
 } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs/src/types";
+import { icons } from "../../../../assets/icons";
 import styles from "./style";
 
 
@@ -21,7 +22,7 @@ const index: React.FC<BottomTabBarProps> = ({
         <View style={styles.content}>
           {state.routes.map((route, index) => {
             const { options } = descriptors[route.key];
-            let tabBarIconImage: ImageSourcePropType = require("../../../../assets/icons/home.png");
+            let tabBarIconImage: ImageSourcePropType = icons.home;
 
             const tabBarIconComponent: ReactNode =
               options.tabBarIcon &&

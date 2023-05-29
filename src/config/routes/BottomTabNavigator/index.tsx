@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import CustomTabBar from "../customTabBar/index";
 import Cart_Screen from "../../../screens/Cart/index";
 import Home from "../../../screens/Home";
+import { icons } from "../../../../assets/icons";
 
 
 const Tab = createBottomTabNavigator();
@@ -30,8 +31,8 @@ const BottomTabsNavigator = () => {
             <Image
               source={
                 focused
-                  ? require("../../../../assets/icons/home_focused.png")
-                  : require("../../../../assets/icons/home.png")
+                  ? icons.homeFocused
+                  : icons.home
               }
             />
           ),
@@ -46,8 +47,8 @@ const BottomTabsNavigator = () => {
             <Image
               source={
                 focused
-                  ? require("../../../../assets/icons/cart_focused.png")
-                  : require("../../../../assets/icons/cart.png")
+                  ? icons.cartFocused
+                  : icons.cart
               }
             />
           ),

@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { CartScreenNavigator } from "../../config/types";
 import { useCart } from "../../context";
 import styles from "./styles";
+import { icons } from "../../../assets/icons";
 
 
 
@@ -23,7 +24,7 @@ const CartComponent: React.FC = () => {
           <Text style={styles.counter}>{getTotalItemCount()}</Text>
         </View>
         <Image
-          source={require("../../../assets/icons/cart_header.png")}
+          source={icons.cartHeader}
           resizeMode="contain"
         />
       </TouchableOpacity>

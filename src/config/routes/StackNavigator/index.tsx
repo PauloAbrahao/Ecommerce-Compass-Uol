@@ -15,6 +15,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import fetchFonts from "../../../../assets/fonts/fonts";
 import BottomTabsNavigator from "../BottomTabNavigator";
+import { icons } from "../../../../assets/icons";
 
 
 const AddRoutes = () => {
@@ -57,7 +58,7 @@ const AddRoutes = () => {
                 }}
               >
                 <Image
-                  source={require("../../../../assets/icons/arrow.png")}
+                  source={icons.arrow}
                   style={{
                     width: 30,
                     height: 30,
@@ -97,7 +98,7 @@ const AddRoutes = () => {
               }}
               >
                 <Image
-                  source={require("../../../../assets/icons/arrow.png")}
+                  source={icons.arrow}
                   style={{
                     width: 30,
                     height: 30,
