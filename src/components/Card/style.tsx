@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export const cardHome = StyleSheet.create({
   card: {
-    width: 175,
+    width: 180,
     height: 220,
     backgroundColor: "white",
     borderRadius: 10,
